@@ -1,0 +1,55 @@
+.buttons {
+    position: fixed;
+    width: 100%;
+    background-color: #141414;
+    top: -5px;
+    left: 0px;
+    height: 75px;
+    border-radius: 5%;
+}
+
+.topbarButtonText {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    color: darkgrey;
+    top: -5px;
+}
+
+.authButtonText {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    color: ghostwhite;
+    top: -14px;
+}
+
+.authButton {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background-color: #6441a5;
+    border-radius: 10%;
+    top: 12px;
+    right: 5px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    display: inline-block;
+}
+
+.topbarButton {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
+    border: 2px solid #0d0d0d;
+    top: 12px;
+    left: 5px;
+    background-color: #0e0e0e;
+    display: inline-block;
+    text-align: center;
+}
