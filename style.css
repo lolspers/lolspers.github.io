@@ -1,4 +1,4 @@
-.topbar {
+.buttons {
     position: fixed;
     width: 100%;
     background-color: #141414;
@@ -40,6 +40,10 @@
     font-weight: 1000;
     display: inline-block;
 }
+.authButton:hover {
+    background-color: #6441a5bd;
+    cursor: pointer;
+}
 
 .topbarButton {
     position: relative;
@@ -52,4 +56,9 @@
     background-color: #0e0e0e;
     display: inline-block;
     text-align: center;
+}
+
+.topbarButton:hover {
+    background-color: #000000;
+    cursor: pointer;
 }
