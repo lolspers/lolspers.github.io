@@ -9,7 +9,7 @@ body {
     top: -5px;
     left: 0px;
     height: 75px;
-    border-radius: 5%;
+    border-radius: 1% / 20%;
 }
 
 .topbarButtonText {
@@ -35,7 +35,7 @@ body {
     width: 100px;
     height: 50px;
     background-color: #6441a5;
-    border-radius: 10%;
+    border-radius: 10% / 20%;
     top: 12px;
     right: 5px;
     text-align: center;
@@ -53,7 +53,7 @@ body {
     position: relative;
     width: 100px;
     height: 50px;
-    border-radius: 10%;
+    border-radius: 10% / 20%;
     border: 2px solid #0d0d0d;
     top: 12px;
     left: 5px;
@@ -65,4 +65,69 @@ body {
 .topbarButton:hover {
     background-color: #000000;
     cursor: pointer;
+}
+
+.commands {
+    position: fixed;
+    bottom: 3px;
+    right: 5px;
+    left: 5px;
+    height: calc(100% - 80px);
+    border-radius: 1%;
+    background-color: #181818;
+}
+
+.commandSideBar {
+    position: fixed;
+    left: 5px;
+    bottom: 3px;
+    height: calc(100% - 83px);
+    width: 200px;
+    border-radius: 4%;
+    background-color: #171717;
+    overflow-y: auto;
+}
+
+.commandButton {
+    top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin: 5px;
+    border-radius: 10% / 30%;
+    background-color: #131313;
+}
+
+.commandButton:hover {
+    background-color: #121212;
+    cursor: pointer;
+}
+
+.commandButtonText { 
+    font-size: 20px;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 500;
+    color: #dddddd;
+}
+
+.commandMenu {
+    position: absolute;
+    left: 210px;
+    bottom: 3px;
+    height: calc(100% - 7px);
+    width: calc(100% - 215px);
+    border-radius: 1%;
+    background-color: #171717;
+    overflow-y: auto;
+}
+
+.minimizedCommandMenu {
+    position: static;
+    margin: 5px;
+    width: calc(100% - 5px);
+    height: 50px;
+    border-radius: 2% / 6%;
+    background-color: #131313;
 }
