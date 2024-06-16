@@ -6,6 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
@@ -22,8 +25,100 @@
     </div>
 
     <div class="commands">
+        <div class="commandSideBar">
+            <div class="commandButton">
+                <p class="commandButtonText">7tvset</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">7tvu</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">command</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">disable</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">el</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">enable</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">epoch</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">global</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">ic</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">poinfo</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">time</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">uc</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">uid</p>
+            </div>
+            <div class="commandButton">
+                <p class="commandButtonText">user</p>
+            </div>
+        </div>
+        <div class="commandMenu">
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+          <div class="minimizedCommandMenu">
+            
+          </div>
+        </div>
     </div>
 
+    </body>
     <script>
       $(".authButton").click(function() {
         window.location.href = "https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=02im991evpic87q63afh291vm9i0sw&redirect_uri=https://lolspers.github.io/&scope=bits:read+channel:read:editors+channel:read:hype_train+channel:manage:moderators+channel:read:polls+channel:manage:polls+channel:read:predictions+channel:manage:predictions+channel:manage:raids+channel:read:redemptions+channel:manage:redemptions+channel:manage:schedule+channel:read:subscriptions+channel:read:vips+channel:manage:vips+moderation:read+moderator:manage:announcements+moderator:read:automod_settings+moderator:manage:banned_users+moderator:read:blocked_terms+moderator:manage:blocked_terms+moderator:manage:chat_messages+moderator:read:chat_settings+moderator:read:chatters+moderator:manage:chat_settings+moderator:read:followers+moderator:read:shoutouts+moderator:manage:shoutouts+moderator:read:unban_requests+user:edit+user:read:blocked_users+user:read:broadcast+user:read:emotes+user:read:moderated_channels+user:read:follows+user:manage:whispers+channel:bot+channel:moderate+chat:edit+chat:read+user:bot+user:read:chat+user:write:chat+whispers:read+whispers:edit+user:manage:chat_color"
@@ -31,6 +126,9 @@
       $(".topbarButton").click(function changePage(button) {
         button = button.currentTarget
         window.location.href = $(button).text().toLowerCase()
+      })
+      $(".commandButton").click(function changeCommandMenu(button) {
+
       })
     </script>
 </html>
