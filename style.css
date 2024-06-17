@@ -124,10 +124,64 @@ body {
 }
 
 .minimizedCommandMenu {
-    position: static;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
     margin: 5px;
     width: calc(100% - 5px);
     height: 50px;
     border-radius: 2% / 6%;
     background-color: #131313;
+}
+
+.maximizedCommandMenu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 5px;
+    margin: 5px;
+    width: calc(100% - 5px);
+    height: 150px;
+    border-radius: 2% / 6%;
+    background-color: #131313;
+}
+
+.minimizedCommandMenuResponseText {
+    font-size: 20px;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 500;
+    color: #989898;
+}
+
+.minimizedCommandMenuCommandText {
+    font-size: 20px;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 600;
+    color: #999999;
+}
+
+.maximizedCommandMenuText {
+    font-size: 16px;
+    margin: 4px;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 500;
+    color: #999999;
+}
+
+.maximizedCommandMenuAttText {
+    font-size: 16px;
+    margin: 4px;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 600;
+    color: #999999;
+}
+
+.anglearrowdown {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 12px;
+    left: calc(100% - 50px);
 }
