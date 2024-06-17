@@ -210,3 +210,13 @@ body {
     top: 12px;
     left: calc(100% - 50px);
 }
+
+.minimizedCommandMenu:hover {
+    background-color: #121212;
+    cursor: pointer;
+}
+
+.maximizedCommandMenu:hover {
+    background-color: #121212;
+    cursor: pointer;
+}
