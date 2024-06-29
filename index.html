@@ -34,8 +34,12 @@
         window.location.href = "lule"
       })
       $(".topbarButton").click(function changePage(button) {
-        button = button.currentTarget
-        window.location.href = $(button).text().toLowerCase()
+        var buttonText = button.currentTarget.text().toLowerCase()
+        if (buttonText == "home") {
+          window.location.href = ""
+        } else {
+          window.location.href = buttonText
+        }
       })
     </script>
     </body>
