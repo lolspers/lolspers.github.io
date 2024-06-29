@@ -25,7 +25,6 @@
       <div class="guh">
         <img src="https://cdn.7tv.app/emote/645c29a0a93fbaf6fa2b5647/4x.avif" class="uuh">
       </div>
-      <div></div>
 
     </div>
 
@@ -34,12 +33,8 @@
         window.location.href = "lule"
       })
       $(".topbarButton").click(function changePage(button) {
-        var buttonText = button.currentTarget.text().toLowerCase()
-        if (buttonText == "home") {
-          window.location.href = ""
-        } else {
-          window.location.href = buttonText
-        }
+        button = button.currentTarget
+        window.location.href = $(button).text().toLowerCase()
       })
     </script>
     </body>
