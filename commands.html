@@ -126,6 +126,14 @@
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>None</p>
             <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
           </div>
+          <div class="minimizedCommandMenu" value="enabled">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">enabled</a> - commands: {bool}, response: {bool}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;enabled</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>2</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>disabled</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
           <div class="minimizedCommandMenu" value="emotelink">
             <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">emotelink</a> - https://cdn.7tv.app/emote/{emote id}/{file type}</p>
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;emotelink {emote} [ {size} / {file type} / {size}.{file type} ]</p>
@@ -158,6 +166,22 @@
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>ic, invischar, invisiblechar, invischaracter, invisiblecharacter</p>
             <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
           </div>
+          <div class="minimizedCommandMenu" value="level">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">level</a> - {user}'s level: {level}, {level name}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;ulevel {user}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>1</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="massping">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">massping</a> - @{user}, @{user}, @{user}, etc.</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;massping</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
           <div class="minimizedCommandMenu" value="potatoinfo">
             <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">potatoinfo</a> - potato: {potato ready at}, steal: {steal ready at}, cdr: {cdr ready at}, quiz: {quiz ready at}</p>
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;poinfo {username}</p>
@@ -166,11 +190,99 @@
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>poinfo</p>
             <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
           </div>
+          <div class="minimizedCommandMenu" value="ping">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">ping</a> - PONG :tmi.twitch.tv last: epoch: {last epoch time} , CET: {last long date}, relative: {last relative}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;ping</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>2</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="pyramid">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">pyramid</a> - {message} \\ (in a vertical pyramid x width)</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;pyramid {message} {width}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="say">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">say</a> - {message}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;say {message}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistInfo">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist info</a> - Total seplists: {seplist amount}, Current seplists: {seplists}, Total items: {item amount}, Total characters: {character amount}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist info</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistSeplist">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist {seplist}</a> - ({index}). {item} | ({index}). {item} | etc.</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist {seplist}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistCreate">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist create</a> - Created list: "{seplist}"</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist create {seplist}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistAdd">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist add</a> - Added "{item}" to {seplist}"</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist add {seplist} {item}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistDelete">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist delete</a> - Deleted seplist: "{seplist}", with items: {seplist items}"</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist delete {seplist}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="seplistRemove">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">seplist remove</a> - Removed: "{item}", from seplist: "{seplist}"</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;seplist remove {seplist} {item}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="spam">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">spam</a> - {message} \\ (x amount)</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;spam {message} {amount}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Alias: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
           <div class="minimizedCommandMenu" value="time">
             <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">time</a> - {date, time, timezone} </p>
-            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;time</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;time {timezone}</p>
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>1</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>None</p>
+            <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
+          </div>
+          <div class="minimizedCommandMenu" value="ulevel">
+            <p class="minimizedCommandResponse"><a class="minimizedCommandCommand">ulevel</a> - Set {user}'s level to {level}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Arguments: </a>;ulevel {user} {level}</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">Cooldown: </a>0s</p>
+            <p class="minimizedCommandValue"><a class="minimizedCommandKey">User Level: </a>5</p>
             <p class="minimizedCommandValue"><a class="minimizedCommandKey">Aliases: </a>None</p>
             <img src="anglearrowdown.png" class="anglearrowdown" value="minimized">
           </div>
