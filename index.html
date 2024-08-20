@@ -20,7 +20,7 @@
         <p class="topbarButtonText" value="commands">Commands</p>
       </div>
       <div class="authButton">
-        <p class="authButtonText">Does Not Work</p>
+        <p class="authButtonText">Do not authorize.</p>
       </div>
       <div class="guh">
         <img src="https://cdn.7tv.app/emote/645c29a0a93fbaf6fa2b5647/4x.avif" class="uuh">
@@ -34,14 +34,75 @@
         const params = new URLSearchParams(hash)
         const accessToken = params.get("access_token")
         const scopes = params.get("scope").split(" ")
-        console.log("Saved access token")
-        localStorage.setItem("accessToken", accessToken)
-        localStorage.setItem("accessTokenScopes", scopes)
+        console.log("Oauth detected, saving token...")
+        console.log("Token: " + accessToken.slice(0, 10) + "********************")
+        console.log("Scopes: " + scopes)
+        if (localStorage.getItem("accessTokens")) {
+          const accessTokens = JSON.parse(localStorage.getItem("accessTokens"))
+          for (const i of accessTokens) {
+            console.log(`expired: ${Boolean(i["date"] < Date.now() - 5184*10**6)}, duplicate scopes: ${Boolean(JSON.stringify(scopes) == JSON.stringify(i["scopes"]))}, duplicate token: ${Boolean(accessToken == i["accessToken"])}`)
+            if (i["date"] < Date.now() - 5184*10**6 || JSON.stringify(scopes) == JSON.stringify(i["scopes"]) || accessToken == i["accessToken"]) {
+              console.log(`Removed token: "${i['accessToken']}" due to being expired/a duplicate`)
+              accessTokens.splice(accessTokens.indexOf(i), 1)
+            }
+          }
+          accessTokens.push({"accessToken": accessToken, "scopes": scopes, "date": Date.now()})
+          localStorage.setItem("accessTokens", JSON.stringify(accessTokens))
+        } else {
+          localStorage.setItem("accessTokens", JSON.stringify([{"accessToken": accessToken, "scopes": scopes, "date": Date.now()}]))
+        }
+
       } else {
-        console.log(localStorage.getItem("accessToken").slice(0, 10), localStorage.getItem("accessTokenScopes"))
+        console.log(localStorage.getItem("username"), localStorage.getItem("pfpURL"))
+        if (localStorage.getItem("accessTokens")) {
+          const accessTokens = JSON.parse(localStorage.getItem("accessTokens"))
+          for (const i of accessTokens) {
+            if (i['date'] < Date.now() - 5184*10**6) {
+              accessTokens.splice(accessTokens.indexOf(i), 1)
+              localStorage.setItem("accessTokens", accessTokens)
+            }
+          }
+        }
       }
+
+      if (localStorage.getItem("accessTokens")) {
+        let accessToken = JSON.parse(localStorage.getItem("accessTokens"))[0]["accessToken"]
+        fetch("https://api.twitch.tv/helix/users", {
+            headers: {
+                "Authorization": "Bearer " + accessToken,
+                "Client-ID": "02im991evpic87q63afh291vm9i0sw",
+            }
+          })
+          .then(response => {
+              if (response.ok) {
+                  console.log("Succesfully fetched user info")
+                  return response.json()
+              } else {
+                  console.log("Request failed")
+                  throw new Error('Network response was not ok.')
+              }
+          })
+          .then(data => {
+              data = data['data'][0]
+              localStorage.setItem("username", data['login'])
+              localStorage.setItem("display", data['display_name'])
+              localStorage.setItem("pfpURL", data['profile_image_url'])
+              localStorage.setItem("uid", data['id'])
+          })
+          .catch(error => {
+              console.error('Fetch error:', error)
+          })
+      }
+
+
+      if (localStorage.getItem("accessTokens")) {
+        $(".authButton").hide()
+        $(".topbar").append("<div class=userButton> <p class=topbarButtonText> " + localStorage.getItem("display") + " </p> <img src=" + localStorage.getItem("pfpURL") +" class=userPfp> </div>")
+      }
+
+
       $(".authButton").click(function() {
-        window.location.href = "lule"
+        window.location.href = "https://shorturl.at/F52Tf"
       })
       $(".topbarButton").click(function changePage(button) {
         button = button.currentTarget
