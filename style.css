@@ -209,6 +209,7 @@ body {
     height: 28px;
     top: 12px;
     left: calc(100% - 50px);
+    transform: rotate(0deg)
 }
 
 .minimizedCommandMenu:hover {
@@ -234,4 +235,22 @@ body {
     right: 500px;
     width: 5000px;
     height: 5000px;
+}
+
+.userButton {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    top: 12px;
+    right: 5px;
+    text-align: center;
+}
+
+.userPfp {
+    margin-left: 5px;
+    position: static;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
 }
