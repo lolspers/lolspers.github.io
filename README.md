@@ -1,3 +1,3 @@
 # lolspers.github.io
 
-ignore my terrible code
+ignore my terrible (but improved) code
