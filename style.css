@@ -2,239 +2,72 @@ body {
     background-color: #181A1B;
 }
 
-.topbar {
+.tb {
     position: fixed;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    align-items: center;
     width: 100%;
     background-color: #141414;
     top: -5px;
     left: 0px;
     height: 75px;
-    border-radius: 1% / 20%;
+    border-radius: 0px 0px 15px 15px;
 }
 
-.topbarButtonText {
-    position: relative;
+.tbButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background-color: #0e0e0e;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
     font-weight: 1000;
     color: darkgrey;
-    top: -5px;
 }
 
-.authButtonText {
-    position: relative;
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    font-weight: 1000;
-    color: ghostwhite;
-    top: -14px;
+.tbButton:hover {
+    background-color: #111111;
+    cursor: pointer;
 }
 
 .authButton {
     position: absolute;
-    width: 100px;
+    display: flex;
+    flex-flow: column;
+    width: auto;
     height: 50px;
-    background-color: #6441a5;
-    border-radius: 10% / 20%;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: #6238b1;
+    border-radius: 10px;
     top: 12px;
     right: 5px;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     font-family: "Roboto", sans-serif;
-    font-size: 20px;
+    color: ghostwhite;
     font-weight: 1000;
-    display: inline-block;
+    font-size: 20px;
+    line-height: 0%;
 }
+
 .authButton:hover {
-    background-color: #6441a5bd;
+    background-color: #6441a5;
     cursor: pointer;
 }
 
-.topbarButton {
-    position: relative;
-    width: 100px;
-    height: 50px;
-    border-radius: 10% / 20%;
-    border: 2px solid #0d0d0d;
-    top: 12px;
-    left: 5px;
-    background-color: #0e0e0e;
-    display: inline-block;
-    text-align: center;
-}
-
-.topbarButton:hover {
-    background-color: #000000;
-    cursor: pointer;
-}
-
-.commands {
-    position: fixed;
-    bottom: 3px;
-    right: 5px;
-    left: 5px;
-    height: calc(100% - 80px);
-    border-radius: 1%;
-    background-color: #181818;
-}
-
-.commandSideBar {
-    position: fixed;
-    left: 5px;
-    bottom: 3px;
-    height: calc(100% - 83px);
-    width: 200px;
-    border-radius: 4%;
-    background-color: #171717;
-    overflow-y: auto;
-}
-
-.commandButton {
-    top: 5px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    margin: 5px;
-    border-radius: 10% / 30%;
-    background-color: #131313;
-}
-
-.commandButton:hover {
-    background-color: #121212;
-    cursor: pointer;
-}
-
-.commandButtonText { 
-    font-size: 20px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 500;
-    color: #dddddd;
-}
-
-.commandMenu {
-    position: absolute;
-    left: 210px;
-    bottom: 3px;
-    height: calc(100% - 7px);
-    width: calc(100% - 215px);
-    border-radius: 1%;
-    background-color: #171717;
-    overflow-y: auto;
-}
-
-.minimizedCommandMenu {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 5px;
-    margin: 5px;
-    width: calc(100% - 5px);
-    height: 50px;
-    border-radius: 2% / 40%;
-    background-color: #131313;
-}
-
-.maximizedCommandMenu {
-    position: relative;
-    justify-content: center;
-    top: 5px;
-    margin: 5px;
-    width: calc(100% - 5px);
-    height: 170px;
-    border-radius: 3% / 20%;
-    background-color: #131313;
-}
-
-.minimizedCommandResponse {
-    font-size: 20px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 500;
-    color: #989898;
-}
-
-.minimizedCommandCommand {
-    font-size: 20px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 600;
-    color: #999999;
-}
-
-.maximizedCommandResponse {
-    text-align: center;
-    position: relative;
-    top: 10px;
-    font-size: 20px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 500;
-    color: #dedede;
-}
-
-.maximizedCommandCommand {
-    text-align: center;
-    font-size: 20px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 600;
-    color: #dedede;
-}
-
-.minimizedCommandKey {
-    font-size: 0px;
-}
-
-.maximizedCommandKey {
-    text-align: center;
-    font-size: 17px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 600;
-    color: #aaaaaa;
-}
-
-.minimizedCommandValue {
-    font-size: 0px;
-}
-
-.maximizedCommandValue {
-    text-align: center;
-    font-size: 17px;
-    font-family: "Monsterrat", sans-serif;
-    font-weight: 500;
-    color: #aaaaaa;
-}
-
-.anglearrowdown {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    top: 12px;
-    left: calc(100% - 50px);
-    transform: rotate(0deg)
-}
-
-.minimizedCommandMenu:hover {
-    background-color: #121212;
-    cursor: pointer;
-}
-
-.maximizedCommandMenu:hover {
-    background-color: #121212;
-    cursor: pointer;
-}
-
-.uuh {
-    position: absolute;
-    top: 100px;
-    right: 100px;
-    width: 1000px;
-}
-
-.guh {
-    position: fixed;
-    top: 200px;
-    right: 500px;
-    width: 5000px;
-    height: 5000px;
+.authButton > .smol {
+    margin-top: -5px;
+    font-size: 11px;
 }
 
 .userButton {
@@ -253,4 +86,184 @@ body {
     border-radius: 50%;
     width: 46px;
     height: 46px;
+}
+
+.commands {
+    position: fixed;
+    bottom: 3px;
+    right: 5px;
+    left: 5px;
+    height: calc(100% - 80px);
+    border-radius: 15px;
+    background-color: #131313;
+}
+
+.sbContainer {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    left: 10px;
+    bottom: 10px;
+    height: calc(100% - 91px);
+    width: 200px;
+    border-radius: 10px;
+    background-color: #191919;
+    overflow-y: auto;
+}
+
+.sbCmdButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: calc(100% - 5px);
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #202020;
+    font-family: "Monsterrat", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #afafaf;
+}
+
+.sbCmdButton:hover {
+    background-color: #232323;
+    color: #d9d9d9;
+    cursor: pointer;
+}
+
+.cmdMenusContainer {
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    height: calc(100% - 91px);
+    width: calc(100% - 230px);
+    bottom: 10px;
+    right: 8px;
+    border-radius: 5px 10px;
+    background-color: #191919;
+    overflow-y: auto;
+}
+
+.cmdMenus {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.cmdMenu {
+    width: calc(100% - 16px);
+}
+
+.cmdShort {
+    position: relative;
+    z-index: 190;
+    display: flex;
+    justify-content: center;
+    font-family: "Monsterrat", sans-serif;
+    align-items: center;
+    margin: 5px;
+    width: 100%;
+    height: 50px;
+    background-color: #222222;
+    border-radius: 10px;
+}
+
+.cmdShort:hover {
+    cursor: pointer;
+    background-color: #232323;
+}
+
+.cmdShort > h1 {
+    font-size: 29px;
+    color: #a1a1a1;
+}
+
+.cmdShort > p {
+    font-size: 25px;
+    color: #898989
+}
+
+.max {
+    box-shadow: 4px 4px 0px #131313;
+}
+
+.max > p {
+    color: #a9a9a9;
+}
+
+.max > h1 {
+    color: #d1d1d1;
+}
+
+.cmdLong {
+    position: relative;
+    bottom: 10px;
+    left: 15px;
+    width: calc(100% - 6px);
+    height: auto;
+    background-color: #202020;
+    border-radius: 0px 0px 10px 10px;
+    font-family: "Monsterrat", sans-serif;
+}
+
+.cmdLongText {
+    display: flex;
+    justify-content: center;
+}
+
+.cmdLongText > h3 {
+    font-size: 20px;
+    color: #808080;
+    line-height: 20%;
+}
+
+.cmdLongText > p {
+    font-size: 20px;
+    color: #787878;
+    line-height: 20%;
+}
+
+.arrow {
+    position: absolute;
+    width: 30px;
+    left: calc(100% - 40px)
+}
+
+.cmdSeperator {
+    display: flex;
+    align-items: center;
+}
+
+hr {
+    width: calc(100% - 60px);
+    height: 5px;
+    border-radius: 5px;
+    border: 3px solid #404040;
+    color: #252525
+}
+
+.cmdSeperator > h1 {
+    font-family: "Monsterrat", sans-serif;
+    font-size: 30px;
+    color: #bebebe;
+    margin: 5px;
+}
+
+.uuh {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    width: 1000px;
+}
+
+.guh {
+    position: fixed;
+    top: 200px;
+    right: 500px;
+    width: 5000px;
+    height: 5000px;
 }
