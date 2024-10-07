@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="commands.js"></script>
   </head>
   <body>
     <div class="tb"> 
@@ -27,80 +28,12 @@
 
     <div class="commands">
         <div class="sbContainer">
-            <div class="sbCmdButton">
-                <p class="commandButtonText">all</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">7tvset</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">7tvu</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">el</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">epoch</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">global</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">ic</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">level</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">poinfo</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">time</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">user</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">uid</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">uc</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">command</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">commands</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">enable</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">ping</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">asay</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">list</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">massping</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">pyramid</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">say</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">seplist</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">spam</p>
-            </div>
-            <div class="sbCmdButton">
-                <p class="commandButtonText">ulevel</p>
+            <div class="sbButtons">
+                <div class="sbLvlContainer sbCmdL0"> 
+                    <div class="sbCmdButton">
+                        <p class="commandButtonText">all</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="cmdMenusContainer">
@@ -116,162 +49,9 @@
                 </div>
 
                 <div class="cmdL1">
-                    <div class="cmdMenu">
-                        <div class="cmdShort 7tvset">
-                            <h1>7tvset</h1> <p> &nbsp;- {set}, id: {id} - link: https://7tv.app/emote-sets/{id} - {emote_count}/{capacity}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>7tvset {user}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Defaults current channel</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
 
-                    <div class="cmdMenu">
-                        <div class="cmdShort 7tvu">
-                            <h1>7tvu</h1> <p> &nbsp;- {username}: {user_link} - editors: {usernames} - roles: {role_names}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>7tvu {user}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Defaults sender</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Alias: &nbsp;</h3> <p>7tvuser</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort el">
-                            <h1>el</h1> <p> &nbsp;- https://cdn.7tv.app/emote/{id}/[ 1x, 2x, 3x, 4x ].{filetype}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>el {emote} [ {size}, {filetype}, .{filetype}, {size}.{filetype} ]</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>All but emote are optional, defaults 4x.png/gif</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Alias: &nbsp;</h3> <p>emotelink</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort epoch">
-                            <h1>epoch</h1> <p> &nbsp;- epoch: {epoch} , CET: {day, month, time, year}, relative: {relative_time}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>epoch {epoch}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Epoch time in seconds, epoch optional</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort global">
-                            <h1>global badges amount</h1> <p> &nbsp;- Unique: {total}, with duplicates: {total_uniquely_named}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>global badges amount</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>All badges are unique, they can have the same name</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort ic">
-                            <h1>ic</h1> <p> &nbsp;- 󠀀</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>󠀀</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>invischar, invisiblechar, invischaracter, invisiblecharacter</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort level">
-                            <h1>level</h1> <p> &nbsp;- {user}'s level: {level}, {level name}<p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>level {user}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Defaults sender</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-                    
-                    <div class="cmdMenu">
-                        <div class="cmdShort poinfo">
-                            <h1>poinfo</h1> <p> &nbsp;- potato: {ready_at}, steal: {ready_at}, cdr: {ready_at}, quiz: {ready_at}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>poinfo {user}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Defaults sender</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort time">
-                            <h1>time</h1> <p> &nbsp;- {day}-{month} {time} {timezone}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>time {timezone}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Defaults to CET</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort user">
-                            <h1>user</h1> <p> &nbsp;- API Response</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>user {user}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Not finished because lazy, so don't use</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort uid">
-                            <h1>uid</h1> <p> &nbsp;- {twitch uid}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>uid</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>I'll add more text soon™</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>1</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
                 </div>
                 
-
                 <div class="cmdSeperator">
                     <div class="cmdLButton">
                         <p>Hide</p>
@@ -282,19 +62,7 @@
                 </div>
 
                 <div class="cmdL2">
-                    <div class="cmdMenu">
-                        <div class="cmdShort uc">
-                            <h1>uc</h1> <p> &nbsp;- @{sender} https://www.twitch.tv/popout/{channel}/viewercard/{user}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>uc {channel} @{sender}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Both optional, defaults current channel and sender</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>2</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="cmdSeperator">
@@ -305,120 +73,9 @@
                     <hr>
                     <h1>3</h1>
                 </div>
-
             
                 <div class="cmdL3">
-                    <div class="cmdMenu">
-                        <div class="cmdShort command">
-                            <h1>command alias</h1> <p> &nbsp;- Successfully added alias ['{alias}'] to {command}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>command alias {command} add {alias}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Can add multiple aliases</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
 
-                    <div class="cmdMenu">
-                        <div class="cmdShort command">
-                            <h1>command add</h1> <p> &nbsp;- Added command: {command}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>command add {command} {response}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort command">
-                            <h1>command delete</h1> <p> &nbsp;- Deleted command: {command}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>command delete {command}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort command">
-                            <h1>command edit</h1> <p> &nbsp;- Succesfully edited command {command}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>command edit {command} {response}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort command">
-                            <h1>command options</h1> <p> &nbsp;- Succesfully updated command: {command}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>command options {command} {options}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Flags: -enable, -disable, level {level}, -gcd {global cooldown in s}, ucd {user cooldown in s}</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort commands">
-                            <h1>commands </h1> <p> &nbsp;- https://lolspers.github.io/commands</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>commands</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort enable">
-                            <h1>enable</h1> <p> &nbsp;- enabled/disabled bot</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>enable</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Turns off all commands except: enable, disable, ping</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                            <div class="cmdLongText"> <h3>Alias: &nbsp;</h3> <p>disable</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                    <div class="cmdShort ping">
-                        <h1>ping</h1> <p> &nbsp;- enabled: {True/False} | PONG :tmi.twitch.tv | last: epoch: {epoch} , CET: {long date}, relative: {relative_time}</p>
-                        <img src="arrow.png" class="arrow">
-                    </div>
-                    <div class="cmdLong">
-                        <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>ping</p> </div>
-                        <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Not finished</p> </div>
-                        <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                        <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>3</p> </div>
-                        <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                    </div>
-                   </div>
                 </div>
 
                 <div class="cmdSeperator">
@@ -431,215 +88,7 @@
                 </div>
 
                 <div class="cmdL4">
-                    <div class="cmdMenu">
-                        <div class="cmdShort asay">
-                            <h1>asay</h1> <p> &nbsp;- {message} || sent from chosen alt</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>asay @{alt} {message}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Not finished and not planning to</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
 
-                    <div class="cmdMenu">
-                        <div class="cmdShort list">
-                            <h1>list</h1> <p> &nbsp;- (1). {item1}, (2). {item2}, etc. </p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>list</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort list">
-                            <h1>list add</h1> <p> &nbsp;- added to list: {item} </p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>list add {item}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort list">
-                            <h1>list remove</h1> <p> &nbsp;- Removed from list: {item}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>list remove {item_index}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort massping">
-                            <h1>massping</h1> <p> &nbsp;- @{chatter1} @{chatter2} etc.</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>massping</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Currently broken</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort pyramid">
-                            <h1>pyramid</h1> <p> &nbsp;- {message} || in vertical pyramid x{width}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>pyramid {message} {width}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Max width is 30</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort say">
-                            <h1>say</h1> <p> &nbsp;- {message}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>say {message}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>Say the message with the bot</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist</h1> <p> &nbsp;- (1). {item1}, | (2). {item2}, etc.</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>seplist {seplist}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist add</h1> <p> &nbsp;- Added {item} tp {seplist}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>seplist add {seplist} {item}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist create</h1> <p> &nbsp;- Created list {seplist} </p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>seplist create {list}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist delete</h1> <p> &nbsp;- Deleted seplist: {seplist}, with items: {items}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>list delete {list}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist info</h1> <p> &nbsp;- Total seplists: {amount}, {seplists}, Total items: {amount}, Total characters: {amount}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>list info</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort seplist">
-                            <h1>seplist remove</h1> <p> &nbsp;- Removed: {item}, from seplist: {list} </p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>seplist remove {list} {item}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort spam">
-                            <h1>spam</h1> <p> &nbsp;- {message} || x{amount} </p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>spam {message} {amount}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
-
-                    <div class="cmdMenu">
-                        <div class="cmdShort ulevel">
-                            <h1>ulevel</h1> <p> &nbsp;-  Set {user}'s level to {level_name}</p>
-                            <img src="arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>ulevel {user} {level}</p> </div>
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>None</p> </div>
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>0s</p> </div>
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>4</p> </div>
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>None</p> </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -647,20 +96,177 @@
 
     </body>
     <script>
+        for (l in commands) {
+            $(".sbButtons").append(`
+                <div class="sbCmdSeperator">
+                    <div class="sbCmdLButton">
+                        <p>Hide</p>
+                    </div>
+                    <h1>${l}</h1>
+                    <hr>
+                    <h1>${l}</h1>
+                </div>
+                <div class="sbLvlContainer sbCmdL${l}"> 
+
+                </div>`
+            )
+
+            $(".cmdMenus").append(`
+                <div class="cmdSeperator">
+                    <div class="cmdLButton">
+                        <p>Hide</p>
+                    </div>
+                    <h1>${l}</h1>
+                    <hr>
+                    <h1>${l}</h1>
+                </div>
+                <div class="cmdL${l}">
+
+                </div>
+            `)
+
+            for (c in commands[l]) {
+                cmdData = commands[l][c]
+                console.log(c)
+                console.log(cmdData)
+                $(`.sbCmdL${l}`).append(`
+                    <div class="sbCmdButton">
+                        <p class="commandButtonText">${c}</p>
+                    </div>    
+                `)
+
+                var cmdHtml = ""
+
+                if (cmdData.response) {
+                    cmdHtml += `
+                    <div class="cmdMenu">
+                        <div class="cmdShort ${c}">
+                            <h1>${c}</h1> <p> &nbsp;- ${cmdData.response}</p>
+                            <img src="arrow.png" class="arrow">
+                        </div>
+                        <div class="cmdLong">
+                    `
+                } else {
+                    cmdHtml += `
+                    <div class="cmdMenu">
+                        <div class="cmdShort ${c}">
+                            <h1>${c}</h1>
+                            <img src="arrow.png" class="arrow">
+                        </div>
+                        <div class="cmdLong">
+                    `
+                }
+                if (cmdData.arguments) {
+                    cmdHtml += `
+                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>${cmdData.arguments}</p> </div>
+                    `
+                }
+                if (cmdData.note) {
+                    cmdHtml += `
+                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>${cmdData.note}</p> </div>
+                    `
+                }
+                if (cmdData.cooldown) {
+                    cmdHtml += `
+                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>${cmdData.cooldown}</p> </div>
+                    `
+                }
+                cmdHtml += `
+                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>${l}</p> </div>
+                `
+                if (cmdData.alias) {
+                    cmdHtml += `
+                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>${cmdData.alias}</p> </div>
+                    `
+                }
+
+                if (cmdData.subcommands) {
+                    for (subCmd in cmdData.subcommands) {
+                        subCmdData = cmdData.subcommands[subCmd]
+
+                        if (!subCmdData.subcommands) {
+                            cmdHtml += `
+                            <div class="subCmds">
+                                <h1>${subCmd}</h1>
+                                <p class="subCmdsResponse">${subCmdData.response}</p>
+                                <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subCmdData.arguments}</p> </div>
+                            `
+                            if (subCmdData.note) {
+                                cmdHtml += `
+                                <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subCmdData.note}</p> </div>
+                                `
+                            }
+                            if (subCmdData.cooldown) {
+                                cmdHtml += `   
+                                <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subCmdData.cooldown}</p> </div>
+                                `  
+                            } 
+                            cmdHtml += `
+                            </div>
+                            `
+                        } else {
+                            cmdHtml += `
+                                <div class="subCmds">
+                                    <h1>${subCmd}</h1>
+                            `
+                            for (subSubCmd in subCmdData.subcommands) {
+                                subSubCmdData = subCmdData.subcommands[subSubCmd]
+
+                                cmdHtml += `
+                                    <div class="subCmds">
+                                        <h1>${subSubCmd}</h1>
+                                        <p class="subCmdsResponse">${subSubCmdData.response}</p>
+                                        <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
+                                `
+                                if (subSubCmdData.note) {
+                                    cmdHtml += `
+                                        <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subSubCmdData.note}</p> </div>
+                                    `
+                                }
+                                if (subSubCmdData.cooldown) {
+                                    cmdHtml += `   
+                                        <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subSubCmdData.cooldown}</p> </div>
+                                    `  
+                                } 
+                                cmdHtml += `
+                                    </div>
+                                `
+                            }
+                            cmdHtml += `
+                                </div>
+                            `
+                        }
+                    }
+                }
+
+                cmdHtml += `
+                        </div>
+                    </div>
+                `
+
+                console.log(cmdHtml)
+
+                $(`.cmdL${l}`).append(cmdHtml)
+            }
+        }
+
+
       $(".cmdLong").hide()
       $(".cmdShort").click(function openCommandMenu() {
-        $(this).toggleClass("max")
         $(this).next(".cmdLong").slideToggle()
         const arrow = $(this).children(".arrow")[0]
-        if ($(this).hasClass("max")) {
+        if (!$(this).hasClass("max")) {
+            $(this).toggleClass("max")
             arrow.style.transition = "transform 0.4s"
             arrow.style.transform = "rotate(0deg)"
 
         } else {
+            setTimeout(() => {
+                $(this).toggleClass("max")
+            }, 350);
             arrow.style.transition = "transform 0.5s"
             arrow.style.transform = "rotate(90deg)"
         }
-
       })
 
       $(".sbCmdButton").click(function goToCommand() {
@@ -684,6 +290,7 @@
         }
       })
 
+
       $(".cmdLButton").click(function toggleCmdL() {
         const level = $(this).next("h1").text()
         $(`.cmdL${level}`).slideToggle()
@@ -693,6 +300,17 @@
             $(this).children("p").text("Hide")
         }
       })
+
+      $(".sbCmdLButton").click(function toggleSbCmdL() {
+        const level = $(this).next("h1").text()
+        $(`.sbCmdL${level}`).slideToggle()
+        if ($(this).children("p").text() == "Hide") {
+            $(this).children("p").text("Show")
+        } else {
+            $(this).children("p").text("Hide")
+        }
+      })
+
 
       if (localStorage.getItem("accessTokens")) {
         let accessToken = JSON.parse(localStorage.getItem("accessTokens"))[0]["accessToken"]
@@ -723,9 +341,12 @@
           })
       }
 
+
       $(".authButton").click(function() {
         window.location.href = "https://shorturl.at/F52Tf"
       })
+
+
       $(".tbButton").click(function changePage(button) {
         button = button.currentTarget
         window.location.href = $(button).text().toLowerCase()
