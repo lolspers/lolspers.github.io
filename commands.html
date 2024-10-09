@@ -39,57 +39,6 @@
         <div class="cmdMenusContainer">
             <div class="cmdMenus">
 
-                <div class="cmdSeperator">
-                    <div class="cmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>1</h1>
-                    <hr>
-                    <h1>1</h1>
-                </div>
-
-                <div class="cmdL1">
-
-                </div>
-                
-                <div class="cmdSeperator">
-                    <div class="cmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>2</h1>
-                    <hr>
-                    <h1>2</h1>
-                </div>
-
-                <div class="cmdL2">
-
-                </div>
-
-                <div class="cmdSeperator">
-                    <div class="cmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>3</h1>
-                    <hr>
-                    <h1>3</h1>
-                </div>
-            
-                <div class="cmdL3">
-
-                </div>
-
-                <div class="cmdSeperator">
-                    <div class="cmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>4</h1>
-                    <hr>
-                    <h1>4</h1>
-                </div>
-
-                <div class="cmdL4">
-
-                </div>
             </div>
         </div>
     </div>
@@ -128,7 +77,6 @@
             for (c in commands[l]) {
                 cmdData = commands[l][c]
                 console.log(c)
-                console.log(cmdData)
                 $(`.sbCmdL${l}`).append(`
                     <div class="sbCmdButton">
                         <p class="commandButtonText">${c}</p>
@@ -184,40 +132,45 @@
                     for (subCmd in cmdData.subcommands) {
                         subCmdData = cmdData.subcommands[subCmd]
 
-                        if (!subCmdData.subcommands) {
-                            cmdHtml += `
+                        cmdHtml += `
                             <div class="subCmds">
                                 <h1>${subCmd}</h1>
-                                <p class="subCmdsResponse">${subCmdData.response}</p>
-                                <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subCmdData.arguments}</p> </div>
-                            `
-                            if (subCmdData.note) {
-                                cmdHtml += `
-                                <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subCmdData.note}</p> </div>
-                                `
-                            }
-                            if (subCmdData.cooldown) {
-                                cmdHtml += `   
-                                <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subCmdData.cooldown}</p> </div>
-                                `  
-                            } 
+                        `
+                        if (subCmdData.response) {
                             cmdHtml += `
-                            </div>
+                                    <p class="subCmdsResponse">${subCmdData.response}</p>
                             `
-                        } else {
+                        }
+                        if (subCmdData.arguments) {
                             cmdHtml += `
-                                <div class="subCmds">
-                                    <h1>${subCmd}</h1>
+                                    <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subCmdData.arguments}</p> </div>
                             `
+                        }
+                        if (subCmdData.note) {
+                            cmdHtml += `
+                                    <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subCmdData.note}</p> </div>
+                            `
+                        }
+                        if (subCmdData.cooldown) {
+                            cmdHtml += `   
+                                    <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subCmdData.cooldown}</p> </div>
+                            `  
+                        } 
+                        if (subCmdData.subcommands) {
                             for (subSubCmd in subCmdData.subcommands) {
                                 subSubCmdData = subCmdData.subcommands[subSubCmd]
+                                console.log(subSubCmdData)
 
                                 cmdHtml += `
                                     <div class="subCmds">
                                         <h1>${subSubCmd}</h1>
                                         <p class="subCmdsResponse">${subSubCmdData.response}</p>
-                                        <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
                                 `
+                                if (subSubCmdData.arguments) {
+                                    cmdHtml += `
+                                        <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
+                                    `
+                                }
                                 if (subSubCmdData.note) {
                                     cmdHtml += `
                                         <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subSubCmdData.note}</p> </div>
@@ -232,10 +185,11 @@
                                     </div>
                                 `
                             }
-                            cmdHtml += `
-                                </div>
-                            `
+                            console.log(cmdHtml)
                         }
+                        cmdHtml += `
+                            </div>
+                        `   
                     }
                 }
 
@@ -243,9 +197,6 @@
                         </div>
                     </div>
                 `
-
-                console.log(cmdHtml)
-
                 $(`.cmdL${l}`).append(cmdHtml)
             }
         }
