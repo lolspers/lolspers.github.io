@@ -244,20 +244,44 @@ body {
     line-height: 20%;
 }
 
-.subCmds {
+.subCmdsContainer {
+    width: calc(100% - 10px);
+    min-height: 50px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    width: calc(100% - 20px);
-    padding: 5px;
-    height: auto;
+    background-color: rgb(27, 27, 27);
+    border-radius: 15px;
     margin-top: 10px;
     margin-left: 5px;
-    background-color: rgba(19, 19, 19, 0.5);
-    border-radius: 15px;
+    line-height: 0%;
+    font-size: 15px;
+    color: #9f9f9f;
+}
+
+.subCmds {
+    display: flex;
+    flex-flow: column;
+    width: calc(100% - 10px);
+    align-items: center;
+    height: auto;
     line-height: 10%;
     font-size: 15px;
     color: #9f9f9f;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+
+.subCmdHeader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.subSubCmds {
+    background-color: rgba(19, 19, 19, 0.5);
 }
 
 .subCmdsResponse {
