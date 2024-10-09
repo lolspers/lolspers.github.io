@@ -76,7 +76,6 @@
 
             for (c in commands[l]) {
                 cmdData = commands[l][c]
-                console.log(c)
                 $(`.sbCmdL${l}`).append(`
                     <div class="sbCmdButton">
                         <p class="commandButtonText">${c}</p>
@@ -133,8 +132,11 @@
                         subCmdData = cmdData.subcommands[subCmd]
 
                         cmdHtml += `
-                            <div class="subCmds">
-                                <h1>${subCmd}</h1>
+                            <div class="subCmdsContainer">
+                                <div class="subCmdHeader">
+                                    <h1>${subCmd}</h1>
+                                </div>
+                                <div class="subCmds ${c}-${subCmd}">
                         `
                         if (subCmdData.response) {
                             cmdHtml += `
@@ -159,36 +161,39 @@
                         if (subCmdData.subcommands) {
                             for (subSubCmd in subCmdData.subcommands) {
                                 subSubCmdData = subCmdData.subcommands[subSubCmd]
-                                console.log(subSubCmdData)
 
                                 cmdHtml += `
-                                    <div class="subCmds">
-                                        <h1>${subSubCmd}</h1>
-                                        <p class="subCmdsResponse">${subSubCmdData.response}</p>
+                                  <div class="subCmds subSubCmds">
+                                        <div class="subCmdHeader">
+                                            <h1>${subSubCmd}</h1>
+                                        </div>
+                                        <div class="subCmds ${c}-${subCmd}-${subSubCmd}">
+                                            <p class="subCmdsResponse">${subSubCmdData.response}</p>
                                 `
                                 if (subSubCmdData.arguments) {
                                     cmdHtml += `
-                                        <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
+                                            <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
                                     `
                                 }
                                 if (subSubCmdData.note) {
                                     cmdHtml += `
-                                        <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subSubCmdData.note}</p> </div>
+                                            <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subSubCmdData.note}</p> </div>
                                     `
                                 }
                                 if (subSubCmdData.cooldown) {
                                     cmdHtml += `   
-                                        <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subSubCmdData.cooldown}</p> </div>
+                                            <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subSubCmdData.cooldown}</p> </div>
                                     `  
                                 } 
                                 cmdHtml += `
+                                        </div>
                                     </div>
                                 `
                             }
-                            console.log(cmdHtml)
                         }
                         cmdHtml += `
                             </div>
+                        </div>
                         `   
                     }
                 }
@@ -198,6 +203,7 @@
                     </div>
                 `
                 $(`.cmdL${l}`).append(cmdHtml)
+                console.log(`Loaded ${c}`)
             }
         }
 
@@ -260,6 +266,11 @@
         } else {
             $(this).children("p").text("Hide")
         }
+      })
+
+      $(".subCmdHeader").click(function hideSubCmd() {
+        console.log($(this).next())
+        $(this).next(".subCmds").slideToggle()
       })
 
 
