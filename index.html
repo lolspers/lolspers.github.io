@@ -59,7 +59,11 @@
           for (const i of accessTokens) {
             if (i['date'] < Date.now() - 5184*10**6) {
               accessTokens.splice(accessTokens.indexOf(i), 1)
-              localStorage.setItem("accessTokens", accessTokens)
+              if (accessTokens == {}) {
+                localStorage.removeItem("accessTokens")
+              } else {
+                localStorage.setItem("accessTokens", accessTokens)
+              }
             }
           }
         }
@@ -88,16 +92,36 @@
               localStorage.setItem("display", data['display_name'])
               localStorage.setItem("pfpURL", data['profile_image_url'])
               localStorage.setItem("uid", data['id'])
+              $(".authButton").hide()
+              $(".tb").append("<div class=userButton> <p class='tbButtonText' id='twitchProfile'> " + localStorage.getItem("display") + " </p> <img src=" + localStorage.getItem("pfpURL") +" class=userPfp> </div>")
           })
           .catch(error => {
               console.error('Fetch error:', error)
           })
-      }
 
-
-      if (localStorage.getItem("accessTokens")) {
-        $(".authButton").hide()
-        $(".tb").append("<div class=userButton> <p class=tbButtonText> " + localStorage.getItem("display") + " </p> <img src=" + localStorage.getItem("pfpURL") +" class=userPfp> </div>")
+        fetch("https://api.twitch.tv/helix/chat/color?user_id=" + localStorage.getItem("uid"), {
+          headers: {
+            "Authorization": "Bearer " + accessToken,
+            "Client-Id": "02im991evpic87q63afh291vm9i0sw"
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log("Successfully fetched user color")
+            return response.json()
+          } else {
+            console.log("request failed")
+            throw new Error("Failed to get user color")
+          }
+        })
+        .then(data => {
+          color = data["data"][0]["color"]
+          $("#twitchProfile").css("color", color)
+          localStorage.setItem("color", color)
+        })
+        .catch(error => {
+              console.error('Fetch error:', error)
+          })
       }
 
 

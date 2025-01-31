@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="commands.js"></script>
+    <script src="src/commands.js"></script>
   </head>
   <body>
     <div class="tb"> 
@@ -79,7 +79,7 @@
                 $(`.sbCmdL${l}`).append(`
                     <div class="sbCmdButton">
                         <p class="commandButtonText">${c}</p>
-                    </div>    
+                    </div>
                 `)
 
                 var cmdHtml = ""
@@ -87,18 +87,18 @@
                 if (cmdData.response) {
                     cmdHtml += `
                     <div class="cmdMenu">
-                        <div class="cmdShort ${c}">
+                        <div class="cmdShort cmd-${c}">
                             <h1>${c}</h1> <p> &nbsp;- ${cmdData.response}</p>
-                            <img src="arrow.png" class="arrow">
+                            <img src="src/arrow.png" class="arrow">
                         </div>
                         <div class="cmdLong">
                     `
                 } else {
                     cmdHtml += `
                     <div class="cmdMenu">
-                        <div class="cmdShort ${c}">
+                        <div class="cmdShort cmd-${c}">
                             <h1>${c}</h1>
-                            <img src="arrow.png" class="arrow">
+                            <img src="src/arrow.png" class="arrow">
                         </div>
                         <div class="cmdLong">
                     `
@@ -113,11 +113,11 @@
                             <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>${cmdData.note}</p> </div>
                     `
                 }
-                if (cmdData.cooldown) {
-                    cmdHtml += `
-                            <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>${cmdData.cooldown}</p> </div>
-                    `
-                }
+
+                cmdHtml += `
+                        <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>${cmdData.cooldown}s</p> </div>
+                `
+
                 cmdHtml += `
                             <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>${l}</p> </div>
                 `
@@ -227,8 +227,8 @@
       })
 
       $(".sbCmdButton").click(function goToCommand() {
-        const cmd = $(this).children("p").text()
-        if (cmd == "all") {
+        const cmd = "cmd-" + $(this).children("p").text()
+        if (cmd == "cmd-all") {
             $(`.cmdShort`).addClass("max")
             $(`.cmdShort`).next(".cmdLong").slideDown()
             $(`.cmdShort`)[0].scrollIntoView({behavior: "smooth", block: "start"})
@@ -313,5 +313,14 @@
         button = button.currentTarget
         window.location.href = $(button).text().toLowerCase()
       })
+
+      if (localStorage.getItem("accessTokens")) {
+        const displayName = localStorage.getItem("display"), pfpURL = localStorage.getItem("pfpURL"), color = localStorage.getItem("color")
+        if (! null in [displayName, pfpURL, color]) {
+            $(".authButton").hide()
+            $(".tb").append("<div class=userButton> <p class='tbButtonText' id='twitchProfile'> " + displayName + " </p> <img src=" + pfpURL +" class=userPfp> </div>")
+            $("#twitchProfile").css("color", color)
+        }
+      }
     </script>
 </html>

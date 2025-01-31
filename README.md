@@ -1,3 +1,3 @@
 # lolspers.github.io
 
-ignore my terrible (but improved) code
+website for [iolbot](https://twitch.tv/iolspers)
