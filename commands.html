@@ -316,7 +316,7 @@
 
       if (localStorage.getItem("accessTokens")) {
         const displayName = localStorage.getItem("display"), pfpURL = localStorage.getItem("pfpURL"), color = localStorage.getItem("color")
-        if (! null in [displayName, pfpURL, color]) {
+        if (![displayName, pfpURL, color].includes(null)) {
             $(".authButton").hide()
             $(".tb").append("<div class=userButton> <p class='tbButtonText' id='twitchProfile'> " + displayName + " </p> <img src=" + pfpURL +" class=userPfp> </div>")
             $("#twitchProfile").css("color", color)
