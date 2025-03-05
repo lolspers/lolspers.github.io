@@ -13,6 +13,14 @@ commands = {
                 "base64"
             ]
         },
+        "choice": {
+            "arguments": "choice {option 1} {option 2}",
+            "cooldown": 5,
+            "note": "Pick a random option form the provided options",
+            "alias": [
+                "pick"
+            ]
+        },
         "commands": {
             "arguments": "commands",
             "cooldown": 5,
@@ -37,6 +45,14 @@ commands = {
                 "unix"
             ]
         },
+        "followage": {
+            "arguments": "followage {username}",
+            "cooldown": 5,
+            "note": "See how long someone has been following the current channel",
+            "alias": [
+                "fa"
+            ]
+        },
         "fullunscramble": {
             "arguments": "fullunscramble {letters}",
             "cooldown": 5,
@@ -45,6 +61,14 @@ commands = {
                 "unscramblefull",
                 "unscrambleall",
                 "fus"
+            ]
+        },
+        "haspotat": {
+            "arguments": "haspotat {channel}",
+            "cooldown": 5,
+            "note": "Check if a channel has PotatBotat added",
+            "alias": [
+                "haspotatbotat"
             ]
         },
         "help": {
@@ -79,6 +103,14 @@ commands = {
             "arguments": "morse {text}",
             "cooldown": 5,
             "note": "Encode/decode morse code, decode needs to be the same format as encode returns"
+        },
+        "namechange": {
+            "arguments": "namechange {username}",
+            "cooldown": 5,
+            "note": "Get the name change history of a user, add -dates to get the date for each namechange",
+            "alias": [
+                "nc"
+            ]
         },
         "ping": {
             "arguments": "ping",
@@ -123,7 +155,7 @@ commands = {
         "stvsa": {
             "arguments": "7tvsa {username}",
             "cooldown": 5,
-            "note": "Get 7tv subscribtion data",
+            "note": "Get 7tv subscription data",
             "alias": [
                 "7tvsa",
                 "7tvsubage"
@@ -155,9 +187,9 @@ commands = {
             "note": "Suggest a feature to the bot or make a bug report, or check the status of a suggestion through the id"
         },
         "time": {
-            "arguments": "time {timezone}",
+            "arguments": "time {timezone/country/country code}",
             "cooldown": 5,
-            "note": "Get the current date and time from a timezone, defaults to CET",
+            "note": "Get the current date and time from a timezone or country, defaults to CET",
             "alias": [
                 "timezone",
                 "tz"
@@ -197,9 +229,29 @@ commands = {
             "alias": [
                 "uc"
             ]
+        },
+        "usertime": {
+            "arguments": "usertime {username} / usertime {set} {timezone/country/country code}",
+            "cooldown": 5,
+            "note": "Returns the current time and timezone for a user, this is manually set by me",
+            "alias": [
+                "utime",
+                "ut"
+            ]
+        },
+        "vanish": {
+            "arguments": "vanish",
+            "cooldown": 5,
+            "note": "Get timed out for 1s to delete all your messages"
         }
     },
-    "2": {},
+    "2": {
+        "ascii": {
+            "arguments": "ascii {emote}",
+            "cooldown": 5,
+            "note": "Make an ascii art of a 7tv emote"
+        }
+    },
     "3": {
         "add": {
             "arguments": "add {emote}",
@@ -212,9 +264,9 @@ commands = {
             "note": "Gets an estimated chance for each cookie roll based on logs for @ThePositiveBot"
         },
         "command": {
-            "arguments": "command add/edit {trigger} {response} / command delete {trigger} / command options {trigger} {flags} / command alias/keyword add/remove {keyword} - flags: -ucd {usercd}, -gcd {globalcd}, -enable/disable, -mod, -vip, -sub, -level {userlevel}",
+            "arguments": "command add/edit {trigger} {response} / command delete {trigger} / command options {trigger} {flags} (flags: -ucd {usercd}, -gcd {globalcd}, -enable/disable, -mod, -vip, -sub, -level {userlevel}) / command alias/keyword add/remove {keyword} / command show",
             "cooldown": 5,
-            "note": "Manage custom commands"
+            "note": "add: add a custom command - edit: edit a custom command - delete: delete a custom command - options: change settings of a custom command (like level or cooldown) - alias/keyword: add a alias/keyword to a custom command - show: show the raw response of a custom command"
         },
         "disable": {
             "arguments": "disable {command}",
@@ -226,8 +278,18 @@ commands = {
             "cooldown": 5,
             "note": "Enable a command in the current channel"
         },
+        "join": {
+            "arguments": "join {channel}",
+            "cooldown": 0,
+            "note": "Join a channel"
+        },
+        "part": {
+            "arguments": "part {channel}",
+            "cooldown": 0,
+            "note": "Part a channel"
+        },
         "pyramid": {
-            "arguments": "pyramid {word/sentence} {width}",
+            "arguments": "pyramid {width} {word/sentence}",
             "cooldown": 5,
             "note": "Send a word or sentence in a pyramid"
         },
@@ -235,6 +297,20 @@ commands = {
             "arguments": "remove {emote}",
             "cooldown": 0,
             "note": "Remove a 7tv emote from the current set"
+        },
+        "say": {
+            "arguments": "say {message}",
+            "cooldown": 0,
+            "note": "Make the bot send anything",
+            "alias": [
+                "sudo",
+                "s"
+            ]
+        },
+        "trigger": {
+            "arguments": "trigger {trigger}",
+            "cooldown": 5,
+            "note": "Set a custom trigger"
         }
     },
     "4": {
@@ -247,16 +323,6 @@ commands = {
             "arguments": "download {emote} {file type}",
             "cooldown": 0,
             "note": "Download a 7tv emote on my pc"
-        },
-        "join": {
-            "arguments": "join {channel}",
-            "cooldown": 0,
-            "note": "Join a channel"
-        },
-        "part": {
-            "arguments": "part {channel}",
-            "cooldown": 0,
-            "note": "Part a channel"
         },
         "py": {
             "arguments": "py {code}",
@@ -284,28 +350,10 @@ commands = {
                 "api"
             ]
         },
-        "say": {
-            "arguments": "say {message}",
-            "cooldown": 0,
-            "note": "Make the bot send anything",
-            "alias": [
-                "sudo",
-                "s"
-            ]
-        },
         "spam": {
             "arguments": "spam {word/sentence} {amount}",
             "cooldown": 0,
             "note": "Spam a word or sentence, max amount is 50"
-        },
-        "usertime": {
-            "arguments": "usertime {set} {user} {timezone}",
-            "cooldown": 0,
-            "note": "Returns the current time and timezone for a user, this is manually set by me",
-            "alias": [
-                "utime",
-                "ut"
-            ]
         }
     }
 }
