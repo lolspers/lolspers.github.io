@@ -41,10 +41,37 @@
 
             </div>
         </div>
+        <div class="helpButton">
+            <div id="helpButtonText">?</div>
+        </div>
+    </div>
+
+    <div class="helpPopup">
+        <div class="backgroundBlur"></div>
+        <div class="helpPopupContainer">
+            <div class="helpPopupClose">×</div>
+            <div class="levelHelp">
+                <h3>Levels</h3>
+                <p style="white-space: pre-line;">Levels 2-4 are chat based.
+                    All levels can be set globally by admins or higher, this also includes 2-4.
+                    Levels determine which commands can be used.
+                </p>
+                <ol>
+                    <li>Regular</li>
+                    <li>VIP</li>
+                    <li>Moderator</li>
+                    <li>Broadcaster</li>
+                    <li>Admin</li>
+                    <li>Dev</li>
+                </ol>
+            </div>
+        </div>
     </div>
 
     </body>
     <script>
+        //$(".helpPopup").hide()
+
         for (l in commands) {
             $(".sbButtons").append(`
                 <div class="sbCmdSeperator">
@@ -82,128 +109,21 @@
                     </div>
                 `)
 
-                var cmdHtml = ""
-
-                if (cmdData.response) {
-                    cmdHtml += `
-                    <div class="cmdMenu">
-                        <div class="cmdShort cmd-${c}">
-                            <h1>${c}</h1> <p> &nbsp;- ${cmdData.response}</p>
-                            <img src="src/arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                    `
-                } else {
-                    cmdHtml += `
-                    <div class="cmdMenu">
-                        <div class="cmdShort cmd-${c}">
-                            <h1>${c}</h1>
-                            <img src="src/arrow.png" class="arrow">
-                        </div>
-                        <div class="cmdLong">
-                    `
-                }
-                if (cmdData.arguments) {
-                    cmdHtml += `
-                            <div class="cmdLongText"> <h3>Arguments: &nbsp;</h3> <p>${cmdData.arguments}</p> </div>
-                    `
-                }
-                if (cmdData.note) {
-                    cmdHtml += `
-                            <div class="cmdLongText"> <h3>Note: &nbsp;</h3> <p>${cmdData.note}</p> </div>
-                    `
-                }
-
-                cmdHtml += `
-                        <div class="cmdLongText"> <h3>Cooldown: &nbsp;</h3><p>${cmdData.cooldown}s</p> </div>
-                `
-
-                cmdHtml += `
-                            <div class="cmdLongText"> <h3>Level: &nbsp;</h3> <p>${l}</p> </div>
-                `
-                if (cmdData.alias) {
-                    cmdHtml += `
-                            <div class="cmdLongText"> <h3>Aliases: &nbsp;</h3> <p>${cmdData.alias}</p> </div>
-                    `
-                }
-
-                if (cmdData.subcommands) {
-                    for (subCmd in cmdData.subcommands) {
-                        subCmdData = cmdData.subcommands[subCmd]
-
-                        cmdHtml += `
-                            <div class="subCmdsContainer">
-                                <div class="subCmdHeader">
-                                    <h1>${subCmd}</h1>
-                                </div>
-                                <div class="subCmds ${c}-${subCmd}">
-                        `
-                        if (subCmdData.response) {
-                            cmdHtml += `
-                                    <p class="subCmdsResponse">${subCmdData.response}</p>
-                            `
-                        }
-                        if (subCmdData.arguments) {
-                            cmdHtml += `
-                                    <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subCmdData.arguments}</p> </div>
-                            `
-                        }
-                        if (subCmdData.note) {
-                            cmdHtml += `
-                                    <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subCmdData.note}</p> </div>
-                            `
-                        }
-                        if (subCmdData.cooldown) {
-                            cmdHtml += `   
-                                    <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subCmdData.cooldown}</p> </div>
-                            `  
-                        } 
-                        if (subCmdData.subcommands) {
-                            for (subSubCmd in subCmdData.subcommands) {
-                                subSubCmdData = subCmdData.subcommands[subSubCmd]
-
-                                cmdHtml += `
-                                  <div class="subCmds subSubCmds">
-                                        <div class="subCmdHeader">
-                                            <h1>${subSubCmd}</h1>
-                                        </div>
-                                        <div class="subCmds ${c}-${subCmd}-${subSubCmd}">
-                                            <p class="subCmdsResponse">${subSubCmdData.response}</p>
-                                `
-                                if (subSubCmdData.arguments) {
-                                    cmdHtml += `
-                                            <div class="subCmdsText"> <h3>Arguments: &nbsp;</h3> <p>${subSubCmdData.arguments}</p> </div>
-                                    `
-                                }
-                                if (subSubCmdData.note) {
-                                    cmdHtml += `
-                                            <div class="subCmdsText"> <h3>Note: &nbsp;</h3> <p>${subSubCmdData.note}</p> </div>
-                                    `
-                                }
-                                if (subSubCmdData.cooldown) {
-                                    cmdHtml += `   
-                                            <div class="subCmdsText"> <h3>Cooldown: &nbsp;</h3> <p>${subSubCmdData.cooldown}</p> </div>
-                                    `  
-                                } 
-                                cmdHtml += `
-                                        </div>
-                                    </div>
-                                `
-                            }
-                        }
-                        cmdHtml += `
-                            </div>
-                        </div>
-                        `   
-                    }
-                }
-
-                cmdHtml += `
-                        </div>
+                $(`.cmdL${l}`).append(`
+                <div class="cmdMenu">
+                    <div class="cmdShort cmd-${c}">
+                        <h1>${c}</h1>
+                        <img src="src/arrow.png" class="arrow">
                     </div>
-                `
-                $(`.cmdL${l}`).append(cmdHtml)
-                console.log(`Loaded ${c}`)
+                    <div class="cmdLong">
+                        <div class="cmdLongText"> <h3>Arguments:</h3> <p>${cmdData.arguments}</p> </div>
+                        <div class="cmdLongText"> <h3>Description:</h3> <p>${cmdData.description}</p> </div>
+                        <div class="cmdLongText"> <h3>Cooldown:</h3><p>${cmdData.cooldown}s</p> </div>
+                        <div class="cmdLongText"> <h3>Level:</h3> <p>${l}</p> </div>
+                        ${cmdData.alias ? `<div class="cmdLongText"> <h3>Aliases:</h3> <p>${cmdData.alias.join(", ")}</p> </div>` : ""}
+                    </div>
+                </div>
+                `)
             }
         }
 
@@ -322,5 +242,24 @@
             $("#twitchProfile").css("color", color)
         }
       }
+
+      $(".helpButton").click(function showHelpPopup() {
+        $(".helpPopup").show()
+        $(".helpPopup").css("filter", "opacity(1)")
+        $(".helpPopup").css("top", "0")
+        $(".sbContainer").css("filter", "blur(3px)")
+        $(".cmdMenusContainer").css("filter", "blur(3px)")
+      })
+      function hideHelpPopup() {
+        $(".helpPopup").css("filter", "opacity(0)")
+        $(".helpPopup").css("top", "30px")
+        setTimeout(() => {
+            $(".helpPopup").hide()
+        }, 170)
+        $(".sbContainer").css("filter", "")
+        $(".cmdMenusContainer").css("filter", "")
+      }
+      $(".helpPopupClose").click(hideHelpPopup)
+      $(".backgroundBlur").click(hideHelpPopup)
     </script>
 </html>

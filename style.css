@@ -121,6 +121,7 @@ body {
     border-radius: 10px;
     background-color: #191919;
     overflow-y: auto;
+    transition: 0.15s ease-out;
 }
 
 .sbButtons {
@@ -171,6 +172,7 @@ body {
     border-radius: 5px 10px;
     background-color: #191919;
     overflow-y: auto;
+    transition: 0.15s ease-out;
 }
 
 .cmdMenus {
@@ -186,7 +188,7 @@ body {
 
 .cmdShort {
     position: relative;
-    z-index: 190;
+    z-index: 4;
     display: flex;
     justify-content: center;
     font-family: "Monsterrat", sans-serif;
@@ -252,6 +254,7 @@ body {
     font-size: 20px;
     color: #808080;
     line-height: 110%;
+    margin-right: 5px;
 }
 
 .cmdLongText > p {
@@ -313,6 +316,7 @@ body {
 .subCmdsText > h3 {
     color: #808080;
     font-size: 18px;
+    margin-right: 5px;
 }
 
 .subCmdsText > p {
@@ -418,6 +422,107 @@ body {
 .sbCmdLButton:hover {
     cursor: pointer;
     background-color: #212121;
+}
+
+.helpButton {
+    position: absolute;
+    width: 2.6em;
+    height: 2.6em;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px 2px #474b4e;
+    background-color: #313336;
+    text-align: center;
+    transition-duration: 0.13s;
+}
+
+#helpButtonText {
+    margin-top: 0.1em;
+    font-size: 30px;
+    font-weight: bold;
+    color: #a9acb8;
+    font-family: "Roboto", "sans-serif";
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.helpButton:hover {
+    cursor: pointer;
+    box-shadow: inset 0 0 2px 2px #474b4e, #141414 0 0 5px, #141414 0 0 5px, #141414 0 0 5px, #141414 0 0 5px;
+    text-shadow: #727272 0 0 3px;
+}
+
+.helpPopup {
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.15s;
+}
+.backgroundBlur {
+    position: absolute;
+    background-color: #0404045e;
+    width: 100%;
+    height: 100%;
+}
+
+.helpPopupContainer {
+    font-size: 1.17em;
+    position: relative;
+    z-index: 5;
+    opacity: 1;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #34363c;
+    border: #302925 2px solid;
+    font-family: "Roboto", "sans-serif";
+    max-width: 50%;
+    max-height: 68%;
+    overflow-y: scroll;
+    color: #c8bcbc;
+}
+
+.helpPopupClose {
+    width: 0.7em;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+    left: calc(100% - 1.2em);
+    bottom: 0.3em;
+    user-select: none;
+    -webkit-user-select: none;
+    text-align: center;
+    font-family: "Roboto", "sans-serif";
+    transition-duration: 0.12s;
+}
+.helpPopupClose:hover {
+    cursor: pointer;
+    text-shadow: #c7c7c7 0 0 9px, #c7c7c7 0 0 9px, #c7c7c7 0 0 9px, #c7c7c7 0 0 9px, #c7c7c7 0 0 9px;
+}
+
+.levelHelp {
+    position: relative;
+    bottom: 10px;
+}
+.levelHelp > h3 {
+    line-height: 0;
+}
+.levelHelp > p {
+    position: relative;
+    bottom: 0.6em;
+}
+.levelHelp > ol {
+    position: relative;
+    bottom: 17px;
+    margin: 0 0 0 20px;
+    padding: 0;
 }
 
 .uuh {
