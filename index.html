@@ -13,125 +13,38 @@
   </head>
   <body>
     <div class="tb"> 
-      <div class="tbButton">
-        <p class="tbButtonText" value="home">Home</p>
+      <div class="tbButton" value="/">
+        <p class="tbButtonText" value="/">Home</p>
       </div>
-      <div class="tbButton">
+      <div class="tbButton" value="commands">
         <p class="tbButtonText" value="commands">Commands</p>
       </div>
-      <div class="authButton">
-        <p class="authButtonText">Do not authorize.</p>
-      </div>
-      <div class="guh">
-        <img src="https://cdn.7tv.app/emote/645c29a0a93fbaf6fa2b5647/4x.avif" class="uuh">
-      </div>
 
+      <div class="left">
+        <div class="themeSelect">
+            <div class="light" id="light"></div>
+            <div class="dark" id="dark"></div>
+          </div>
+        <div class="authButton">
+          <p class="authButtonText">Do not authorize.</p>
+        </div>
+      </div>
     </div>
+    
+    <img src="https://cdn.7tv.app/emote/645c29a0a93fbaf6fa2b5647/4x.avif" class="uuh">
 
+    <script src="src/main.js"></script>
+    <script src="src/home.js"></script>
     <script>
       const hash = window.location.hash.substring(1)
       if (hash) {
-        const params = new URLSearchParams(hash)
-        const accessToken = params.get("access_token")
-        const scopes = params.get("scope").split(" ")
-        console.log("Oauth detected, saving token...")
-        console.log("Token: " + accessToken.slice(0, 10) + "********************")
-        console.log("Scopes: " + scopes)
-        if (localStorage.getItem("accessTokens")) {
-          const accessTokens = JSON.parse(localStorage.getItem("accessTokens"))
-          for (const i of accessTokens) {
-            console.log(`expired: ${Boolean(i["date"] < Date.now() - 5184*10**6)}, duplicate scopes: ${Boolean(JSON.stringify(scopes) == JSON.stringify(i["scopes"]))}, duplicate token: ${Boolean(accessToken == i["accessToken"])}`)
-            if (i["date"] < Date.now() - 5184*10**6 || JSON.stringify(scopes) == JSON.stringify(i["scopes"]) || accessToken == i["accessToken"]) {
-              console.log(`Removed token: "${i['accessToken']}" due to being expired/a duplicate`)
-              accessTokens.splice(accessTokens.indexOf(i), 1)
-            }
-          }
-          accessTokens.push({"accessToken": accessToken, "scopes": scopes, "date": Date.now()})
-          localStorage.setItem("accessTokens", JSON.stringify(accessTokens))
-        } else {
-          localStorage.setItem("accessTokens", JSON.stringify([{"accessToken": accessToken, "scopes": scopes, "date": Date.now()}]))
-        }
-
+        addUserToken(hash)
+        setUserInfo()
       } else {
-        console.log(localStorage.getItem("username"), localStorage.getItem("pfpURL"))
-        if (localStorage.getItem("accessTokens")) {
-          const accessTokens = JSON.parse(localStorage.getItem("accessTokens"))
-          for (const i of accessTokens) {
-            if (i['date'] < Date.now() - 5184*10**6) {
-              accessTokens.splice(accessTokens.indexOf(i), 1)
-              if (accessTokens == {}) {
-                localStorage.removeItem("accessTokens")
-              } else {
-                localStorage.setItem("accessTokens", accessTokens)
-              }
-            }
-          }
-        }
+        removeExpiredTokens()
       }
 
-      if (localStorage.getItem("accessTokens")) {
-        let accessToken = JSON.parse(localStorage.getItem("accessTokens"))[0]["accessToken"]
-        fetch("https://api.twitch.tv/helix/users", {
-            headers: {
-                "Authorization": "Bearer " + accessToken,
-                "Client-ID": "02im991evpic87q63afh291vm9i0sw",
-            }
-          })
-          .then(response => {
-              if (response.ok) {
-                  console.log("Succesfully fetched user info")
-                  return response.json()
-              } else {
-                  console.log("Request failed")
-                  throw new Error('Network response was not ok.')
-              }
-          })
-          .then(data => {
-              data = data['data'][0]
-              localStorage.setItem("username", data['login'])
-              localStorage.setItem("display", data['display_name'])
-              localStorage.setItem("pfpURL", data['profile_image_url'])
-              localStorage.setItem("uid", data['id'])
-              $(".authButton").hide()
-              $(".tb").append("<div class=userButton> <p class='tbButtonText' id='twitchProfile'> " + localStorage.getItem("display") + " </p> <img src=" + localStorage.getItem("pfpURL") +" class=userPfp> </div>")
-          })
-          .catch(error => {
-              console.error('Fetch error:', error)
-          })
-
-        fetch("https://api.twitch.tv/helix/chat/color?user_id=" + localStorage.getItem("uid"), {
-          headers: {
-            "Authorization": "Bearer " + accessToken,
-            "Client-Id": "02im991evpic87q63afh291vm9i0sw"
-          }
-        })
-        .then(response => {
-          if (response.ok) {
-            console.log("Successfully fetched user color")
-            return response.json()
-          } else {
-            console.log("request failed")
-            throw new Error("Failed to get user color")
-          }
-        })
-        .then(data => {
-          color = data["data"][0]["color"]
-          $("#twitchProfile").css("color", color)
-          localStorage.setItem("color", color)
-        })
-        .catch(error => {
-              console.error('Fetch error:', error)
-          })
-      }
-
-
-      $(".authButton").click(function() {
-        window.location.href = "https://shorturl.at/F52Tf"
-      })
-      $(".tbButton").click(function changePage(button) {
-        button = button.currentTarget
-        window.location.href = $(button).text().toLowerCase()
-      })
+      login()
     </script>
     </body>
 </html>

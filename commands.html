@@ -6,34 +6,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="src/commands.js"></script>
   </head>
   <body>
     <div class="tb"> 
-      <div class="tbButton">
-        <p>Home</p>
+      <div class="tbButton" value="/">
+        <p value="/">Home</p>
       </div>
-      <div class="tbButton">
-        <p>Commands</p>
+      <div class="tbButton" value="commands">
+        <p value="commands">Commands</p>
       </div>
-      <div class="authButton">
-        <p>Personal Use</p>
-        <p class="smol">(so do not click)</p>
-      </div>
-    </div>
 
+      <div class="left">
+        <div class="themeSelect">
+            <div class="light" id="theme-light"></div>
+            <div class="dark" id="theme-dark"></div>
+          </div>
+    
+          <div class="authButton">
+            <p>Personal Use</p>
+            <p class="smol">(so do not click)</p>
+          </div>
+        </div>
+      </div>
+
+
+    
     <div class="commands">
         <div class="sbContainer">
+            <div class="searchBar">
+                <input id="searchBar" onkeyup="commandSearch()" placeholder="Search...">
+            </div>
             <div class="sbButtons">
-                <div class="sbLvlContainer sbCmdL0"> 
-                    <div class="sbCmdButton">
-                        <p class="commandButtonText">all</p>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="cmdMenusContainer">
@@ -41,15 +48,16 @@
 
             </div>
         </div>
-        <div class="helpButton">
+        <div class="helpButton" onclick="showHelpPopup()">
             <div id="helpButtonText">?</div>
         </div>
     </div>
 
+
     <div class="helpPopup">
-        <div class="backgroundBlur"></div>
+        <div class="backgroundBlur" onclick="hideHelpPopup()"></div>
         <div class="helpPopupContainer">
-            <div class="helpPopupClose">×</div>
+            <div class="helpPopupClose" onclick="hideHelpPopup()">×</div>
             <div class="levelHelp">
                 <h3>Levels</h3>
                 <p style="white-space: pre-line;">Levels 2-4 are chat based.
@@ -65,201 +73,33 @@
                     <li>Dev</li>
                 </ol>
             </div>
+            <h3>Icons</h3>
+            <div class="infoIcons" style="display: block;">
+                <p><img class="infoIcon" src="img/7tv.webp">7tv</p>
+                <p><img class="infoIcon" src="img/twitch.webp">twitch</p>
+                <p><img class="infoIcon" src="img/potatbotat.webp">potatbotat</p>
+                <p><img class="infoIcon" src="img/minigame.webp">minigame</p>
+                <p><img class="infoIcon" src="img/settings.webp">settings</p>
+                <p><img class="infoIcon" src="img/bot.webp">bot</p>
+                <p><img class="infoIcon" src="img/time.webp">time</p>
+            </div>
         </div>
     </div>
 
     </body>
+    <script src="src/main.js"></script>
     <script>
-        $(".helpPopup").hide()
-
-        for (l in commands) {
-            $(".sbButtons").append(`
-                <div class="sbCmdSeperator">
-                    <div class="sbCmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>${l}</h1>
-                    <hr>
-                    <h1>${l}</h1>
-                </div>
-                <div class="sbLvlContainer sbCmdL${l}"> 
-
-                </div>`
-            )
-
-            $(".cmdMenus").append(`
-                <div class="cmdSeperator">
-                    <div class="cmdLButton">
-                        <p>Hide</p>
-                    </div>
-                    <h1>${l}</h1>
-                    <hr>
-                    <h1>${l}</h1>
-                </div>
-                <div class="cmdL${l}">
-
-                </div>
-            `)
-
-            for (c in commands[l]) {
-                cmdData = commands[l][c]
-                $(`.sbCmdL${l}`).append(`
-                    <div class="sbCmdButton">
-                        <p class="commandButtonText">${c}</p>
-                    </div>
-                `)
-
-                $(`.cmdL${l}`).append(`
-                <div class="cmdMenu">
-                    <div class="cmdShort cmd-${c}">
-                        <h1>${c}</h1>
-                        <img src="src/arrow.png" class="arrow">
-                    </div>
-                    <div class="cmdLong">
-                        <div class="cmdLongText"> <h3>Arguments:</h3> <p>${cmdData.arguments}</p> </div>
-                        <div class="cmdLongText"> <h3>Description:</h3> <p>${cmdData.description}</p> </div>
-                        <div class="cmdLongText"> <h3>Cooldown:</h3><p>${cmdData.cooldown}s</p> </div>
-                        <div class="cmdLongText"> <h3>Level:</h3> <p>${l}</p> </div>
-                        ${cmdData.alias ? `<div class="cmdLongText"> <h3>Aliases:</h3> <p>${cmdData.alias.join(", ")}</p> </div>` : ""}
-                    </div>
-                </div>
-                `)
-            }
-        }
-
-
-      $(".cmdLong").hide()
-      $(".cmdShort").click(function openCommandMenu() {
-        $(this).next(".cmdLong").slideToggle()
-        const arrow = $(this).children(".arrow")[0]
-        if (!$(this).hasClass("max")) {
-            $(this).toggleClass("max")
-            arrow.style.transition = "transform 0.4s"
-            arrow.style.transform = "rotate(0deg)"
-
-        } else {
-            setTimeout(() => {
-                $(this).toggleClass("max")
-            }, 350);
-            arrow.style.transition = "transform 0.5s"
-            arrow.style.transform = "rotate(90deg)"
-        }
-      })
-
-      $(".sbCmdButton").click(function goToCommand() {
-        const cmd = "cmd-" + $(this).children("p").text()
-        if (cmd == "cmd-all") {
-            $(`.cmdShort`).addClass("max")
-            $(`.cmdShort`).next(".cmdLong").slideDown()
-            $(`.cmdShort`)[0].scrollIntoView({behavior: "smooth", block: "start"})
-            const arrows = document.querySelectorAll(".arrow")
-            arrows.forEach(function rotateAllArrows(element) {
-                element.style.transition = "transform 0.4s"
-                element.style.transform = "rotate(0deg)"
-            })
-        } else {
-            $(`.${cmd}`).addClass("max")
-            $(`.${cmd}`).next(".cmdLong").slideDown()
-            $(`.${cmd}`)[0].scrollIntoView({behavior: "smooth", block: "start"})
-            const arrow = $(`.${cmd}`).children(".arrow")[0]
-            arrow.style.transition = "transform 0.4s"
-            arrow.style.transform = "rotate(0deg)"
-        }
-      })
-
-
-      $(".cmdLButton").click(function toggleCmdL() {
-        const level = $(this).next("h1").text()
-        $(`.cmdL${level}`).slideToggle()
-        if ($(this).children("p").text() == "Hide") {
-            $(this).children("p").text("Show")
-        } else {
-            $(this).children("p").text("Hide")
-        }
-      })
-
-      $(".sbCmdLButton").click(function toggleSbCmdL() {
-        const level = $(this).next("h1").text()
-        $(`.sbCmdL${level}`).slideToggle()
-        if ($(this).children("p").text() == "Hide") {
-            $(this).children("p").text("Show")
-        } else {
-            $(this).children("p").text("Hide")
-        }
-      })
-
-      $(".subCmdHeader").click(function hideSubCmd() {
-        console.log($(this).next())
-        $(this).next(".subCmds").slideToggle()
-      })
-
-
-      if (localStorage.getItem("accessTokens")) {
-        let accessToken = JSON.parse(localStorage.getItem("accessTokens"))[0]["accessToken"]
-        fetch("https://api.twitch.tv/helix/users", {
-            headers: {
-                "Authorization": "Bearer " + accessToken,
-                "Client-ID": "02im991evpic87q63afh291vm9i0sw",
-            }
-          })
-          .then(response => {
-              if (response.ok) {
-                  console.log("Succesfully fetched user info")
-                  return response.json()
-              } else {
-                  console.log("Request failed")
-                  throw new Error('Network response was not ok.')
-              }
-          })
-          .then(data => {
-              data = data['data'][0]
-              localStorage.setItem("username", data['login'])
-              localStorage.setItem("display", data['display_name'])
-              localStorage.setItem("pfpURL", data['profile_image_url'])
-              localStorage.setItem("uid", data['id'])
-          })
-          .catch(error => {
-              console.error('Fetch error:', error)
-          })
+      login()
+      loadCommands()
+      commandSearch()
+      
+      if (localStorage.getItem("visited")) {
+          $(".helpPopup").hide()
+      } else {
+          showHelpPopup()
+          localStorage.setItem("visited", true)
       }
-
-
-      $(".authButton").click(function() {
-        window.location.href = "https://shorturl.at/F52Tf"
-      })
-
-
-      $(".tbButton").click(function changePage(button) {
-        button = button.currentTarget
-        window.location.href = $(button).text().toLowerCase()
-      })
-
-      if (localStorage.getItem("accessTokens")) {
-        const displayName = localStorage.getItem("display"), pfpURL = localStorage.getItem("pfpURL"), color = localStorage.getItem("color")
-        if (![displayName, pfpURL, color].includes(null)) {
-            $(".authButton").hide()
-            $(".tb").append("<div class=userButton> <p class='tbButtonText' id='twitchProfile'> " + displayName + " </p> <img src=" + pfpURL +" class=userPfp> </div>")
-            $("#twitchProfile").css("color", color)
-        }
-      }
-
-      $(".helpButton").click(function showHelpPopup() {
-        $(".helpPopup").show()
-        $(".helpPopup").css("filter", "opacity(1)")
-        $(".helpPopup").css("top", "0")
-        $(".sbContainer").css("filter", "blur(3px)")
-        $(".cmdMenusContainer").css("filter", "blur(3px)")
-      })
-      function hideHelpPopup() {
-        $(".helpPopup").css("filter", "opacity(0)")
-        $(".helpPopup").css("top", "30px")
-        setTimeout(() => {
-            $(".helpPopup").hide()
-        }, 170)
-        $(".sbContainer").css("filter", "")
-        $(".cmdMenusContainer").css("filter", "")
-      }
-      $(".helpPopupClose").click(hideHelpPopup)
-      $(".backgroundBlur").click(hideHelpPopup)
+  
+      $(".themeSelect").click(changeTheme)
     </script>
 </html>
