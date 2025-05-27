@@ -1,10 +1,17 @@
 const commandsPerLevel = {
     "1": {
-        "bot": {
-            "arguments": "bot",
+        "add": {
+            "arguments": "add {emote/emote id}",
             "cooldown": 5,
-            "description": "Gives a small description of the bot",
-            "category": "bot",
+            "description": "Add 7tv emote(s), uses exact match query, or add by emote id, multiple emotes can be provided. Add as:{alias} to alias the emote",
+            "category": "7tv",
+            "level": 1
+        },
+        "afk": {
+            "arguments": "afk {message}",
+            "cooldown": 5,
+            "description": "Go AFK, the bot will send a message when you're back",
+            "category": null,
             "level": 1
         },
         "b64": {
@@ -104,7 +111,7 @@ const commandsPerLevel = {
         "fullunscramble": {
             "arguments": "fullunscramble {letters}",
             "cooldown": 5,
-            "description": "Returns all possible words that can be made using the provided letters",
+            "description": "Returns all possible words that can be made using the provided letters, use min: or max: to cap the length of the returned words",
             "category": null,
             "level": 1,
             "alias": [
@@ -126,7 +133,7 @@ const commandsPerLevel = {
         "help": {
             "arguments": "help {command}",
             "cooldown": 5,
-            "description": "Returns information about a command, or a list of commands is no command was provided",
+            "description": "Returns information about a command, or a list of commands if no command was provided",
             "category": "bot",
             "level": 1
         },
@@ -145,6 +152,23 @@ const commandsPerLevel = {
             "level": 1,
             "alias": [
                 "invisiblecharacter"
+            ]
+        },
+        "join": {
+            "arguments": "join {channel}",
+            "cooldown": 5,
+            "description": "Join a channel",
+            "category": "bot",
+            "level": 1
+        },
+        "leaderboard": {
+            "arguments": "leaderboard {fish/catfood}",
+            "cooldown": 5,
+            "description": "Show the leaderboard of either fish or catfood",
+            "category": "minigame",
+            "level": 1,
+            "alias": [
+                "lb"
             ]
         },
         "level": {
@@ -183,6 +207,13 @@ const commandsPerLevel = {
                 "nc"
             ]
         },
+        "part": {
+            "arguments": "part {channel}",
+            "cooldown": 5,
+            "description": "Part a channel",
+            "category": "bot",
+            "level": 1
+        },
         "ping": {
             "arguments": "ping",
             "cooldown": 5,
@@ -195,6 +226,20 @@ const commandsPerLevel = {
             "cooldown": 5,
             "description": "Execute multiple commands in an order, seperate commands with \" | \", the result of the previous command is the input for the next command, or use indexes like {1} {1+} {+1} anywhere in the command",
             "category": "bot",
+            "level": 1
+        },
+        "potatask": {
+            "arguments": "potatask {prompt}",
+            "cooldown": 15,
+            "description": "https://potat.app/help/ask",
+            "category": "potatbotat",
+            "level": 1
+        },
+        "potatgpt": {
+            "arguments": "potatgpt {prompt}",
+            "cooldown": 15,
+            "description": "https://potat.app/help/gpt",
+            "category": "potatbotat",
             "level": 1
         },
         "potatocooldowns": {
@@ -223,6 +268,13 @@ const commandsPerLevel = {
                 "poinfo"
             ]
         },
+        "prestige": {
+            "arguments": "prestige",
+            "cooldown": 5,
+            "description": "Prestie to earn more cat food and buy upgrades",
+            "category": "minigame",
+            "level": 1
+        },
         "quiz": {
             "arguments": "quiz {quiz}",
             "cooldown": 5,
@@ -233,11 +285,58 @@ const commandsPerLevel = {
                 "answer"
             ]
         },
+        "rankup": {
+            "arguments": "rankup",
+            "cooldown": 5,
+            "description": "Rankup to the next rank",
+            "category": "minigame",
+            "level": 1
+        },
+        "remove": {
+            "arguments": "remove {emote/emote id}",
+            "cooldown": 5,
+            "description": "Remove 7tv emote(s) from the current set",
+            "category": "7tv",
+            "level": 1
+        },
+        "rename": {
+            "arguments": "rename {emote} {new alias}",
+            "cooldown": 5,
+            "description": "Rename a 7tv emote",
+            "category": "7tv",
+            "level": 1
+        },
         "reply": {
             "arguments": "reply",
             "cooldown": 5,
-            "description": "Toggle whether or not to reply to your message",
+            "description": "Toggle how I should reply to your messages, options: reply, ping, unping, noping",
             "category": "settings",
+            "level": 1,
+            "alias": [
+                "mention",
+                "unping",
+                "noping"
+            ]
+        },
+        "sell": {
+            "arguments": "sell {amount}",
+            "cooldown": 5,
+            "description": "Sell your fish for cat food",
+            "category": "minigame",
+            "level": 1
+        },
+        "sellprice": {
+            "arguments": "sellprice",
+            "cooldown": 5,
+            "description": "Get the current sellprice",
+            "category": "minigame",
+            "level": 1
+        },
+        "stats": {
+            "arguments": "stats {username}",
+            "cooldown": 5,
+            "description": "Get minigame starts for a user",
+            "category": "minigame",
             "level": 1
         },
         "stvsa": {
@@ -273,6 +372,16 @@ const commandsPerLevel = {
                 "stvu",
                 "7tvuser",
                 "7tvu"
+            ]
+        },
+        "subage": {
+            "arguments": "subage {user} {channel?}",
+            "cooldown": 5,
+            "description": "See how long a user has been subbed to a channel",
+            "category": "twitch",
+            "level": 1,
+            "alias": [
+                "sa"
             ]
         },
         "suggest": {
@@ -372,13 +481,6 @@ const commandsPerLevel = {
         }
     },
     "3": {
-        "add": {
-            "arguments": "add {emote}",
-            "cooldown": 0,
-            "description": "Add a 7tv emote, uses exact match query",
-            "category": "7tv",
-            "level": 3
-        },
         "command": {
             "arguments": "command add/edit {trigger} {response} / command delete {trigger} / command options {trigger} {flags} (flags: -ucd {usercd}, -gcd {globalcd}, -enable/disable, -mod, -vip, -sub, -level {userlevel}) / command alias/keyword add/remove {keyword} / command show",
             "cooldown": 5,
@@ -402,34 +504,20 @@ const commandsPerLevel = {
         },
         "pyramid": {
             "arguments": "pyramid {width} {word/sentence}",
-            "cooldown": 5,
+            "cooldown": 60,
             "description": "Send a word or sentence in a pyramid",
             "category": null,
             "level": 3
         },
-        "remove": {
-            "arguments": "remove {emote}",
-            "cooldown": 0,
-            "description": "Remove a 7tv emote from the current set",
-            "category": "7tv",
-            "level": 3
-        },
         "spam": {
             "arguments": "spam {word/sentence} {amount}",
-            "cooldown": 10,
+            "cooldown": 30,
             "description": "Spam a word or sentence, max amount is 50",
             "category": null,
             "level": 3
         }
     },
     "4": {
-        "part": {
-            "arguments": "part {channel}",
-            "cooldown": 0,
-            "description": "Part a channel",
-            "category": "bot",
-            "level": 4
-        },
         "trigger": {
             "arguments": "trigger {trigger}",
             "cooldown": 5,
@@ -439,13 +527,6 @@ const commandsPerLevel = {
         }
     },
     "5": {
-        "join": {
-            "arguments": "join {channel}",
-            "cooldown": 0,
-            "description": "Join a channel",
-            "category": "bot",
-            "level": 5
-        },
         "say": {
             "arguments": "say {message}",
             "cooldown": 0,
