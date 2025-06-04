@@ -183,6 +183,7 @@ body {
     font-size: 20px;
     line-height: 0;
     transition-duration: 0.2s;
+    user-select: none;
 }
 
 .authButton:hover {
@@ -304,6 +305,71 @@ body {
     cursor: pointer;
 }
 
+
+.sorting {
+    position: sticky;
+    display: flex;
+    top: -3px;
+    border-radius: 6px;
+    z-index: 5;
+    background-color: var(--cmd-shade-color);
+    opacity: 50%;
+    padding: 3px;
+    transition-duration: 0.2s;
+    justify-content: space-between;
+}
+.sorting:hover {
+    opacity: 100%;
+}
+.categories {
+    display: flex;
+}
+
+.categorybutton {
+    display: flex;
+    justify-content: center;
+    height: 1em;
+    padding: 0.3em;
+    background-color: var(--secondary-cmd-background-color);
+    border-radius: 5px;
+    margin: 0.1em;
+    font-family: "Monsterrat", sans-serif;
+    font-weight: bold;
+    font-size: 1.35em;
+    color: var(--cmd-primary-text-color);
+    white-space: pre-wrap;
+    user-select: none;
+    transition-duration: 0.2s;
+}
+.categorybutton:hover {
+    background-color: var(--cmd-hover-background-color);
+}
+
+.categorybutton > img {
+    height: 1.1em;
+    filter: invert(var(--secondary-icon-invert));
+}
+
+.categories > .unselected {
+    opacity: 50%;
+}
+
+.sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sort > p, .sort > select {
+    color: var(--base-text-color);
+    font-family: "Monsterrat", sans-serif;
+    font-weight: bold;
+    font-size: 1.35em;
+    margin: 0.1em;
+    border: none;
+    border-radius: 3px;
+}
+
+
 .cmdMenusContainer {
     position: fixed;
     display: flex;
@@ -416,6 +482,7 @@ body {
     font-size: 20px;
     color: var(--cmd-secondary-text-color);
     line-height: 110%;
+    white-space: pre-wrap;
 }
 
 .subCmdsContainer {
@@ -484,6 +551,7 @@ body {
     width: 30px;
     left: calc(100% - 40px);
     transform: rotate(90deg);
+    user-select: none;
 }
 
 .cmdSeperator {

@@ -45,7 +45,19 @@
         </div>
         <div class="cmdMenusContainer">
             <div class="cmdMenus">
-
+              <div class="sorting">
+                <div class="categories">
+                  <div class="categorybutton" value="null">no category</div>
+                </div>
+                <div class="sort">
+                  <p>Sort by</p>
+                  <select name="sort" id="sort">
+                    <option class="sortOption">a-z</option>
+                    <option class="sortOption">z-a</option>
+                    <option class="sortOption">category</option>
+                  </select>
+                </div>
+              </div>
             </div>
         </div>
         <div class="helpButton" onclick="showHelpPopup()">
@@ -101,5 +113,11 @@
       }
   
       $(".themeSelect").click(changeTheme)
+      $(".categorybutton").click(showCategories)
+      $("#sort").change(sortCommands)
+
+      $(document).ready(() => {
+        $("#sort").trigger("change")
+      })
     </script>
 </html>
