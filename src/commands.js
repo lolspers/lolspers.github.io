@@ -54,7 +54,7 @@ const commandsPerLevel = {
         "commands": {
             "arguments": "commands",
             "cooldown": 5,
-            "description": "Show a list of the custom commands in a channel, add -ids to also get the id of each commnd.",
+            "description": "Show a list of the custom commands and their id in a channel.",
             "category": "settings",
             "level": 1,
             "alias": [
@@ -483,7 +483,7 @@ const commandsPerLevel = {
         "ascii": {
             "arguments": "ascii {emote}",
             "cooldown": 5,
-            "description": "Make ascii art of a 7tv emote, if it's animated it uses the first frame. If you want an actual good ascii art use a different bot for this.",
+            "description": "Make ascii art of a twitch/7tv/bttv/ffz emote, if it's animated it uses the first frame.",
             "category": "7tv",
             "level": 2
         }
@@ -510,7 +510,7 @@ const commandsPerLevel = {
         "command": {
             "arguments": "command {action} {command} {arguments}",
             "cooldown": 5,
-            "description": "To use regex in command triggers, enclose it in / (e.g. /regex \\d/), to use ids, use id:{id}, to get the ids use commands -ids. \n<b>Add</b> \"<i>command add {command} {response}</i>\": Add a custom command and the response \n<b>Show</b> \"<i>command show {command}</i>\": Show settings, id and the response of a command \n<b>Edit</b> \"<i>command edit {command} {new response}</i>\": Edit the response of a custom command \n<b>Options</b>: \"<i>command options {command} {options}</i>\": Edit some settings of a custom commands, add a - before each setting (without a space), settings: \n\t-enable: enable a command \n\t-disable: disable a command \n\t-globlacooldown {seconds}: change the channel cooldown \n\t-usercooldown {seconds}: change the user cooldown \n\t-level {level}: change the required level to use the command \n\t-role {role}: change the role needed to use this command, roles are broadcaster, moderator, vip, subscriber \n<b>Alias</b>: \"<i>command alias {command} {add/remove} {alias(es)}</i>\": Add or remove aliases \n<b>Keyword</b>: \"<i>command keyword {command} {add/remove} {keyword(s}</i>\": Add or remove keywords \n<b>Delete</b> \"<i>command delete {command}</i>\": Delete a command",
+            "description": "To use regex in command triggers, enclose it in / (e.g. /regex \\d/), to use ids, use id:{id}, to get the ids use commands -ids. \n<b>Add</b>: \"<i>command add {command} {response}</i>\", Add a custom command and the response \n<b>Show</b>: \"<i>command show {command}</i>\", Show settings, id and the response of a command \n<b>Edit</b>: \"<i>command edit {command} {new response}</i>\", Edit the response of a custom command \n<b>Trigger</b> \"<i>command trigger {command} {new trigger}</i>\": Change the trigger for a command \n<b>Options</b> \"<i>command options {command} {options}</i>\", Edit some settings of a custom commands, add a - before each setting (without a space), settings: \n\t-enable: enable a command \n\t-disable: disable a command \n\t-globlacooldown {seconds}: change the channel cooldown \n\t-usercooldown {seconds}: change the user cooldown \n\t-level {level}: change the required level to use the command \n\t-role {role}: change the role needed to use this command, roles are broadcaster, moderator, vip, subscriber, regular \n<b>Alias</b> \"<i>command alias {command} {add/remove} {alias(es)}</i>\", Add or remove aliases \n<b>Keyword</b> \"<i>command keyword {command} {add/remove} {keyword(s}</i>\", Add or remove keywords \n<b>Delete</b>: \"<i>command delete {command}</i>\", Delete a command",
             "category": "settings",
             "level": 3
         },
