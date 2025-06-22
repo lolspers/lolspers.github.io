@@ -83,9 +83,14 @@ function enter() {
             e.removeClass("typedLetter")
             let existingLetter = $(`.LETTER-${letter}`)
             if (existingLetter.length) {
+                let row = existingLetter[0].attributes.row.value
+                
                 if (existingLetter.hasClass("wrong")) { e.addClass("wrong") }
                 else if (existingLetter.hasClass("contains")) { e.addClass("contains") }
-                else if (existingLetter.hasClass("right")) { e.addClass("right") }
+                else if (existingLetter.hasClass("right")) {
+                    if (row == c) {e.addClass("right")}
+                    else { e.addClass("contains") }
+                }
             } else {
                 e.addClass("wrong");
             }
@@ -113,6 +118,8 @@ function clickLetter(e) {
     let element = $(e.currentTarget)
     let letter = $(`.${element.text()}`)
     let letters = $(`.LETTER-${element.text()}`)
+    let row = element[0].attributes.row.value
+    let lettersSameRow = $(`.LETTER-${element.text()}.l${row}`)
 
     if (element.hasClass("wrong")) {
         letters.removeClass("wrong")
@@ -120,12 +127,13 @@ function clickLetter(e) {
         letter.parent().removeClass("wrong")
         letter.parent().addClass("contains")
     } else if (element.hasClass("contains")) {
-        letters.removeClass("contains")
-        letters.addClass("right")
+        lettersSameRow.removeClass("contains")
+        lettersSameRow.addClass("right")
         letter.parent().removeClass("contains")
         letter.parent().addClass("right")
     } else if (element.hasClass("right")) {
         letters.removeClass("right")
+        letters.removeClass("contains")
         letters.addClass("wrong")
         letter.parent().removeClass("right")
         letter.parent().addClass("wrong")
@@ -159,7 +167,7 @@ function generateWordInputs() {
     for (let i = 0; i < 6; i++) {
         html += `<div class="word w${i}">`
         for (let l = 0; l < 5; l++) {
-            html += `<div class="letter l${l}"></div>`
+            html += `<div class="letter l${l}" row="${l}"></div>`
         }
         html += `</div>`
     }
