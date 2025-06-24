@@ -77,18 +77,22 @@ function enter() {
         setTimeout(function () {
             $(i).addClass("filled")
         }, c*420);
-        setTimeout(function () {
+        setTimeout(function (r) {
             let e = $(i)
             let letter = e.text()
             e.removeClass("typedLetter")
+
             let existingLetter = $(`.LETTER-${letter}`)
             if (existingLetter.length) {
-                let row = existingLetter[0].attributes.row.value
+                let rows = []
+                for (let i of existingLetter) {
+                    rows.push(i.attributes.row.value)
+                }
                 
                 if (existingLetter.hasClass("wrong")) { e.addClass("wrong") }
                 else if (existingLetter.hasClass("contains")) { e.addClass("contains") }
                 else if (existingLetter.hasClass("right")) {
-                    if (row == c) {e.addClass("right")}
+                    if (rows.includes(String(r))) {e.addClass("right")}
                     else { e.addClass("contains") }
                 }
             } else {
@@ -96,7 +100,7 @@ function enter() {
             }
             e.mouseup(clickLetter)
             e.addClass(`LETTER-${letter}`)
-        }, c*420 + 250);
+        }, c*420 + 250, c);
 
         c++
     }
@@ -154,9 +158,7 @@ function showMessage(message) {
     messagecount --
     $(".alert-container").append(`<div class="alert alert-${-messagecount}" style="order: ${messagecount};">${message}</div>`)
     setTimeout((n) => {
-        console.log($(`.alert-${n}`))
         $(`.alert-${n}`).remove()
-        console.log($(`.alert-${n}`))
     }, 1250, -messagecount);
 }
 
