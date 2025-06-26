@@ -27,10 +27,11 @@ export const commandsPerLevel = {
         "cat": {
             "arguments": "cat",
             "cooldown": 3,
-            "description": "Collect the fish your cat has caught. Your cat catches 1 fish every 30 minutes.",
+            "description": "Collect the fish your cat has caught. Your cat catches 1 fish every 30 minutes. See all minigame commands <a href='?category=minigame'>here</a>",
             "category": "minigame",
             "level": 1,
             "alias": [
+                "catch",
                 "cats"
             ]
         },
@@ -101,7 +102,7 @@ export const commandsPerLevel = {
         "fish": {
             "arguments": "fish",
             "cooldown": 5,
-            "description": "Fish for fish, base catch chance is 10% and chance for a special catch is 10%.",
+            "description": "Fish for fish, base catch chance is 10% and chance for a special catch is 10%. See all minigame commands <a href='?category=minigame'>here</a>",
             "category": "minigame",
             "level": 1
         },
@@ -293,6 +294,13 @@ export const commandsPerLevel = {
                 "answer"
             ]
         },
+        "rank": {
+            "arguments": "rank",
+            "cooldown": 5,
+            "description": "See stats about your current rank, like catch chance, multipliers capacity and rankup cost.",
+            "category": "minigame",
+            "level": 1
+        },
         "rankup": {
             "arguments": "rankup",
             "cooldown": 5,
@@ -337,6 +345,13 @@ export const commandsPerLevel = {
             "arguments": "sellprice",
             "cooldown": 5,
             "description": "Get the current sellrate for fish, this ranges between 1-10 cat food and changes every 15 minutes.",
+            "category": "minigame",
+            "level": 1
+        },
+        "shop": {
+            "arguments": "shop",
+            "cooldown": 5,
+            "description": "See all shop items, which can be bought using the 'buy' command",
             "category": "minigame",
             "level": 1
         },
@@ -581,13 +596,6 @@ export const commandsPerLevel = {
             "cooldown": 0,
             "description": "Send a message as one of my alts.",
             "category": "bot",
-            "level": 6
-        },
-        "download": {
-            "arguments": "download {emote} {file type}",
-            "cooldown": 0,
-            "description": "Download a 7tv emote from the cdn, default size is 4x and default file type is avif.",
-            "category": "7tv",
             "level": 6
         },
         "py": {

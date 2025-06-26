@@ -4,13 +4,10 @@ let commands = {}
 Object.keys(commandsPerLevel).forEach((l) => {
     commands = {...commands, ...commandsPerLevel[l]}
 })
-console.log(commands)
 
-const allCommandNames = [], allCommandAliases = {}
+const allCommandNames = [], allCommandAliases = {}, categories = []
 export function loadCommands() {
-    let categories = []
     for (let l in commandsPerLevel) {
-        console.log(l)
         $(".sbButtons").append(`
             <div class="sbCmdSeperator sb-seperator-${l}">
                 <div class="sbCmdLButton">
@@ -72,7 +69,7 @@ export function loadCommands() {
             `)
             if (cmdData.category && !categories.includes(cmdData.category)) {
                 categories.push(cmdData.category)
-                $(".categories").append(`<div class="categorybutton" value="${cmdData.category}"><img draggable="false" src="img/${cmdData.category}.webp"> - ${cmdData.category}</div>`)
+                $(".categories").append(`<div class="categorybutton button-category-${cmdData.category}" value="${cmdData.category}"><img draggable="false" src="img/${cmdData.category}.webp"> - ${cmdData.category}</div>`)
             }
         }
     }
@@ -174,25 +171,14 @@ export function hideHelpPopup() {
     $(".sbContainer").css("filter", "")
     $(".cmdMenusContainer").css("filter", "")
 }
-//$(".subCmdHeader").click(function hideSubCmd() {
-//    console.log($(this).next())
-//    $(this).next(".subCmds").slideToggle()
-//})
 
 export function showCategories(e) {
     let category = this.attributes.value.value
 
-    console.log(category)
     $(e.currentTarget).toggleClass("unselected")
     $(".cmd-category-"+category).toggle()
-//
-    //if (category == "all") {
-    //    $(".cmdMenu").show()
-    //} else {
-    //    $(".cmdMenu").hide()
-    //    $(".cmd-category-"+category).show()
-    //}
 }
+
 export function sortCommands(e) {
     let sort = e.currentTarget.value
 
@@ -221,4 +207,24 @@ export function sortCommands(e) {
         n += 1
         $("#cmd-"+e).css("order", n)
     })
+}
+
+
+export function parseParams(params) {
+    let category = params.get("category")
+
+    if (!category) { return }
+    category = category.toLowerCase()
+
+    if (!categories.includes(category) && category != "null") { return }
+
+    for (let c of categories) {
+        if ( c == category ) { continue }
+        $(`.button-category-${c}`).toggleClass("unselected")
+        $(".cmd-category-"+c).toggle()
+    }
+    if (category != "null") {
+        $(".button-category-null").toggleClass("unselected")
+        $(".cmd-category-null").toggle()
+    }
 }

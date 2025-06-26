@@ -46,7 +46,7 @@
             <div class="cmdMenus">
               <div class="sorting">
                 <div class="categories">
-                  <div class="categorybutton" value="null">no category</div>
+                  <div class="categorybutton button-category-null" value="null">no category</div>
                 </div>
                 <div class="sort">
                   <p>Sort by</p>
@@ -59,16 +59,16 @@
               </div>
             </div>
         </div>
-        <div class="helpButton" onclick="showHelpPopup()">
+        <div class="helpButton">
             <div id="helpButtonText">?</div>
         </div>
     </div>
 
 
-    <div class="helpPopup">
-        <div class="backgroundBlur" onclick="hideHelpPopup()"></div>
+    <div class="helpPopup" style="display: none;">
+        <div class="backgroundBlur"></div>
         <div class="helpPopupContainer">
-            <div class="helpPopupClose" onclick="hideHelpPopup()">×</div>
+            <div class="helpPopupClose">×</div>
             <div class="levelHelp">
                 <h3>Levels</h3>
                 <p style="white-space: pre-line;">Levels 2-4 are chat based.
@@ -100,19 +100,23 @@
     </body>
     <script src="src/main.js"></script>
     <script type="module">
-      import { showHelpPopup, hideHelpPopup, loadCommands, commandSearch, showCategories, sortCommands } from "./src/commands.js"
+      import { showHelpPopup, hideHelpPopup, loadCommands, commandSearch, showCategories, sortCommands, parseParams } from "./src/commands.js"
 
-      if (localStorage.getItem("visited")) {
-          $(".helpPopup").hide()
-      } else {
+      if (!localStorage.getItem("visited")) {
           showHelpPopup()
           localStorage.setItem("visited", true)
       }
+      $(".helpButton").click(showHelpPopup)
+      $(".helpPopupClose").click(hideHelpPopup)
+      $(".backgroundBlur").click(hideHelpPopup)
 
       loadCommands()
       commandSearch()
       $(".categorybutton").click(showCategories)
       $("#sort").change(sortCommands)
+
+      const params = new URLSearchParams(document.location.search)
+      if (params) { parseParams(params) }
 
       $(document).ready(() => {
           $("#sort").trigger("change")
