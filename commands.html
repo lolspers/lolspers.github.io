@@ -37,7 +37,7 @@
     <div class="commands">
         <div class="sbContainer">
             <div class="searchBar">
-                <input id="searchBar" onkeyup="commandSearch()" placeholder="Search...">
+                <input id="searchBar" placeholder="Search...">
             </div>
             <div class="sbButtons">
             </div>
@@ -112,6 +112,7 @@
 
       loadCommands()
       commandSearch()
+      $("#searchBar").keyup(commandSearch)
       $(".categorybutton").click(showCategories)
       $("#sort").change(sortCommands)
 

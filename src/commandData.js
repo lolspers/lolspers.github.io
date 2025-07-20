@@ -12,7 +12,11 @@ export const commandsPerLevel = {
             "cooldown": 5,
             "description": "Go AFK and a message, sends a message for how long you were AFK with the message when you type again.",
             "category": null,
-            "level": 1
+            "level": 1,
+            "alias": [
+                "brb",
+                "gn"
+            ]
         },
         "b64": {
             "arguments": "b64 {encode/decode} {text}",
@@ -49,7 +53,8 @@ export const commandsPerLevel = {
             "category": null,
             "level": 1,
             "alias": [
-                "pick"
+                "pick",
+                "choose"
             ]
         },
         "commands": {
@@ -101,7 +106,7 @@ export const commandsPerLevel = {
         },
         "fish": {
             "arguments": "fish",
-            "cooldown": 5,
+            "cooldown": 3,
             "description": "Fish for fish, base catch chance is 10% and chance for a special catch is 10%. See all minigame commands <a href='?category=minigame'>here</a>",
             "category": "minigame",
             "level": 1
@@ -492,6 +497,13 @@ export const commandsPerLevel = {
             "description": "Get timed out for 1s and vanish from the chat.",
             "category": "twitch",
             "level": 1
+        },
+        "yoink": {
+            "arguments": "yoink {emotes}",
+            "cooldown": 5,
+            "description": "Adds the emotes found in your message in your own channel with the same alias. When adding a single emote, use as: to add it as a different alias.",
+            "category": "7tv",
+            "level": 1
         }
     },
     "2": {
@@ -504,6 +516,17 @@ export const commandsPerLevel = {
         }
     },
     "3": {
+        "always": {
+            "arguments": "always {command(s)}",
+            "cooldown": 5,
+            "description": "Allow one or more commands to work while the channel is live. Use all to allow all commands.",
+            "category": "settings",
+            "level": 3,
+            "alias": [
+                "liveenable",
+                "onlineenable"
+            ]
+        },
         "ban": {
             "arguments": "ban {username}",
             "cooldown": 5,
@@ -511,7 +534,7 @@ export const commandsPerLevel = {
             "category": "bot",
             "level": 3,
             "alias": [
-                "blacklist",
+                "banlist",
                 "block"
             ]
         },
@@ -542,6 +565,17 @@ export const commandsPerLevel = {
             "description": "Enable a disabled command(s) so they can be used again. Provide all as a command to enable all commands.",
             "category": "settings",
             "level": 3
+        },
+        "offlineonly": {
+            "arguments": "offlineonly {command(s}",
+            "cooldown": 5,
+            "description": "Disallow one or more commands to work while the channel is live. Use 'all' to make all commands offline only. Mods will still be able to use all commands even when the channel is live.",
+            "category": "settings",
+            "level": 3,
+            "alias": [
+                "livedisable",
+                "offline"
+            ]
         },
         "pyramid": {
             "arguments": "pyramid {width} {word/sentence}",
@@ -597,6 +631,18 @@ export const commandsPerLevel = {
             "description": "Send a message as one of my alts.",
             "category": "bot",
             "level": 6
+        },
+        "livenotify": {
+            "arguments": "livenotify {add/remove} {channel} {message}",
+            "cooldown": 5,
+            "description": "Add or remove a live or offline notification, for offline notifications use the offlinenotify alias. Adding a message is optional.",
+            "category": "twitch",
+            "level": 6,
+            "alias": [
+                "livenotif",
+                "offlinenotif",
+                "offlinenotify"
+            ]
         },
         "py": {
             "arguments": "py {code}",
