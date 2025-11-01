@@ -1,4 +1,6 @@
 let lastQuery = "";
+let activeCommand = "";
+
 let commandData = {};
 let commandAliases = {};
 let commandAliasesArray = [];
@@ -10,7 +12,7 @@ async function getCommandData() {
     commandData = await response.json();
     let aliases = {};
 
-    let commandScroll = $(".command-commands-margin");
+    let commandScroll = $(".command-commands-buttons-container");
 
     for (let command of Object.entries(commandData)) {
         let name = command[0];
@@ -100,6 +102,10 @@ function commandClick(e) {
 
 
 function switchCommand(command) {
+    if (command == activeCommand) {
+        return
+    }
+    
     let data = commandData[command];
 
     window.history.pushState({}, command, `/commands/${command}`);
@@ -111,8 +117,14 @@ function switchCommand(command) {
 
 
 function showCommand(command, data) {
-    $(".command-name").text(command);
+    activeCommand = command;
 
+    $(".command-active").removeClass("command-active");
+
+    $(`#cmd-button-${command}`).addClass("command-active");
+
+
+    $(".command-name").text(command);
 
     $("#command-info-description").text(data["description"]);
 
