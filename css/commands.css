@@ -1,0 +1,292 @@
+.command-container {
+    width: 100%;
+    height: 100%;
+}
+
+
+.command-top {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+}
+
+.command-bottom {
+    width: 100%;
+    height: calc(97% - 3rem);
+    margin-top: 1.5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.command-search-bar-container {
+    width: 9.7rem;
+    height: 100%;
+}
+
+#command-search-bar {
+    max-width: 100%;
+    height: calc(100% - 1rem);
+    padding: 0.5rem;
+    background-color: #3F344A;
+    border: none;
+    border-radius: 0.3rem;
+    box-shadow: inset 0 0 0 0.25rem #3A2F45;
+    font-family: "Inter", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #F3ECFF;
+}
+
+#command-search-bar::placeholder {
+    font-weight: 600;
+    color: rgba(243, 236, 255, 0.5);
+}
+
+#command-search-bar:focus {
+    outline: solid #4C3F59;
+    filter: drop-shadow(0 0 3px #4C3F59)
+}
+
+
+
+.command-name-container {
+    position: absolute;
+    left: calc(50%);
+    float: left;
+}
+
+.command-name {
+    position: relative;
+    left: -50%;
+    float: left;
+    padding: 0.7rem 1.1rem 0.7rem 1.1rem;
+    background-color: #3A2F45;
+    border-radius: 0.3rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.38rem;
+    font-weight: 700;
+    color: #F3ECFF;
+} 
+
+
+
+.command-commands-container {
+    height: 100%;
+    width: 9.9rem;
+    border-radius: 0.3rem;
+    background-color: #3A2F45;
+    padding-left: 0.7rem;
+}
+
+.command-commands-margin {
+    position: relative;
+}
+
+.command-command-btn {
+    display: flex;
+    height: 2.5rem;
+    margin-right: 0.7rem;
+    margin-bottom: 0.7rem;
+    background-color: #4C3F59;
+    align-items: center;
+    overflow-wrap: anywhere;
+    overflow-y: hidden;
+    border-radius: 0.3rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #F3ECFF;
+    transition-duration: 0.1s;
+}
+
+.command-command-btn:last-child {
+    margin-bottom: 0rem;
+}
+
+.command-command-btn:hover {
+    background-color: #554762;
+    cursor: pointer;
+}
+
+.command-command-btn > span {
+    margin-left: 0.5rem;
+}
+
+
+
+.command-help-container {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 14.6rem);
+    height: calc(100% - 2rem);
+    padding: 1rem;
+    background-color: #3A2F45;
+    border-radius: 0.3rem;
+    color: #FFF;
+}
+
+
+.command-box-container {
+    height: 100%;
+    background-color: #4C3F59 !important;
+    border-radius: 0.3rem;
+}
+
+.command-info-container {
+    width: 79%;
+}
+
+.command-attributes-container {
+    width: 19%;
+}
+
+
+.command-container-margin {
+    display: flex;
+    flex-flow: column;
+    margin: 1rem;
+}
+
+.command-header {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#command-usage-guide {
+    display: flex;
+    flex-flow: column;
+}
+
+.command-example , .command-text{
+    margin-top: 0.1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+
+.command-example {
+    margin-bottom: 1rem;
+}
+
+.command-text {
+    margin-bottom: 0.7rem;
+}
+
+.command-example {
+    position: relative;
+    bottom: 0.3rem;
+    margin-top: 0;
+    font-style: italic;
+}
+
+.command-less-margin-bottom {
+    margin-bottom: 0.5rem !important;
+}
+
+
+.command-example-text {
+    padding: 0.2rem 0.35rem 0.2rem 0.35rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    color: rgba(255, 255, 255, 0.85);
+    transition-duration: 0.1s;
+}
+
+.command-example-available:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.command-example-available:last-child {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.command-example-available:hover:last-child {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.command-attribute-flag {
+    margin-top: 0.5rem;
+    padding: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+}
+
+.command-attribute-flag > p {
+    margin: 0.1rem;
+}
+
+.command-attribute-flag > ul {
+    margin: 0;
+    margin-top: 0.2rem;
+    padding-left: 1rem;
+}
+
+.command-attribute-flag > ul > li {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+}
+
+
+
+.scrollbox-light {
+	background:
+		linear-gradient(#3A2F45 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), #3A2F45 70%) 0 100%,
+		
+		linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0)),
+		linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.15)) 0 100%;
+}
+
+.scrollbox-dark {
+	background:
+		linear-gradient(#4C3F59 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), #4C3F59 70%) 0 100%,
+		
+		linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0)),
+		linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.15)) 0 100%;
+}
+
+.scrollbox-light, .scrollbox-dark {
+	background-repeat: no-repeat;
+	background-size: 100% 55px, 100% 55px, 100% 20px, 100% 20px;
+    background-attachment: local, local, scroll, scroll;
+	
+    overflow-y: scroll; 
+}
+
+
+.scroll-shadow-top {
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    width: calc(100% - 0.7rem);
+    height: 1.2rem;
+    margin-bottom: -0.5rem;
+    background:
+        linear-gradient(to bottom, rgba(58, 47, 69, 1), rgba(58, 47, 69, 1), rgba(58, 47, 69, 0.85), rgba(58, 47, 69, 0.60), rgba(58, 47, 69, 0.40), rgba(58, 47, 69, 0.15)),
+        linear-gradient(to bottom, rgba(58, 47, 69, 0.5), rgba(58, 47, 69, 0.3), rgba(58, 47, 69, 0));
+    
+    background-size: 100% 0.7rem, 100% 1.2rem;
+	background-repeat: no-repeat;
+}
+
+.scroll-shadow-bottom {
+    z-index: 10;
+    position: sticky;
+    bottom: 0;
+    width: calc(100% - 0.7rem);
+    height: 1.2rem;
+    margin-top: -0.5rem;
+    background:
+        linear-gradient(to top, rgba(58, 47, 69, 1), rgba(58, 47, 69, 1), rgba(58, 47, 69, 0.85), rgba(58, 47, 69, 0.60), rgba(58, 47, 69, 0.40), rgba(58, 47, 69, 0.15)) 0 100%,
+        linear-gradient(to top, rgba(58, 47, 69, 0.5), rgba(58, 47, 69, 0.3), rgba(58, 47, 69, 0)) 0 100%;
+    
+    background-size: 100% 0.7rem, 100% 1.2rem;
+	background-repeat: no-repeat;
+}

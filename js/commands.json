@@ -1,0 +1,2901 @@
+{
+    "accountage": {
+        "description": "Shows when and how long ago a user created their twitch account.",
+        "usage": [
+            {
+                "description": "Defaults to the executor if no user is provided.",
+                "usage": ""
+            },
+            {
+                "description": "Get the account age of a user.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "accage",
+            "userage",
+            "uage",
+            "creationdate"
+        ],
+        "flags": []
+    },
+    "add": {
+        "description": "Adds one or more 7TV emotes. This searches for the provided emote(s) and adds the first exact match.",
+        "usage": [
+            {
+                "description": "Add 7TV emotes by searching for them. Emote ids or urls can also be provided.",
+                "usage": "{emote 1} {emote id} {emote url}",
+                "example": "LOL 01H0405680000AJFXTYVX2PNJ7 https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
+            },
+            {
+                "description": "Using the 'as' flag will add an emote as an alias.",
+                "usage": "{emote} as:{alias}",
+                "example": "wait as:wade"
+            },
+            {
+                "description": "Using the 'from' flag will add 7TV emotes that are added in the specified channel. This is case sensitive.",
+                "usage": "{emote} from:{channel}",
+                "example": "mhm from:7tvapp"
+            },
+            {
+                "description": "Using the 'in' flag will add 7TV emotes from the current channel in the specified channel. This searches for emotes if they were not found in the current channel.",
+                "usage": "{emote} in:{channel}",
+                "example": "catAsk in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "as",
+                    "alias"
+                ],
+                "type": "parameter",
+                "description": "Add an emote as an alias."
+            },
+            {
+                "flags": [
+                    "from"
+                ],
+                "type": "parameter",
+                "description": "Add emotes from a channel, this is case sensitive."
+            },
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Add emotes in a different channel."
+            }
+        ]
+    },
+    "afk": {
+        "description": "Sets an AFK status, and sends a message when you're back.",
+        "usage": [
+            {
+                "description": "Go AFK without a status.",
+                "usage": ""
+            },
+            {
+                "description": "Go AFK with a status.",
+                "usage": "{status}",
+                "example": "Driving to work"
+            },
+            {
+                "description": "Using the 'brb' or 'gn' alias will send a more fitting message.",
+                "usage": "brb {message}",
+                "example": "brb Refilling water bottle",
+                "alias": true
+            },
+            {
+                "description": null,
+                "usage": "gn {message}",
+                "example": "gn Goodnight",
+                "alias": true
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "brb",
+            "gn"
+        ],
+        "flags": []
+    },
+    "always": {
+        "description": "Allows one or more commands to still be useable while the channel is live.",
+        "usage": [
+            {
+                "description": "Allow one or more commands. This will also enable all of the command's aliases while live.",
+                "usage": "{command 1} {command 2}",
+                "example": "ping spam"
+            },
+            {
+                "description": "Allow all commands.",
+                "usage": "all"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "liveenable",
+            "onlineenable"
+        ],
+        "flags": []
+    },
+    "asay": {
+        "description": "Sends a message through a different user.",
+        "usage": [
+            {
+                "description": "Send a message.",
+                "usage": "{username} {message}",
+                "example": "iolspers hi"
+            },
+            {
+                "description": "Using the 'in' flag will send the message in the specified channel.",
+                "usage": "{username} {message} in:{channel}",
+                "example": "iolspers hi in:forsen"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 0,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to send the message to"
+            }
+        ]
+    },
+    "ascii": {
+        "description": "Makes an ascii art of a Twitch, 7TV, BTTV or FFZ emote. This uses the first frame if the emote is animated.",
+        "usage": [
+            {
+                "description": "Make an ascii art.",
+                "usage": "{emote}",
+                "example": "FeelsDankMan"
+            },
+            {
+                "description": "Using the 'in' alias will use emotes from the specified channel.",
+                "usage": "{emote} in:{channel}",
+                "example": "Aware in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 3,
+            "name": "vip"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Looks for emotes in the provided channel."
+            }
+        ]
+    },
+    "b64": {
+        "description": "Encodes/decodes text to or from base64.",
+        "usage": [
+            {
+                "description": "Encode text to base64.",
+                "usage": "encode {text}",
+                "example": "encode Base64 is not a form of encryption!"
+            },
+            {
+                "description": "Decode bas64 to text.",
+                "usage": "decode {text}",
+                "example": "decode QmFzZTY0IGlzIG5vdCBhIGZvcm0gb2YgZW5jcnlwdGlvbiE="
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "base64"
+        ],
+        "flags": []
+    },
+    "ban": {
+        "description": "Bans a user from interacting in any way with the bot in the current channel.",
+        "usage": [
+            {
+                "description": "Ban a user.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "banlist",
+            "block"
+        ],
+        "flags": []
+    },
+    "banphrase": {
+        "description": "Adds a banphrase. This will ban a first time chatter if any part of it is in their message.",
+        "usage": [
+            {
+                "description": "Show all banphrases",
+                "usage": "show"
+            },
+            {
+                "description": "Add a banphrase.",
+                "usage": "add {banphrase}",
+                "example": "add Cheap viewers on example.com !!!"
+            },
+            {
+                "description": "Remove a banphrase.",
+                "usage": "remove {banphrase}",
+                "example": "remove Cheap viewers on example.com !!!"
+            },
+            {
+                "description": "Enclosing the banphrase with slashes '/' will add the banphrase as a regex pattern. This is still not case sensitive.",
+                "usage": "{add/remove} /{banphrase}/",
+                "example": "add /Cheap viewers on example\\.(com|org|tv) ?!*/"
+            },
+            {
+                "description": "Enable all banphrases.",
+                "usage": "enable"
+            },
+            {
+                "description": "Disable all banphrases.",
+                "usage": "disable"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "bio": {
+        "description": "Gets a user's about me.",
+        "usage": [
+            {
+                "description": "Get your own about me.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's about me.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "about",
+            "description"
+        ],
+        "flags": []
+    },
+    "cat": {
+        "description": "Collects the fish your cat has caught. It catches 1 cat every 30 minutes.",
+        "usage": [
+            {
+                "description": "Collect your fish.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "cats"
+        ],
+        "flags": []
+    },
+    "cdata": {
+        "description": "Gets an estimated chance for each cookie based on logs for ThePositiveBot, this is not updated in real time.",
+        "usage": [
+            {
+                "description": "Get the data",
+                "usage": ""
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "chatsettings": {
+        "description": "Gets the chat settings and modes in a channel.",
+        "usage": [
+            {
+                "description": "Defaults to the current channel if no channel is provded.",
+                "usage": ""
+            },
+            {
+                "description": "Get the settings in a channel.",
+                "usage": "{channel}",
+                "example": "forsen"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "chatmodes"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Gets the chatsettings in the provided channel."
+            }
+        ]
+    },
+    "choice": {
+        "description": "Picks a random option from the provided options.",
+        "usage": [
+            {
+                "description": "Pick a random option. Options must be seperated by a space.",
+                "usage": "{option 1} {option 2} {option 3}",
+                "example": "chat game sleep"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "pick",
+            "choose"
+        ],
+        "flags": []
+    },
+    "coinflip": {
+        "description": "Flips a coin.",
+        "usage": [
+            {
+                "description": "Flip a coin. Will land on either heads or tails.",
+                "usage": ""
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "cf"
+        ],
+        "flags": []
+    },
+    "command": {
+        "description": "Manages custom commands for the current channel.",
+        "usage": [
+            {
+                "description": "Commands can be added or selected with regex by enclosing the trigger with slashes '/'. They can also be selected by using the id. These should always be provided right after the subcommand.",
+                "usage": "/{regex pattern}/",
+                "example": "/([A-Z])]\\w+/"
+            },
+            {
+                "usage": "id:{id}",
+                "example": "id:1234"
+            },
+            {
+                "description": "Add a custom command. Commands using a regex pattern as trigger are not case sensitive by default."
+            },
+            {
+                "description": "There are a few variables that can be added to the response. See the full variable list at the bottom.",
+                "usage": "command add {trigger} {response}",
+                "example": "command add hi Hello ${touser}!"
+            },
+            {
+                "usage": "command add /{regex pattern}/ {response}",
+                "example": "command add /(hi|hello|hey)/ Hello!"
+            },
+            {
+                "description": "Get the response and settings of a command.",
+                "usage": "show {command}",
+                "example": "show id:1234"
+            },
+            {
+                "description": "Edit the response of a command.",
+                "usage": "edit {command} {new response}",
+                "example": "edit id:1234 Hello World!"
+            },
+            {
+                "description": "Change the trigger of a command.",
+                "usage": "trigger {command} {new trigger}",
+                "example": "trigger id:1234 hello"
+            },
+            {
+                "description": "Add or remove aliases for a command. If a message starts with an alias, the command will also get triggered. This does not support regex.",
+                "usage": "alias {command} add {alias 1} {alias 2} {alias 3}",
+                "example": "alias id:1234 add hello hi hey"
+            },
+            {
+                "usage": "alias {command} remove {alias 1} {alias 2} {alias 3}",
+                "example": "alias id:1234 remove hello hi hey"
+            },
+            {
+                "description": "Add or remove keywords for a command. If a keyword is in any part of a message (seperated by a non-word character), the command will also get triggered. This does not support regex.",
+                "usage": "keyword {command} add {keyword 1} {keyword 2} {keyword 3}",
+                "example": "keyword id:1234 add hello hi hey"
+            },
+            {
+                "usage": "keyword {command} remove {keyword 1} {keyword 2} {keyword 3}",
+                "example": "keyword id:1234 remove hello hi hey"
+            },
+            {
+                "description": "Change the settings for a command. Multiple options can be changed in a single message. The available settings are:"
+            },
+            {
+                "description": "Enable a command.",
+                "usage": "options {command} -enable",
+                "example": "options id:1234 -enable",
+                "no-margin": true
+            },
+            {
+                "description": "Disable a command.",
+                "usage": "options {command} -disable",
+                "example": "options id:1234 -disable",
+                "no-margin": true
+            },
+            {
+                "description": "Toggle case case sensitivity for a command trigger.",
+                "usage": "options {command} case:{true/false}",
+                "example": "options id:1234 case:true",
+                "no-margin": true
+            },
+            {
+                "description": "Set a channel cooldown for a command in seconds.",
+                "usage": "options {command} globalcooldown:{cooldown}",
+                "example": "options id:1234 globalcooldown:15",
+                "no-margin": true
+            },
+            {
+                "description": "Set a user cooldown for a command in seconds.",
+                "usage": "options {command} usercooldown:{cooldown}",
+                "example": "options id:1234 usercooldown:15",
+                "no-margin": true
+            },
+            {
+                "description": "Set a role requirement for a command. A user requires at least this role or higher to execute the command. Valid roles are: blacklisted, regular, subscriber, vip, moderator, broadcaster.",
+                "usage": "options {command} role:{role}",
+                "example": "options id:1234 role:vip",
+                "no-margin": true
+            },
+            {
+                "description": "Delete a command.",
+                "usage": "delete {command}",
+                "example": "delete id:1234"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "commands": {
+        "description": "Gets a list of all the custom command triggers and their id's in the current channel.",
+        "usage": [
+            {
+                "description": "Get the custom command list.",
+                "usage": ""
+            }
+        ],
+        "category": "settings",
+        "cooldown": 10,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "customcommands"
+        ],
+        "flags": []
+    },
+    "disable": {
+        "description": "Disables a command in the current channel.",
+        "usage": [
+            {
+                "description": "Disable one or more commands.",
+                "usage": "{command 1} {command 2}",
+                "example": "7tvu followage"
+            },
+            {
+                "description": "Disable all commands.",
+                "usage": "all"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "editorfor": {
+        "description": "Gets the channels a user is editor in and if the request is still pending.",
+        "usage": [
+            {
+                "description": "Get the channels you are editor in.",
+                "usage": ""
+            },
+            {
+                "description": "Get the channels someone else is editor in",
+                "usage": "{username}",
+                "example": "7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "emote": {
+        "description": "Gets basic information about a 7tv emote.",
+        "usage": [
+            {
+                "description": "Get information about an added emote.",
+                "usage": "{emote}",
+                "example": "Alright"
+            },
+            {
+                "description": "Get information from an emote url or id",
+                "usage": "{id}",
+                "example": "01GRKPZCJ80004NWC6YE8DQMV2"
+            },
+            {
+                "usage": "{url}",
+                "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
+            },
+            {
+                "description": "Using the 'in' alias will look for the emote name in a different channel. This does not work when a url or id is provided.",
+                "usage": "{emote} in:{channel}",
+                "example": "Alright in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "7tvemote"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Looks for emotes in the provided channel."
+            }
+        ]
+    },
+    "emotelink": {
+        "description": "Gets a 7tv cdn link for an emote from the current channel.",
+        "usage": [
+            {
+                "description": "Get a cdn link.",
+                "usage": "{emote}",
+                "example": "Alright"
+            },
+            {
+                "description": "Get the cdn link for the specified file extension or size.",
+                "usage": "{emote} {extension}",
+                "example": "Alright gif"
+            },
+            {
+                "usage": "{emote} {size}.{extension}",
+                "example": "Alright 3x.gif"
+            },
+            {
+                "description": "Using the 'in' flag will look for the emote in a different channel.",
+                "usage": "{emote} in:{channel}",
+                "example": "Alright in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "el"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Looks for emotes in the provided channel."
+            }
+        ]
+    },
+    "emotes": {
+        "description": "Gets all 7tv emotes added in the current channel. The bot requires at least vip to use this command.",
+        "usage": [
+            {
+                "description": "Get all the emotes.",
+                "usage": ""
+            },
+            {
+                "description": "Get all the emotes from a different channel.",
+                "usage": "in:{channel}",
+                "example": "in:7tvapp"
+            },
+            {
+                "description": "Get all added emotes uploaded by the specified twitch user.",
+                "usage": "by:{username}",
+                "example": "by:trippycolour"
+            },
+            {
+                "description": "Get all added emotes with the specified id or url.",
+                "usage": "id:{id}",
+                "example": "id:01GRKPZCJ80004NWC6YE8DQMV2"
+            },
+            {
+                "usage": "id:{url}",
+                "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 30,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Gets the emotes from the provided channel channel."
+            },
+            {
+                "flags": [
+                    "by",
+                    "uploader"
+                ],
+                "type": "parameter",
+                "description": "Filters emotes to only show emotes by the provided uploader based on their twitch username."
+            },
+            {
+                "flags": [
+                    "id"
+                ],
+                "type": "parameter",
+                "description": "Filters emotes to only show emotes with the provided id."
+            }
+        ]
+    },
+    "enable": {
+        "description": "Enables a command in the current channel.",
+        "usage": [
+            {
+                "description": "Enable one or more commands.",
+                "usage": "{command 1} {command 2}",
+                "example": "7tvu followage"
+            },
+            {
+                "description": "Enable all commands.",
+                "usage": "all"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "epoch": {
+        "description": "Gets the date and time for the specified unix timestamp.",
+        "usage": [
+            {
+                "description": "Get the current unix time.",
+                "usage": ""
+            },
+            {
+                "description": "Get the date and time for a specified timestamp. If the length of the timestamp is longer than 10, it will use miliseconds, else it will defualt to seconds.",
+                "usage": "{timestamp}",
+                "example": "453983312"
+            }
+        ],
+        "category": "time",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "unix"
+        ],
+        "flags": []
+    },
+    "fish": {
+        "description": "Fishes",
+        "usage": [
+            {
+                "description": "Fish",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 3,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "catch"
+        ],
+        "flags": []
+    },
+    "followage": {
+        "description": "Gets a user's followage",
+        "usage": [
+            {
+                "description": "Get your followage in the current channel.",
+                "usage": ""
+            },
+            {
+                "description": "Get a different users followage in the current channel.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Get a different users followage in a different channel.",
+                "usage": "{username} {channel}",
+                "example": "justinfan1234 justinfan6789"
+            },
+            {
+                "description": "Using the 'in' flag will get your followage in the specified channel.",
+                "usage": "in:{channel}",
+                "example": "in:justinfan6789"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "fa"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Gets a user's followage in the provided channel."
+            }
+        ]
+    },
+    "fullunscramble": {
+        "description": "Gets all words that can be made using the provided letters.",
+        "usage": [
+            {
+                "description": "Unscramble the letters.",
+                "usage": "{letters}",
+                "example": "abcde"
+            },
+            {
+                "description": "Using the 'min' or 'max' flag will cap the length of words.",
+                "usage": "{letters} min:{minimun} max:{maximum}",
+                "example": "abcde min:4 max:12"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 20,
+        "role": {
+            "role": 3,
+            "name": "vip"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "unscramblefull",
+            "unscrambleall",
+            "fus"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "min",
+                    "minimun"
+                ],
+                "type": "parameter",
+                "description": "Sets the minimun word length to the provided length."
+            },
+            {
+                "flags": [
+                    "max",
+                    "maximum"
+                ],
+                "type": "parameter",
+                "description": "Sets the maximum word length at the provided length."
+            }
+        ]
+    },
+    "haspotat": {
+        "description": "Gets PotatBotat data for a channel.",
+        "usage": [
+            {
+                "description": "Get data for the current channel.",
+                "usage": ""
+            },
+            {
+                "description": "Get data for a different channel. Using the 'in' flag has the same effect.",
+                "usage": "{channel}",
+                "example": "justinfan6789"
+            },
+            {
+                "usage": "in:{channel}",
+                "example": "in:justinfan6789"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "haspotatbotat",
+            "hasbotat"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Gets the data from the specified channel."
+            }
+        ]
+    },
+    "help": {
+        "description": "Gets help on how to use a command.",
+        "usage": [
+            {
+                "description": "Get a link where all commands are listed.",
+                "usage": ""
+            },
+            {
+                "description": "Get help a specific command.",
+                "usage": "{command}",
+                "example": "trivia"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "hint": {
+        "description": "Gets a hint for the active trivia in the current channel.",
+        "usage": [
+            {
+                "description": "Get a hint.",
+                "usage": ""
+            }
+        ],
+        "category": null,
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "ic": {
+        "description": "Returns the combining grapheme joiner, which is an invisible character that can be sent on twitch.",
+        "usage": [
+            {
+                "description": "Get the character.",
+                "usage": ""
+            }
+        ],
+        "category": "utility",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "invisiblecharacter"
+        ],
+        "flags": []
+    },
+    "join": {
+        "description": "Joins the bot in your channel.",
+        "usage": [
+            {
+                "description": "Join the bot.",
+                "usage": ""
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "leaderboard": {
+        "description": "Gets the leaderboard for fish or catfood.",
+        "usage": [
+            {
+                "description": "Get the fish leaderboard.",
+                "usage": ""
+            },
+            {
+                "description": "Get the catfood leaderboard.",
+                "usage": "catfood"
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "lb"
+        ],
+        "flags": []
+    },
+    "level": {
+        "description": "Gets a users level.",
+        "usage": [
+            {
+                "description": "Get your own level.",
+                "usage": ""
+            },
+            {
+                "description": "Get a different user's level.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "ul",
+            "ulevel",
+            "userlevel"
+        ],
+        "flags": []
+    },
+    "list": {
+        "description": "Manages your lists.",
+        "usage": [
+            {
+                "description": "Using the 'mainlist' alias will use your list called 'main'. You will have this list by default.",
+                "usage": "mainlist {action} {arguments}",
+                "example": "mainlist item 3",
+                "alias": true
+            },
+            {
+                "description": "Using the 'lists' alias will show all your lists.",
+                "usage": "lists",
+                "alias": true
+            },
+            {
+                "description": "Create a list.",
+                "usage": "create {list name}",
+                "example": "create todo's"
+            },
+            {
+                "description": "Get the items in a list.",
+                "usage": "{list}",
+                "example": "todo's"
+            },
+            {
+                "description": "Add an item to a list.",
+                "usage": "add {list} {item}",
+                "example": "add todo's do the thing"
+            },
+            {
+                "description": "Show an item from a list using its index.",
+                "usage": "item {list} {index}",
+                "example": "item todo's 3"
+            },
+            {
+                "description": "Remove an item from a list using its index.",
+                "usage": "remove {list} {index}",
+                "example": "remove todo's 3"
+            },
+            {
+                "description": "Delete a list.",
+                "usage": "delete {list}",
+                "example": "delete todo's"
+            },
+            {
+                "description": "Restore a list, if no new list with that name has been created.",
+                "usage": "restore {list}",
+                "example": "restore todo's"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "mainlist",
+            "lists"
+        ],
+        "flags": []
+    },
+    "morse": {
+        "description": "Encodes/decodes morse code, decode needs to be the same format as encode returns.",
+        "usage": [
+            {
+                "description": "Encode text.",
+                "usage": "encode {text}",
+                "example": "encode I like dots and dashes!"
+            },
+            {
+                "description": "Decode text.",
+                "usage": "decode {text}",
+                "example": "decode - .... .. ... / - . -..- - / .. ... / -- --- .-. ... . / -.-. --- -.. . -.-.--"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "namechange": {
+        "description": "Gets the name history of a user.",
+        "usage": [
+            {
+                "description": "Get your own name changes",
+                "usage": "",
+                "example": null
+            },
+            {
+                "description": "Get a different user's name changes.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Using the 'dates' flag will provide the date each name change was detected.",
+                "usage": "{username} -dates",
+                "example": "justinfan1234 -dates"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "nc"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "dates"
+                ],
+                "type": "flag",
+                "description": "Also provides the dates for each name change."
+            }
+        ]
+    },
+    "offlineonly": {
+        "description": "Disables a command while the current channel is live.",
+        "usage": [
+            {
+                "description": "Disable one or more commands while live.",
+                "usage": "{command 1} {command 2}",
+                "example": "7tvu followage"
+            },
+            {
+                "description": "Disable all commands while live.",
+                "usage": "all"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "livedisable",
+            "offline"
+        ],
+        "flags": []
+    },
+    "part": {
+        "description": "Parts the bot from your channel.",
+        "usage": [
+            {
+                "description": "Part the bot.",
+                "usage": ""
+            }
+        ],
+        "category": "bot",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "ping": {
+        "description": "Gets basic information about the bot.",
+        "usage": [
+            {
+                "description": "Get the information.",
+                "usage": ""
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "player": {
+        "description": "Gets the twitch player for a channel.",
+        "usage": [
+            {
+                "description": "Defaults to the current channel if no channel is provided.",
+                "usage": ""
+            },
+            {
+                "description": "Get a channel's player. Using the 'in' flag has the same effect.",
+                "usage": "{channel}",
+                "example": "justinfan6789"
+            },
+            {
+                "description": null,
+                "usage": "in:{channel}",
+                "example": "in:justinfan6789"
+            },
+            {
+                "description": "Using the 'muted' flag will mute the player.",
+                "usage": "{channel} -muted",
+                "example": "justinfan6789 -muted"
+            },
+            {
+                "description": "Using the 'extensions' flag will enable extensions (such as blerp) on the stream.",
+                "usage": "{channel} -extensions",
+                "example": "justinfan6789 -extensions"
+            },
+            {
+                "description": "Using the 'pause' flag will stop the player from auto-playing.",
+                "usage": "{channel} -pause",
+                "example": "justinfan6789 -pause"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Gets the player for the specified channel."
+            },
+            {
+                "flags": [
+                    "muted",
+                    "muted"
+                ],
+                "type": "flag",
+                "description": "Mutes the streams audio"
+            },
+            {
+                "flags": [
+                    "extensions",
+                    "enableextensions"
+                ],
+                "type": "flag",
+                "description": "Enables extensions from showing on the stream."
+            },
+            {
+                "flags": [
+                    "pause",
+                    "pause",
+                    "no-autoplay"
+                ],
+                "type": "flag",
+                "description": "Stops the stream from auto-playing."
+            }
+        ]
+    },
+    "potatask": {
+        "description": "Executes PotatBotat's 'ask' command: https://potat.app/help/ask",
+        "usage": [
+            {
+                "description": "Execute the ask command with a prompt.",
+                "usage": "{prompt}",
+                "example": "Hello, how are you?"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "potatgpt": {
+        "description": "Executes PotatBotat's 'ask' command: https://potat.app/help/gpt",
+        "usage": [
+            {
+                "description": "Execute the gpt command with a prompt.",
+                "usage": "{prompt}",
+                "example": "What is Twitch?"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "potatocooldowns": {
+        "description": "Gets the cooldowns for the potato farming commands on PotatBotat for a user.",
+        "usage": [
+            {
+                "description": "Get your own cooldowns.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's cooldowns",
+                "usage": "{username}",
+                "example": "justinfan6789"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "pocooldowns",
+            "pocooldown",
+            "poc",
+            "pc"
+        ],
+        "flags": []
+    },
+    "potatoinfo": {
+        "description": "Gets PotatBotat farming stats that can only be seen through api.",
+        "usage": [
+            {
+                "description": "Get your own stats.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's stats.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "pd",
+            "potatodata",
+            "potatostats",
+            "poinfo"
+        ],
+        "flags": []
+    },
+    "presence": {
+        "description": "Updates a user's 7tv cosmetics for everyone with the current chat open.",
+        "usage": [
+            {
+                "description": "Update your cosmetics.",
+                "usage": ""
+            },
+            {
+                "description": "Update a user's cosmetics.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Using the 'in' flag will update cosmetics for users in the specified channel.",
+                "usage": "{username} in:{channel}",
+                "example": "justinfan1234 in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Updates a user's presence in the specified channel."
+            }
+        ]
+    },
+    "prestige": {
+        "description": "Makes you prestige in the minigame. This gives a 10% catfood multiplier.",
+        "usage": [
+            {
+                "description": "Prestige.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "pull": {
+        "description": "Pulls and/or restarts the bot.",
+        "usage": [
+            {
+                "description": "Pull and restart the bot.",
+                "usage": ""
+            },
+            {
+                "description": "Using the 'restart' alias will restart the bot.",
+                "usage": "restart",
+                "alias": true
+            },
+            {
+                "description": "Using the 'pip' flag will install all packages before restarting.",
+                "usage": "-pip"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [
+            "restart"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "pip"
+                ],
+                "type": "flag",
+                "description": "Install all packages from requirements.txt."
+            }
+        ]
+    },
+    "py": {
+        "description": "Executes python code.",
+        "usage": [
+            {
+                "description": "Execute code.",
+                "usage": "{code}",
+                "example": "1+1"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 0,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [
+            "python",
+            "eval",
+            "e"
+        ],
+        "flags": []
+    },
+    "pyramid": {
+        "description": "spams a word or sentence in a pyramid. The max width is currently 5.",
+        "usage": [
+            {
+                "description": "Make a pyramid.",
+                "usage": "{width} {word}",
+                "example": "3 This is a pyramid!"
+            }
+        ],
+        "category": null,
+        "cooldown": 30,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "quiz": {
+        "description": "Gets the answer for a PotatBotat quiz. Tip: replying to the quiz message will also work!",
+        "usage": [
+            {
+                "description": "Get the answer.",
+                "usage": "{quiz}",
+                "example": "If 3 potatoes cost $1.50, how much do 8 potatoes cost?"
+            }
+        ],
+        "category": "potatbotat",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "answer"
+        ],
+        "flags": []
+    },
+    "raidmessage": {
+        "description": "Add/remove a raid message that will be sent when the channel gets raided.",
+        "usage": [
+            {
+                "description": "Set a raid message.",
+                "usage": "set {message}",
+                "example": "set raid!!"
+            },
+            {
+                "description": "Variables can be added to the message for more information."
+            },
+            {
+                "description": "'username': The channel that raided the current channel. This is all lowercase.",
+                "usage": "set ${username}",
+                "example": "set ${username} just raided the channel, check them out at twitch.tv/${username}!"
+            },
+            {
+                "description": "'display': The display name for the channel that raided the current channel. This will also work for localized display names.",
+                "usage": "set ${display}",
+                "example": "set ${display} just raided the channel!"
+            },
+            {
+                "description": "'viewers': The amount of raiders.",
+                "usage": "set ${viewers}",
+                "example": "set BatChest ${viewers} gazillion viewer raid!!!"
+            },
+            {
+                "description": "Remove a raid message.",
+                "usage": "remove"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "raidnotif"
+        ],
+        "flags": []
+    },
+    "rank": {
+        "description": "Shows information about your current minigame rank.",
+        "usage": [
+            {
+                "description": "Show information.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "rankup": {
+        "description": "Ranks you up to the next minigame rank.",
+        "usage": [
+            {
+                "description": "Rank up.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "reload": {
+        "description": "Reloads commands.",
+        "usage": [
+            {
+                "description": "Reload all commands.",
+                "usage": ""
+            },
+            {
+                "description": "Reload one or more commands.",
+                "usage": "{command 1} {command 2}",
+                "example": "ping add"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 0,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "remove": {
+        "description": "Removes one or more 7tv emotes.",
+        "usage": [
+            {
+                "description": "Remove one or more emotes.",
+                "usage": "{emote 1} {emote 2}",
+                "example": "buh mhm"
+            },
+            {
+                "description": "An id or url can also be provided. This will remove all emotes with the specified id.",
+                "usage": "{id} {url}",
+                "example": "01GQFT1WF80002Q9KS8SKQMHHY https://7tv.app/emotes/01GWBD2YR00002CCPRV6KPX758"
+            },
+            {
+                "description": "Using the 'in' flag will remove emotes in the specified channel.",
+                "usage": "{emote} in:{channel}",
+                "example": "meow in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Remove emotes in a different channel"
+            }
+        ]
+    },
+    "rename": {
+        "description": "Renames a 7tv emote.",
+        "usage": [
+            {
+                "description": "Rename a 7tv emote. Using the 'as' flag as the same effect as providing a new alias.",
+                "usage": "{emote} {alias}",
+                "example": "wait wade"
+            },
+            {
+                "description": null,
+                "usage": "{emote} as:{alias}",
+                "example": "wait as:wade"
+            },
+            {
+                "description": "Using the 'in' alias will rename the emote in the specified channel.",
+                "usage": "{emote} {alias} in:{channel}",
+                "example": "wait wade in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Rename emotes in a different channel"
+            },
+            {
+                "flags": [
+                    "as",
+                    "alias"
+                ],
+                "type": "parameter",
+                "description": "The alias to rename the emote to"
+            }
+        ]
+    },
+    "reply": {
+        "description": "Sets the way the bot will reply to your messages. This is set to 'reply' by default",
+        "usage": [
+            {
+                "description": "Set the way the bot replies to you, there are 4 different options, which are listed below.",
+                "usage": "{option}",
+                "example": "reply"
+            },
+            {
+                "description": "reply: Replies to your messages.",
+                "no-margin": true
+            },
+            {
+                "description": "ping: Mentions you at the start of the message.",
+                "no-margin": true
+            },
+            {
+                "description": "unping: Mentions you at the start of the message, but without actually pinging you.",
+                "no-margin": true
+            },
+            {
+                "description": "none: Wont ping you at all.",
+                "no-margin": true
+            },
+            {
+                "usage": "reply"
+            },
+            {
+                "usage": "mention"
+            },
+            {
+                "usage": "unping"
+            },
+            {
+                "usage": "none"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "mention",
+            "unping",
+            "noping"
+        ],
+        "flags": []
+    },
+    "say": {
+        "description": "Sends the proided message.",
+        "usage": [
+            {
+                "description": "Send a message.",
+                "usage": "{message}",
+                "example": "hi"
+            },
+            {
+                "description": "Using the 'in' flag will send the message in the provided channel.",
+                "usage": "{message} in:{channel}",
+                "example": "hi in:justinfan6789"
+            },
+            {
+                "description": "Using the 'api' flag will send the message through helix instead of tmi.",
+                "usage": "{message} -api",
+                "example": "hi -api"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 3,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 2,
+            "name": "admin"
+        },
+        "aliases": [
+            "s"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to send the message to"
+            },
+            {
+                "flags": [
+                    "api"
+                ],
+                "type": "flag",
+                "description": "Send the message through helix instead of irc"
+            }
+        ]
+    },
+    "sell": {
+        "description": "Sells your fish for cat food.",
+        "usage": [
+            {
+                "description": "Sell your fish. A percentage or 'all' can be provided.",
+                "usage": "{amount}",
+                "example": "84"
+            },
+            {
+                "description": null,
+                "usage": "{percentage}%",
+                "example": "18%"
+            },
+            {
+                "description": null,
+                "usage": "all"
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "sellprice": {
+        "description": "Gets the current sellprice. This changes every 15 minutes.",
+        "usage": [
+            {
+                "description": "Get the current sellprice.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "setlevel": {
+        "description": "Sets a user's global bot level.",
+        "usage": [
+            {
+                "description": "Set a user's level.",
+                "usage": "{username} {level}",
+                "example": "justinfan1234 0"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 2,
+            "name": "admin"
+        },
+        "aliases": [
+            "setlvl"
+        ],
+        "flags": []
+    },
+    "shop": {
+        "description": "Shows all shop items.",
+        "usage": [
+            {
+                "description": "See the shop.",
+                "usage": ""
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "spam": {
+        "description": "Spam a message. Max spam count is 10.",
+        "usage": [
+            {
+                "description": "Spam a message.",
+                "usage": "{message} {count}",
+                "example": "hi 5"
+            }
+        ],
+        "category": null,
+        "cooldown": 30,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "sql": {
+        "description": "Executes an SQL query.",
+        "usage": [
+            {
+                "description": "Execute a query.",
+                "usage": "{query}",
+                "example": "SELECT COUNT(*) FROM users"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 0,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 3,
+            "name": "developer"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "stats": {
+        "description": "Gets minigame stats for a user.",
+        "usage": [
+            {
+                "description": "Get stats for a user.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "minigame",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "streaminfo": {
+        "description": "Gets stream information for a channel.",
+        "usage": [
+            {
+                "description": "Get stream information for a channel. Using the 'in' flag will have the same effect.",
+                "usage": "{channel}",
+                "example": "{justinfan6789}"
+            },
+            {
+                "usage": "in:{channel}",
+                "example": "in:justinfan6789"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "streaminformation",
+            "downtime",
+            "uptime",
+            "liveinfo",
+            "si"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to get the stream information from"
+            }
+        ]
+    },
+    "stvsa": {
+        "description": "Shows how long a user has been a 7tv sub, or when they were last subbed.",
+        "usage": [
+            {
+                "description": "Get a user's 7tv subage.",
+                "usage": "{username}",
+                "example": "7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "7tvsa",
+            "7tvsubage"
+        ],
+        "flags": []
+    },
+    "stvset": {
+        "description": "Gets the the active set in a channel.",
+        "usage": [
+            {
+                "description": "Get the active set in the provided channel. Using the 'in' flag will have the same effect.",
+                "usage": "{channel}",
+                "example": "7tvapp"
+            },
+            {
+                "usage": "in:{channel}",
+                "example": "in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "set",
+            "7tvset",
+            "emoteset"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to get the set of"
+            }
+        ]
+    },
+    "stvuser": {
+        "description": "Gets a 7tv user.",
+        "usage": [
+            {
+                "description": "Get a 7tv user by twitch username, twitch id or 7tv id.",
+                "usage": "{username}",
+                "example": "7tvapp"
+            },
+            {
+                "description": null,
+                "usage": "{twitch id}",
+                "example": "503012119"
+            },
+            {
+                "usage": "{7tv id}",
+                "example": "01FRG0ZGSR00084PQ73P1BYDX8"
+            },
+            {
+                "description": "Using the 'query' flag will get the first user for the provided query.",
+                "usage": "{query} -query",
+                "example": "7tvapp -query"
+            },
+            {
+                "description": "Using the 'discord' flag will get the user with the provided discord id.",
+                "usage": "{discord id} -discord",
+                "example": "123456789012345678 -discord"
+            },
+            {
+                "description": "Using the 'kick' flag will get the user with the provided kick username.",
+                "usage": "{kick username} -kick",
+                "example": "justinfan1234 -kick"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "stvu",
+            "7tvuser",
+            "7tvu"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "query",
+                    "search"
+                ],
+                "type": "parameter",
+                "description": "Get the first user from user search"
+            },
+            {
+                "flags": [
+                    "discord"
+                ],
+                "type": "flag",
+                "description": "Get a user by their discord id"
+            },
+            {
+                "flags": [
+                    "kick"
+                ],
+                "type": "flag",
+                "description": "Get a user by their kick slug (username)"
+            }
+        ]
+    },
+    "subage": {
+        "description": "Shows how long a user has been subbed to a channel, or when they were last subbed.",
+        "usage": [
+            {
+                "description": "Get a user's subage for the current channel.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Get a user's subage in channel.",
+                "usage": "{username} {channel}",
+                "example": "justinfan1234 justinfan6789"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "sa"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "Get a user's sub age in a different channel"
+            }
+        ]
+    },
+    "suggest": {
+        "description": "Makes a suggestion or bug report. Or checks a suggestion's status by it's id.",
+        "usage": [
+            {
+                "description": "Make a suggestion or bug report.",
+                "usage": "{suggestion}",
+                "example": "this and that is not working"
+            },
+            {
+                "description": "Check a suggestion's status.",
+                "usage": "{suggestion id}",
+                "example": "wi5qjmo"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "suggestion"
+        ],
+        "flags": []
+    },
+    "time": {
+        "description": "Gets the date and time for a timezone.",
+        "usage": [
+            {
+                "description": "Get the date for a timezone, country or country code.",
+                "usage": "{timezone}",
+                "example": "AEDT"
+            },
+            {
+                "usage": "{country}",
+                "example": "australia"
+            },
+            {
+                "usage": "{country code}",
+                "example": "AU"
+            }
+        ],
+        "category": "time",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "timezone",
+            "tz"
+        ],
+        "flags": []
+    },
+    "title": {
+        "description": "Gets the title of a channel. Defaults to the current channel.",
+        "usage": [
+            {
+                "description": "Get the title for the current channel.",
+                "usage": ""
+            },
+            {
+                "description": "Get the title for a channel. Using the 'in' alias has the same effect.",
+                "usage": "{channel}",
+                "example": "justinfan6789"
+            },
+            {
+                "usage": "in:{channel}",
+                "example": "in:justinfan6789"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to get the title of"
+            }
+        ]
+    },
+    "trigger": {
+        "description": "Sets a custom bot trigger for the current channel.",
+        "usage": [
+            {
+                "description": "Set the bot trigger.",
+                "usage": "{trigger}",
+                "example": "!"
+            }
+        ],
+        "category": "settings",
+        "cooldown": 5,
+        "role": {
+            "role": 5,
+            "name": "broadcaster"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "prefix"
+        ],
+        "flags": []
+    },
+    "trivia": {
+        "description": "Starts a trivia with a random trivia question which has to be answered in chat.",
+        "usage": [
+            {
+                "description": "Start a trivia.",
+                "usage": ""
+            },
+            {
+                "description": "Using the 'category' flag will only start trivias with the specified category.",
+                "usage": "category:{category}",
+                "example": "category:science"
+            },
+            {
+                "description": "Using the 'difficulty' flag will only start trivias with the specified difficulty. This can also be achieved by using the 'easy', 'medium' or 'hard' flags.",
+                "usage": "difficulty:{difficulty}",
+                "example": "difficulty:medium"
+            },
+            {
+                "usage": "-easy"
+            },
+            {
+                "usage": "-medium"
+            },
+            {
+                "usage": "-hard"
+            }
+        ],
+        "category": null,
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "category"
+                ],
+                "type": "parameter",
+                "description": "The trivia category to get the trivia of"
+            },
+            {
+                "flags": [
+                    "difficulty"
+                ],
+                "type": "parameter",
+                "description": "The trivia difficulty to get the trivia of"
+            },
+            {
+                "flags": [
+                    "easy"
+                ],
+                "type": "flag",
+                "description": "Only get easy trivias"
+            },
+            {
+                "flags": [
+                    "medium"
+                ],
+                "type": "flag",
+                "description": "Only get medium trivias"
+            },
+            {
+                "flags": [
+                    "hard"
+                ],
+                "type": "flag",
+                "description": "Only get hard trivias"
+            }
+        ]
+    },
+    "uid": {
+        "description": "Gets the stored ids for a user.",
+        "usage": [
+            {
+                "description": "Get your own stored ids.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's stored ids.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "id",
+            "userid"
+        ],
+        "flags": []
+    },
+    "unban": {
+        "description": "Unban a user from the bot in the current channel.",
+        "usage": [
+            {
+                "description": "Unban a user.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "unscramble": {
+        "description": "Unscrambles letters into possible words.",
+        "usage": [
+            {
+                "description": "Unscramble letters.",
+                "usage": "{letters}",
+                "example": "abcdelmnrsu"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "scramble",
+            "scrambled",
+            "us"
+        ],
+        "flags": []
+    },
+    "user": {
+        "description": "Gets a twitch user.",
+        "usage": [
+            {
+                "description": "Get your own twitch user.",
+                "usage": ""
+            },
+            {
+                "description": "Get a twitch user.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "u"
+        ],
+        "flags": []
+    },
+    "usercard": {
+        "description": "Get the usercard link for a user in a channel",
+        "usage": [
+            {
+                "description": "Get your usercard for the current channel.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's usercard for the current channel.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Get a user's usercard for the specified channel.",
+                "usage": "{username} {channel}",
+                "example": "justinfan1234 justinfan6789"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "uc"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to get the usercard in"
+            }
+        ]
+    },
+    "usertime": {
+        "description": "Gets the current time for the provided user. Also sets your timezone so others can get your time.",
+        "usage": [
+            {
+                "description": "Get your current time.",
+                "usage": ""
+            },
+            {
+                "description": "Get a user's current time.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            },
+            {
+                "description": "Set your own timezone. This can be a timezone, country or country code",
+                "usage": "set {timezone}",
+                "example": "set AEDT"
+            },
+            {
+                "usage": "set {country}",
+                "example": "set australia"
+            },
+            {
+                "usage": "set {country code}",
+                "example": "set AU"
+            }
+        ],
+        "category": "time",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "utime",
+            "ut"
+        ],
+        "flags": []
+    },
+    "vanish": {
+        "description": "Vanish from the chat. This will time you out for 1 second.",
+        "usage": [
+            {
+                "description": "Vanish.",
+                "usage": ""
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": []
+    },
+    "yoink": {
+        "description": "Adds the provided emote that is added in the current channel to your own channel.",
+        "usage": [
+            {
+                "description": "Yoink an emote.",
+                "usage": "{emote}",
+                "example": "Alright"
+            },
+            {
+                "description": "Using the 'as' flag will add the emote as the specififed alias.",
+                "usage": "{emote} as:{alias}",
+                "example": "miniAlright as:alr"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "as",
+                    "alias"
+                ],
+                "type": "parameter",
+                "description": "Yoink an emote as an alias"
+            }
+        ]
+    }
+}
