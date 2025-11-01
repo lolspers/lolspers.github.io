@@ -101,6 +101,10 @@ function commandClick(e) {
 function switchCommand(command) {
     let data = commandData[command];
 
+    if (!data) {
+        return
+    }
+
     showCommand(command, data);
 
     window.history.pushState({}, command, `/commands/${command}`);
