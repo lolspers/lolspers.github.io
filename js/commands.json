@@ -35,8 +35,16 @@
         "usage": [
             {
                 "description": "Add 7TV emotes by searching for them. Emote ids or urls can also be provided.",
-                "usage": "{emote 1} {emote id} {emote url}",
-                "example": "LOL 01H0405680000AJFXTYVX2PNJ7 https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
+                "usage": "{emotes}",
+                "example": "LOL WW"
+            },
+            {
+                "usage": "{emote id}",
+                "example": "01H0405680000AJFXTYVX2PNJ7"
+            },
+            {
+                "usage": "{emote url}",
+                "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
             },
             {
                 "description": "Using the 'as' flag will add an emote as an alias.",
@@ -45,13 +53,13 @@
             },
             {
                 "description": "Using the 'from' flag will add 7TV emotes that are added in the specified channel. This is case sensitive.",
-                "usage": "{emote} from:{channel}",
-                "example": "mhm from:7tvapp"
+                "usage": "{emotes} from:{channel}",
+                "example": "mhm OOOO from:7tvapp"
             },
             {
                 "description": "Using the 'in' flag will add 7TV emotes from the current channel in the specified channel. This searches for emotes if they were not found in the current channel.",
-                "usage": "{emote} in:{channel}",
-                "example": "catAsk in:7tvapp"
+                "usage": "{emotes} in:{channel}",
+                "example": "catAsk catAnswer in:7tvapp"
             }
         ],
         "category": "7tv",
@@ -137,8 +145,8 @@
         "usage": [
             {
                 "description": "Allow one or more commands. This will also enable all of the command's aliases while live.",
-                "usage": "{command 1} {command 2}",
-                "example": "ping spam"
+                "usage": "{commands}",
+                "example": "ping spam coinflip"
             },
             {
                 "description": "Allow all commands.",
@@ -306,8 +314,12 @@
             },
             {
                 "description": "Enclosing the banphrase with slashes '/' will add the banphrase as a regex pattern. This is still not case sensitive.",
-                "usage": "{add/remove} /{banphrase}/",
+                "usage": "add /{banphrase}/",
                 "example": "add /Cheap viewers on example\\.(com|org|tv) ?!*/"
+            },
+            {
+                "usage": "remove /{banphrase}/",
+                "example": "remove /Cheap viewers on example\\.(com|org|tv) ?!*/"
             },
             {
                 "description": "Enable all banphrases.",
@@ -446,8 +458,8 @@
         "usage": [
             {
                 "description": "Pick a random option. Options must be seperated by a space.",
-                "usage": "{option 1} {option 2} {option 3}",
-                "example": "chat game sleep"
+                "usage": "{options}",
+                "example": "work code eat"
             }
         ],
         "category": "utility",
@@ -495,19 +507,21 @@
             {
                 "description": "Commands can be added or selected with regex by enclosing the trigger with slashes '/'. They can also be selected by using the id. These should always be provided right after the subcommand.",
                 "usage": "/{regex pattern}/",
-                "example": "/([A-Z])]\\w+/"
+                "example": "/([A-Z])]\\w+/",
+                "alias": true
             },
             {
                 "usage": "id:{id}",
-                "example": "id:1234"
+                "example": "id:1234",
+                "alias": true
             },
             {
                 "description": "Add a custom command. Commands using a regex pattern as trigger are not case sensitive by default."
             },
             {
                 "description": "There are a few variables that can be added to the response. See the full variable list at the bottom.",
-                "usage": "command add {trigger} {response}",
-                "example": "command add hi Hello ${touser}!"
+                "usage": "add {trigger} {response}",
+                "example": "add hi Hello ${touser}!"
             },
             {
                 "usage": "command add /{regex pattern}/ {response}",
@@ -530,20 +544,20 @@
             },
             {
                 "description": "Add or remove aliases for a command. If a message starts with an alias, the command will also get triggered. This does not support regex.",
-                "usage": "alias {command} add {alias 1} {alias 2} {alias 3}",
+                "usage": "alias {command} add {aliases}",
                 "example": "alias id:1234 add hello hi hey"
             },
             {
-                "usage": "alias {command} remove {alias 1} {alias 2} {alias 3}",
+                "usage": "alias {command} remove {aliases}",
                 "example": "alias id:1234 remove hello hi hey"
             },
             {
                 "description": "Add or remove keywords for a command. If a keyword is in any part of a message (seperated by a non-word character), the command will also get triggered. This does not support regex.",
-                "usage": "keyword {command} add {keyword 1} {keyword 2} {keyword 3}",
+                "usage": "keyword {command} add {keywords}",
                 "example": "keyword id:1234 add hello hi hey"
             },
             {
-                "usage": "keyword {command} remove {keyword 1} {keyword 2} {keyword 3}",
+                "usage": "keyword {command} remove {keywords}",
                 "example": "keyword id:1234 remove hello hi hey"
             },
             {
@@ -563,8 +577,11 @@
             },
             {
                 "description": "Toggle case case sensitivity for a command trigger.",
-                "usage": "options {command} case:{true/false}",
-                "example": "options id:1234 case:true",
+                "usage": "options {command} case:true",
+                "no-margin": true
+            },
+            {
+                "usage": "options {command} case:false",
                 "no-margin": true
             },
             {
@@ -632,8 +649,8 @@
         "usage": [
             {
                 "description": "Disable one or more commands.",
-                "usage": "{command 1} {command 2}",
-                "example": "7tvu followage"
+                "usage": "{commands}",
+                "example": "7tvu followage afk"
             },
             {
                 "description": "Disable all commands.",
@@ -842,8 +859,8 @@
         "usage": [
             {
                 "description": "Enable one or more commands.",
-                "usage": "{command 1} {command 2}",
-                "example": "7tvu followage"
+                "usage": "{commands}",
+                "example": "trivia vanish namechange"
             },
             {
                 "description": "Enable all commands.",
@@ -1339,8 +1356,8 @@
         "usage": [
             {
                 "description": "Disable one or more commands while live.",
-                "usage": "{command 1} {command 2}",
-                "example": "7tvu followage"
+                "usage": "{commands}",
+                "example": "emote bio presence"
             },
             {
                 "description": "Disable all commands while live.",
@@ -1778,17 +1795,20 @@
             {
                 "description": "'username': The channel that raided the current channel. This is all lowercase.",
                 "usage": "set ${username}",
-                "example": "set ${username} just raided the channel, check them out at twitch.tv/${username}!"
+                "example": "set ${username} just raided the channel, check them out at twitch.tv/${username}!",
+                "no-margin": true
             },
             {
                 "description": "'display': The display name for the channel that raided the current channel. This will also work for localized display names.",
                 "usage": "set ${display}",
-                "example": "set ${display} just raided the channel!"
+                "example": "set ${display} just raided the channel!",
+                "no-margin": true
             },
             {
                 "description": "'viewers': The amount of raiders.",
                 "usage": "set ${viewers}",
-                "example": "set BatChest ${viewers} gazillion viewer raid!!!"
+                "example": "set BatChest ${viewers} gazillion viewer raid!!!",
+                "no-margin": true
             },
             {
                 "description": "Remove a raid message.",
@@ -1861,8 +1881,8 @@
             },
             {
                 "description": "Reload one or more commands.",
-                "usage": "{command 1} {command 2}",
-                "example": "ping add"
+                "usage": "{commands}",
+                "example": "pull emotes list"
             }
         ],
         "category": "bot",
@@ -1883,18 +1903,22 @@
         "usage": [
             {
                 "description": "Remove one or more emotes.",
-                "usage": "{emote 1} {emote 2}",
-                "example": "buh mhm"
+                "usage": "{emotes}",
+                "example": "buh gg EDM"
             },
             {
                 "description": "An id or url can also be provided. This will remove all emotes with the specified id.",
-                "usage": "{id} {url}",
-                "example": "01GQFT1WF80002Q9KS8SKQMHHY https://7tv.app/emotes/01GWBD2YR00002CCPRV6KPX758"
+                "usage": "{id}",
+                "example": "01GQFT1WF80002Q9KS8SKQMHHY"
+            },
+            {
+                "usage": "{url}",
+                "example": "https://7tv.app/emotes/01GWBD2YR00002CCPRV6KPX758"
             },
             {
                 "description": "Using the 'in' flag will remove emotes in the specified channel.",
-                "usage": "{emote} in:{channel}",
-                "example": "meow in:7tvapp"
+                "usage": "{emotes} in:{channel}",
+                "example": "omE jah dansi in:7tvapp"
             }
         ],
         "category": "7tv",
