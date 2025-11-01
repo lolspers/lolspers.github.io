@@ -58,7 +58,6 @@ function handleRedirect() {
     let command = params.get("command");
 
     if (command) {
-
         switchCommand(command.toLowerCase());
 
         return true
@@ -111,9 +110,15 @@ function switchCommand(command) {
     
     let data = commandData[command];
 
-    if (data) {
-        showCommand(command, data);
+    if (!data) {
+        window.history.replaceState({}, "", "/commands");
+
+        $(".command-name").text("Command not found");
+
+        return
     }
+
+    showCommand(command, data);
 }
 
 
@@ -123,7 +128,7 @@ function showCommand(command, data) {
     localStorage.setItem("commands-last", command);
 
     window.history.pushState({}, command, `/commands/${command}`);
-    
+
 
     $(".command-active").removeClass("command-active");
 
