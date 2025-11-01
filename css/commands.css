@@ -166,7 +166,7 @@
     flex-flow: column;
 }
 
-.command-example , .command-text{
+.command-example, .command-text, .command-text-quote {
     margin-top: 0.1rem;
     font-family: "Inter", sans-serif;
     font-weight: 300;
@@ -184,7 +184,11 @@
 .command-example {
     position: relative;
     bottom: 0.3rem;
-    margin-top: 0;
+    margin-top: 0.05rem;
+    font-style: italic;
+}
+
+.command-text-quote {
     font-style: italic;
 }
 
@@ -193,7 +197,7 @@
 }
 
 
-.command-example-text {
+.command-example-text, .command-text-quote {
     padding: 0.2rem 0.35rem 0.2rem 0.35rem;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;

@@ -157,7 +157,11 @@ function showCommand(command, data) {
 
         
         if (hasDescription) {
-            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"}">${usage.description}</p>`);
+            let description = usage.description;
+
+            description = description.replace(/'(\S+)'/g, "<span class='command-text-quote'>$1</span>");
+
+            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"}">${description}</p>`);
         }
 
 
