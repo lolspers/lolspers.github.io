@@ -40,8 +40,11 @@ async function getCommandData() {
     let redirected = handleRedirect();
 
     if (!redirected) {
-        let firstCommand = commandAliases[commandAliasesArray[0]];
-        showCommand(firstCommand, commandData[firstCommand]);
+        let lastCommand = localStorage.getItem("commands-last");
+
+        lastCommand = lastCommand ? lastCommand : commandAliases[commandAliasesArray[0]];
+
+        showCommand(lastCommand, commandData[lastCommand]);
     }
 
     updateSearch();
@@ -108,8 +111,6 @@ function switchCommand(command) {
     
     let data = commandData[command];
 
-    window.history.pushState({}, command, `/commands/${command}`);
-
     if (data) {
         showCommand(command, data);
     }
@@ -118,6 +119,11 @@ function switchCommand(command) {
 
 function showCommand(command, data) {
     activeCommand = command;
+
+    localStorage.setItem("commands-last", command);
+
+    window.history.pushState({}, command, `/commands/${command}`);
+    
 
     $(".command-active").removeClass("command-active");
 
