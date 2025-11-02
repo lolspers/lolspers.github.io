@@ -2096,6 +2096,30 @@
             }
         ]
     },
+    "scramble": {
+        "description": "Scrambles a sentence.",
+        "usage": [
+            {
+                "description": "Scramble a sentence.",
+                "usage": "{letters}",
+                "example": "This sentence will be scrambled!"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "role": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "mix"
+        ],
+        "flags": []
+    },
     "sell": {
         "description": "Sells your fish for cat food.",
         "usage": [
@@ -2747,7 +2771,6 @@
             "name": "regular"
         },
         "aliases": [
-            "scramble",
             "scrambled",
             "us"
         ],
