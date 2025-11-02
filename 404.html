@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>404: Not Found</title>
 
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/navbar.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/navbar.css" rel="stylesheet">
+        <link href="/css/404.css" rel="stylesheet">
 
-        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/404.js"></script>
     </head>
 
     <body>
@@ -22,12 +24,18 @@
                 </div>
                 <div class="navbar-buttons-right">
                     <div class="navbar-button" id="navbar-button-login">
-                        <a class="navbar-button-anchor" href="/"><img class="navbar-button-img" src="images/twitchlogo.png"><span>Log In</span></a>
+                        <a class="navbar-button-anchor" href="/"><img class="navbar-button-img" src="/images/twitchlogo.png"><span>Log In</span></a>
                     </div>
                 </div>
             </div>
         </div>
         
+        <div class="container">
+            <div id="error-container">
+                <img class="error-image" src="/images/FeelsDankMan.png">
+                <p class="error-text">Page not found</p>
+            </div>
+        </div>
     </body>
 
     <script>

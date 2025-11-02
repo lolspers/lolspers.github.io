@@ -1,131 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Iolbot</title>
-    <link href="style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <div class="tb"> 
-      <div class="tbButton" value="/">
-        <p value="/">Home</p>
-      </div>
-      <div class="tbButton" value="commands">
-        <p value="commands">Commands</p>
-      </div>
+    <head>
+        <title>Commands</title>
 
-      <div class="left">
-        <div class="themeSelect">
-            <div class="light" id="theme-light"></div>
-            <div class="dark" id="theme-dark"></div>
-          </div>
-    
-          <div class="authButton">
-            <p>Personal Use</p>
-            <p class="smol">(so do not click)</p>
-          </div>
-        </div>
-      </div>
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/navbar.css" rel="stylesheet">
+        <link href="css/commands.css" rel="stylesheet">
 
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/commands.js"></script>
+    </head>
 
-    
-    <div class="commands">
-        <div class="sbContainer">
-            <div class="searchBar">
-                <input id="searchBar" placeholder="Search...">
-            </div>
-            <div class="sbButtons">
-            </div>
-        </div>
-        <div class="cmdMenusContainer">
-            <div class="cmdMenus">
-              <div class="sorting">
-                <div class="categories">
-                  <div class="categorybutton button-category-null" value="null">no category</div>
+    <body>
+        <div id="navbar">
+            <div class="navbar-buttons">
+                <div class="navbar-buttons-left">
+                    <div class="navbar-button">
+                        <a class="navbar-button-anchor" href="/"><span>Home</span></a>
+                    </div>
+                    <div class="navbar-button navbar-button-active">
+                        <a class="navbar-button-anchor" href="/commands"><span>Commands</span></a>
+                    </div>
                 </div>
-                <div class="sort">
-                  <p>Sort by</p>
-                  <select name="sort" id="sort">
-                    <option class="sortOption">a-z</option>
-                    <option class="sortOption">z-a</option>
-                    <option class="sortOption">category</option>
-                  </select>
+                <div class="navbar-buttons-right">
+                    <div class="navbar-button" id="navbar-button-login">
+                        <a class="navbar-button-anchor" href="/"><img class="navbar-button-img" src="images/twitchlogo.png"><span>Log In</span></a>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
-        <div class="helpButton">
-            <div id="helpButtonText">?</div>
-        </div>
-    </div>
+        
+
+        <div class="container">
+            <div class="command-container">
+                <div class="command-top">
+                    <div class="command-search-bar-container">
+                        <input id="command-search-bar" type="text" placeholder="Search">
+                    </div>
+                    <div class="command-name-container">
+                        <div class="command-name">
+                            Command name
+                        </div>
+                    </div>
+                </div>
+                <div class="command-bottom">
+                    <div class="command-commands-container">
+                        <div class="scroll-shadow-top"></div>
+
+                        <div class="command-commands-buttons-container">
+                        </div>
+                        
+                        <div class="scroll-shadow-bottom"></div>
+                    </div>
+                    <div class="command-help-container">
+                        <div class="command-info-container command-box-container scrollbox-dark">
+                            <div class="command-container-margin">
+                                <h4 class="command-header">Short description</h4>
+                                <p class="command-text" id="command-info-description">-</p>
+
+                                <h4 class="command-header">Usage guide</h4>
 
 
-    <div class="helpPopup" style="display: none;">
-        <div class="backgroundBlur"></div>
-        <div class="helpPopupContainer">
-            <div class="helpPopupClose">×</div>
-            <div class="levelHelp">
-                <h3>Levels</h3>
-                <p style="white-space: pre-line;">Levels 2-4 are chat based.
-                    All levels can be set globally by admins or higher, this also includes 2-4.
-                    Levels determine which commands can be used.
-                </p>
-                <ol>
-                    <li>Regular</li>
-                    <li>VIP</li>
-                    <li>Moderator</li>
-                    <li>Broadcaster</li>
-                    <li>Admin</li>
-                    <li>Dev</li>
-                </ol>
+                                <div id="command-usage-guide">-</div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="command-attributes-container command-box-container scrollbox-dark">
+                            <div class="command-container-margin">
+                                <div id="command-attribute-category">
+                                    <h4 class="command-header">Category</h4>
+                                    <p class="command-text">-</p>
+                                </div>
+                                <div id="command-attribute-cooldown">
+                                    <h4 class="command-header">Cooldown</h4>
+                                    <p class="command-text">-</p>
+                                </div>
+                                <div id="command-attribute-role">
+                                    <h4 class="command-header">Role</h4>
+                                    <p class="command-text">-</p>
+                                </div>
+                                <div id="command-attribute-level">
+                                    <h4 class="command-header">Level</h4>
+                                    <p class="command-text">-</p>
+                                </div>
+                                <div id="command-attribute-alias">
+                                    <h4 class="command-header">Alias</h4>
+                                    <p class="command-text">-</p>
+                                </div>
+                                <div id="command-attribute-flags">
+                                    <h4 class="command-header">Flags</h4>
+                                    <div class="command-attribute-flags-container"></div>
+                                    <p class="command-text">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3>Icons</h3>
-            <div class="infoIcons" style="display: block;">
-                <p><img class="infoIcon" src="img/7tv.webp">7tv</p>
-                <p><img class="infoIcon" src="img/twitch.webp">twitch</p>
-                <p><img class="infoIcon" src="img/potatbotat.webp">potatbotat</p>
-                <p><img class="infoIcon" src="img/minigame.webp">minigame</p>
-                <p><img class="infoIcon" src="img/settings.webp">settings</p>
-                <p><img class="infoIcon" src="img/bot.webp">bot</p>
-                <p><img class="infoIcon" src="img/time.webp">time</p>
-            </div>
         </div>
-    </div>
-
     </body>
-    <script src="src/main.js"></script>
-    <script type="module">
-      import { showHelpPopup, hideHelpPopup, loadCommands, commandSearch, showCategories, sortCommands, parseParams } from "./src/commands.js"
-
-      if (!localStorage.getItem("visited")) {
-          showHelpPopup()
-          localStorage.setItem("visited", true)
-      }
-      $(".helpButton").click(showHelpPopup)
-      $(".helpPopupClose").click(hideHelpPopup)
-      $(".backgroundBlur").click(hideHelpPopup)
-
-      loadCommands()
-      commandSearch()
-      $("#searchBar").keyup(commandSearch)
-      $(".categorybutton").click(showCategories)
-      $("#sort").change(sortCommands)
-
-      const params = new URLSearchParams(document.location.search)
-      if (params) { parseParams(params) }
-
-      $(document).ready(() => {
-          $("#sort").trigger("change")
-      })
-    </script>
-    <script>
-      login()
-
-      $(".themeSelect").click(changeTheme)
-    </script>
 </html>

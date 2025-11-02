@@ -1,0 +1,22 @@
+
+#error-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+
+.error-image {
+    width: 112px;
+    height: 128px;
+}
+
+
+.error-text {
+    font-size: 1.5rem;
+    line-height: 0;
+    font-weight: bold;
+}
