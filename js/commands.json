@@ -1,6 +1,7 @@
 {
     "accountage": {
         "description": "Shows when and how long ago a user created their twitch account.",
+        "extra": null,
         "usage": [
             {
                 "description": "Defaults to the executor if no user is provided.",
@@ -32,6 +33,7 @@
     },
     "add": {
         "description": "Adds one or more 7TV emotes. This searches for the provided emote(s) and adds the first exact match.",
+        "extra": "This is not case sensitive. Both the bot and the user require 7tv editor for this command to work.",
         "usage": [
             {
                 "description": "Add 7TV emotes by searching for them. Emote ids or urls can also be provided.",
@@ -104,6 +106,7 @@
     },
     "afk": {
         "description": "Sets an AFK status, and sends a message when you're back.",
+        "extra": null,
         "usage": [
             {
                 "description": "Go AFK without a status.",
@@ -124,6 +127,11 @@
                 "usage": "gn {message}",
                 "example": "gn Goodnight",
                 "alias": true
+            },
+            {
+                "description": "Using the 'rafk' alias will continue your afk status without resetting the afk time.",
+                "usage": "rafk",
+                "alias": true
             }
         ],
         "category": "utility",
@@ -138,12 +146,14 @@
         },
         "aliases": [
             "brb",
-            "gn"
+            "gn",
+            "rafk"
         ],
         "flags": []
     },
     "always": {
         "description": "Allows one or more commands to still be useable while the channel is live.",
+        "extra": null,
         "usage": [
             {
                 "description": "Allow one or more commands. This will also enable all of the command's aliases while live.",
@@ -173,6 +183,7 @@
     },
     "asay": {
         "description": "Sends a message through a different user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Send a message.",
@@ -210,6 +221,7 @@
     },
     "ascii": {
         "description": "Makes an ascii art of a Twitch, 7TV, BTTV or FFZ emote. This uses the first frame if the emote is animated.",
+        "extra": "The emote priority in order from first to last: Twitch, channel 7TV, channel BTTV, channel FFZ, global 7TV, global BTTV, global FFZ.",
         "usage": [
             {
                 "description": "Make an ascii art.",
@@ -247,6 +259,7 @@
     },
     "b64": {
         "description": "Encodes/decodes text to or from base64.",
+        "extra": null,
         "usage": [
             {
                 "description": "Encode text to base64.",
@@ -276,6 +289,7 @@
     },
     "ban": {
         "description": "Bans a user from interacting in any way with the bot in the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Ban a user.",
@@ -301,6 +315,7 @@
     },
     "banphrase": {
         "description": "Adds a banphrase. This will ban a first time chatter if any part of it is in their message.",
+        "extra": "Banphrases are not case sensitive. The bot requires mod for the banphrases to work.",
         "usage": [
             {
                 "description": "Show all banphrases.",
@@ -349,6 +364,7 @@
     },
     "bio": {
         "description": "Gets a user's about me.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own about me.",
@@ -358,6 +374,11 @@
                 "description": "Get a user's about me.",
                 "usage": "{username}",
                 "example": "justinfan1234"
+            },
+            {
+                "description": "Using the 'kick' flag will get a kick user's about me instead of twitch.",
+                "usage": "{slug} -kick",
+                "example": "justinfan6789 -kick"
             }
         ],
         "category": "twitch",
@@ -374,10 +395,20 @@
             "about",
             "description"
         ],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "kick"
+                ],
+                "type": "flag",
+                "description": "Get a kick user's about me.",
+                "usage": "-kick"
+            }
+        ]
     },
     "cat": {
         "description": "Collects the fish your cat has caught. It catches 1 cat every 30 minutes.",
+        "extra": null,
         "usage": [
             {
                 "description": "Collect your fish.",
@@ -401,6 +432,7 @@
     },
     "cdata": {
         "description": "Gets an estimated chance for each cookie based on logs for ThePositiveBot, this is not updated in real time.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the data.",
@@ -417,11 +449,16 @@
             "level": 1,
             "name": "regular"
         },
-        "aliases": [],
+        "aliases": [
+            "cstats",
+            "cookiedata",
+            "cdata"
+        ],
         "flags": []
     },
     "chatsettings": {
         "description": "Gets the chat settings and modes in a channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Defaults to the current channel if no channel is provded.",
@@ -458,8 +495,35 @@
             }
         ]
     },
+    "check": {
+        "description": "Shows the status of a suggestion.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Check a suggestion.",
+                "usage": "suggestion {suggestion id}",
+                "example": "suggestion 1sgjmeq"
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "show",
+            "inspect"
+        ],
+        "flags": []
+    },
     "choice": {
         "description": "Picks a random option from the provided options.",
+        "extra": null,
         "usage": [
             {
                 "description": "Pick a random option. Options must be seperated by a space.",
@@ -485,6 +549,7 @@
     },
     "coinflip": {
         "description": "Flips a coin.",
+        "extra": null,
         "usage": [
             {
                 "description": "Flip a coin. Will land on either heads or tails.",
@@ -508,6 +573,7 @@
     },
     "command": {
         "description": "Manages custom commands for the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Commands can be added or selected with regex by enclosing the trigger with slashes '/'. They can also be selected by using the id. These should always be provided right after the subcommand.",
@@ -566,7 +632,8 @@
                 "example": "keyword id:1234 remove hello hi hey"
             },
             {
-                "description": "Change the settings for a command. Multiple options can be changed in a single message. The available settings are:"
+                "description": "Change the settings for a command. Multiple options can be changed in a single message. The available settings are:",
+                "bold": true
             },
             {
                 "description": "Enable a command.",
@@ -602,7 +669,7 @@
                 "no-margin": true
             },
             {
-                "description": "Set a role requirement for a command. A user requires at least this role or higher to execute the command. Valid roles are: blacklisted, regular, subscriber, vip, moderator, broadcaster.",
+                "description": "Set a role requirement for a command. A user requires at least this role or higher to execute the command. Valid roles are: blacklisted, regular, subscriber, vip, moderator, lead-moderator, broadcaster.",
                 "usage": "options {command} role:{role}",
                 "example": "options id:1234 role:vip",
                 "no-margin": true
@@ -628,6 +695,7 @@
     },
     "commands": {
         "description": "Gets a list of all the custom command triggers and their id's in the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the custom command list.",
@@ -651,6 +719,7 @@
     },
     "disable": {
         "description": "Disables a command in the current channel.",
+        "extra": "Aliases can be used and will disable every other alias aswell.",
         "usage": [
             {
                 "description": "Disable one or more commands.",
@@ -677,6 +746,7 @@
     },
     "editorfor": {
         "description": "Gets the channels a user is editor in and if the request is still pending.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the channels you are editor in.",
@@ -703,6 +773,7 @@
     },
     "emote": {
         "description": "Gets basic information about a 7tv emote.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get information about an added emote.",
@@ -751,6 +822,7 @@
     },
     "emotelink": {
         "description": "Gets a 7tv cdn link for an emote from the current channel.",
+        "extra": "If no file extension is provided it will default to 4x.gif.",
         "usage": [
             {
                 "description": "Get a cdn link.",
@@ -799,6 +871,7 @@
     },
     "emotes": {
         "description": "Gets all 7tv emotes added in the current channel. The bot requires at least vip to use this command.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get all the emotes.",
@@ -866,6 +939,7 @@
     },
     "enable": {
         "description": "Enables a command in the current channel.",
+        "extra": "Aliases can be used and will enable every other alias aswell.",
         "usage": [
             {
                 "description": "Enable one or more commands.",
@@ -892,6 +966,7 @@
     },
     "epoch": {
         "description": "Gets the date and time for the specified unix timestamp.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the current unix time.",
@@ -920,6 +995,7 @@
     },
     "fish": {
         "description": "Fishes",
+        "extra": null,
         "usage": [
             {
                 "description": "Fish.",
@@ -943,6 +1019,7 @@
     },
     "followage": {
         "description": "Gets a user's followage",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your followage in the current channel.",
@@ -991,6 +1068,7 @@
     },
     "fullunscramble": {
         "description": "Gets all words that can be made using the provided letters.",
+        "extra": null,
         "usage": [
             {
                 "description": "Unscramble the letters.",
@@ -1041,6 +1119,7 @@
     },
     "haspotat": {
         "description": "Gets PotatBotat data for a channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get data for the current channel.",
@@ -1084,6 +1163,7 @@
     },
     "help": {
         "description": "Gets help on how to use a command.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get a link where all commands are listed.",
@@ -1110,6 +1190,7 @@
     },
     "hint": {
         "description": "Gets a hint for the active trivia in the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get a hint.",
@@ -1131,6 +1212,7 @@
     },
     "ic": {
         "description": "Returns the combining grapheme joiner, which is an invisible character that can be sent on twitch.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the character.",
@@ -1154,6 +1236,7 @@
     },
     "join": {
         "description": "Joins the bot in your channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Join the bot.",
@@ -1175,6 +1258,7 @@
     },
     "leaderboard": {
         "description": "Gets the leaderboard for fish or catfood.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the fish leaderboard.",
@@ -1202,6 +1286,7 @@
     },
     "level": {
         "description": "Gets a users level.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own level.",
@@ -1232,6 +1317,7 @@
     },
     "list": {
         "description": "Manages your lists.",
+        "extra": null,
         "usage": [
             {
                 "description": "Using the 'mainlist' alias will use your list called 'main'. You will have this list by default.",
@@ -1298,6 +1384,7 @@
     },
     "morse": {
         "description": "Encodes/decodes morse code, decode needs to be the same format as encode returns.",
+        "extra": "Unknown characters will encode/decode as a '?'.",
         "usage": [
             {
                 "description": "Encode text.",
@@ -1325,6 +1412,7 @@
     },
     "namechange": {
         "description": "Gets the name history of a user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own name changes.",
@@ -1366,8 +1454,72 @@
             }
         ]
     },
+    "notify": {
+        "description": "Adds or removes a notification to the current channel. This will send a message when the set condition is met. Changes the notification message if an already added notification is provided.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Add a notificaton. Some types of notifications also require a condition to be specified. An optional message can be added to be sent with the notification.",
+                "usage": "{type} {condition} {message}",
+                "example": "live justinfan6789 @everyone DinkDonk"
+            },
+            {
+                "usage": "{type} {message}",
+                "example": "twitch-emotes PagMan new emote added!!!"
+            },
+            {
+                "description": "Update the message for an existing notification. Providing no new message will remove the previous notification message.",
+                "usage": "{type} {condition} {message}",
+                "example": "live justinfan6789 yearly stream"
+            },
+            {
+                "description": "Using the 'unnotify' or 'unannounce' alias will remove an existing notification.",
+                "usage": "unnotify {type} {condition}",
+                "example": "unnotify offline justinfan6789",
+                "alias": true
+            },
+            {
+                "usage": "unnotify {type}",
+                "example": "unnotify twitch-badges",
+                "alias": true
+            },
+            {
+                "description": "The available notification types are:",
+                "bold": true
+            },
+            {
+                "description": "live: send a message when the provided channel goes live.",
+                "usage": "live {channel} {message}",
+                "example": "live justinfan6789",
+                "no-margin": true
+            },
+            {
+                "description": "offline: send a message when the provided channel goes offline.",
+                "usage": "offline {channel} {message}",
+                "example": "offline justinfan6789",
+                "no-margin": true
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "announce",
+            "unannounce",
+            "unnotify"
+        ],
+        "flags": []
+    },
     "offlineonly": {
         "description": "Disables a command while the current channel is live.",
+        "extra": "Aliases can be used and will disable every other alias aswell. This does not affect moderators of the channel.",
         "usage": [
             {
                 "description": "Disable one or more commands while live.",
@@ -1397,6 +1549,7 @@
     },
     "part": {
         "description": "Parts the bot from your channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Part the bot.",
@@ -1418,6 +1571,7 @@
     },
     "ping": {
         "description": "Gets basic information about the bot.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the information.",
@@ -1439,6 +1593,7 @@
     },
     "player": {
         "description": "Gets the twitch player for a channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Defaults to the current channel if no channel is provided.",
@@ -1520,52 +1675,33 @@
             }
         ]
     },
-    "potatask": {
-        "description": "Executes PotatBotat's 'ask' command: https://potat.app/help/ask",
+    "potat": {
+        "description": "Execute a PotatBotat command.",
+        "extra": null,
         "usage": [
             {
-                "description": "Execute the ask command with a prompt.",
-                "usage": "{prompt}",
-                "example": "Hello, how are you?"
+                "description": "Execute a command.",
+                "usage": "{command}"
             }
         ],
-        "category": "potatbotat",
-        "cooldown": 15,
+        "category": "utility",
+        "cooldown": 0,
         "role": {
             "role": 1,
             "name": "regular"
         },
         "level": {
-            "level": 1,
-            "name": "regular"
+            "level": 3,
+            "name": "developer"
         },
-        "aliases": [],
-        "flags": []
-    },
-    "potatgpt": {
-        "description": "Executes PotatBotat's 'ask' command: https://potat.app/help/gpt",
-        "usage": [
-            {
-                "description": "Execute the gpt command with a prompt.",
-                "usage": "{prompt}",
-                "example": "What is Twitch?"
-            }
+        "aliases": [
+            "#"
         ],
-        "category": "potatbotat",
-        "cooldown": 15,
-        "role": {
-            "role": 1,
-            "name": "regular"
-        },
-        "level": {
-            "level": 1,
-            "name": "regular"
-        },
-        "aliases": [],
         "flags": []
     },
     "potatocooldowns": {
         "description": "Gets the cooldowns for the potato farming commands on PotatBotat for a user.",
+        "extra": "This does the same as the #status command: https://potat.app/help/status",
         "usage": [
             {
                 "description": "Get your own cooldowns.",
@@ -1597,6 +1733,7 @@
     },
     "potatoinfo": {
         "description": "Gets PotatBotat farming stats that can only be seen through api.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own stats.",
@@ -1628,6 +1765,7 @@
     },
     "presence": {
         "description": "Updates a user's 7tv cosmetics for everyone with the current chat open.",
+        "extra": null,
         "usage": [
             {
                 "description": "Update your cosmetics.",
@@ -1669,6 +1807,7 @@
     },
     "prestige": {
         "description": "Makes you prestige in the minigame. This gives a 10% catfood multiplier.",
+        "extra": null,
         "usage": [
             {
                 "description": "Prestige.",
@@ -1690,6 +1829,7 @@
     },
     "pull": {
         "description": "Pulls and/or restarts the bot.",
+        "extra": null,
         "usage": [
             {
                 "description": "Pull and restart the bot.",
@@ -1731,6 +1871,7 @@
     },
     "py": {
         "description": "Executes python code.",
+        "extra": null,
         "usage": [
             {
                 "description": "Execute code.",
@@ -1757,6 +1898,7 @@
     },
     "pyramid": {
         "description": "spams a word or sentence in a pyramid. The max width is currently 5.",
+        "extra": null,
         "usage": [
             {
                 "description": "Make a pyramid.",
@@ -1779,6 +1921,7 @@
     },
     "quiz": {
         "description": "Gets the answer for a PotatBotat quiz. Tip: replying to the quiz message will also work!",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the answer.",
@@ -1803,6 +1946,7 @@
     },
     "raidmessage": {
         "description": "Add/remove a raid message that will be sent when the channel gets raided.",
+        "extra": null,
         "usage": [
             {
                 "description": "Set a raid message.",
@@ -1852,6 +1996,7 @@
     },
     "rank": {
         "description": "Shows information about your current minigame rank.",
+        "extra": null,
         "usage": [
             {
                 "description": "Show information.",
@@ -1873,6 +2018,7 @@
     },
     "rankup": {
         "description": "Ranks you up to the next minigame rank.",
+        "extra": null,
         "usage": [
             {
                 "description": "Rank up.",
@@ -1894,6 +2040,7 @@
     },
     "reload": {
         "description": "Reloads commands.",
+        "extra": null,
         "usage": [
             {
                 "description": "Reload all commands.",
@@ -1920,6 +2067,7 @@
     },
     "remove": {
         "description": "Removes one or more 7tv emotes.",
+        "extra": null,
         "usage": [
             {
                 "description": "Remove one or more emotes.",
@@ -1966,6 +2114,7 @@
     },
     "rename": {
         "description": "Renames a 7tv emote.",
+        "extra": null,
         "usage": [
             {
                 "description": "Rename a 7tv emote. Using the 'as' flag as the same effect as providing a new alias.",
@@ -2016,11 +2165,16 @@
     },
     "reply": {
         "description": "Sets the way the bot will reply to your messages. This is set to 'reply' by default",
+        "extra": null,
         "usage": [
             {
-                "description": "Set the way the bot replies to you, there are 4 different options, which are listed below.",
+                "description": "Set the way the bot replies to you.",
                 "usage": "{option}",
                 "example": "reply"
+            },
+            {
+                "description": "The 4 possible options are:",
+                "bold": true
             },
             {
                 "description": "reply: Replies to your messages.",
@@ -2070,6 +2224,7 @@
     },
     "say": {
         "description": "Sends the proided message.",
+        "extra": null,
         "usage": [
             {
                 "description": "Send a message.",
@@ -2122,11 +2277,17 @@
     },
     "scramble": {
         "description": "Scrambles a sentence.",
+        "extra": null,
         "usage": [
             {
                 "description": "Scramble a sentence.",
                 "usage": "{letters}",
                 "example": "This sentence will be scrambled!"
+            },
+            {
+                "description": "Using the 'preserve-words' flag will scramble words individually, making them keep the same length and letters.",
+                "usage": "{letters} -preserve-words",
+                "example": "This sentence will be scrambled! -preserve-words"
             }
         ],
         "category": "utility",
@@ -2142,10 +2303,22 @@
         "aliases": [
             "mix"
         ],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "preserve-words",
+                    "preserve-spaces",
+                    "words"
+                ],
+                "type": "flag",
+                "description": "Scrambles the letters of each word individually.",
+                "usage": "-preserve-words"
+            }
+        ]
     },
     "sell": {
         "description": "Sells your fish for cat food.",
+        "extra": null,
         "usage": [
             {
                 "description": "Sell your fish. A percentage or 'all' can be provided.",
@@ -2175,6 +2348,7 @@
     },
     "sellprice": {
         "description": "Gets the current sellprice. This changes every 15 minutes.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the current sellprice.",
@@ -2196,6 +2370,7 @@
     },
     "setlevel": {
         "description": "Sets a user's global bot level.",
+        "extra": "Possible levels are blacklisted, regular, admin and developer.",
         "usage": [
             {
                 "description": "Set a user's level.",
@@ -2220,6 +2395,7 @@
     },
     "shop": {
         "description": "Shows all shop items.",
+        "extra": null,
         "usage": [
             {
                 "description": "See the shop.",
@@ -2241,6 +2417,7 @@
     },
     "spam": {
         "description": "Spam a message. Max spam count is 10.",
+        "extra": null,
         "usage": [
             {
                 "description": "Spam a message.",
@@ -2263,6 +2440,7 @@
     },
     "sql": {
         "description": "Executes an SQL query.",
+        "extra": null,
         "usage": [
             {
                 "description": "Execute a query.",
@@ -2285,6 +2463,7 @@
     },
     "stats": {
         "description": "Gets minigame stats for a user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get stats for a user.",
@@ -2307,15 +2486,29 @@
     },
     "streaminfo": {
         "description": "Gets stream information for a channel.",
+        "extra": null,
         "usage": [
+            {
+                "description": "Get stream information for the current channel.",
+                "usage": ""
+            },
             {
                 "description": "Get stream information for a channel. Using the 'in' flag will have the same effect.",
                 "usage": "{channel}",
-                "example": "{justinfan6789}"
+                "example": "justinfan6789"
             },
             {
                 "usage": "in:{channel}",
                 "example": "in:justinfan6789"
+            },
+            {
+                "description": "Using the 'kick' flag will get stream information for a kick channel instead of a twitch channel.",
+                "usage": "{slug} -kick",
+                "example": "justinfan6789"
+            },
+            {
+                "usage": "in:{slug} -kick",
+                "example": "in:justinfan6789 -kick"
             }
         ],
         "category": "twitch",
@@ -2338,6 +2531,14 @@
         "flags": [
             {
                 "flags": [
+                    "kick"
+                ],
+                "type": "flag",
+                "description": "Get stream information for a kick channel.",
+                "usage": "-kick"
+            },
+            {
+                "flags": [
                     "in",
                     "channel"
                 ],
@@ -2347,8 +2548,51 @@
             }
         ]
     },
+    "stveditors": {
+        "description": "Gets the 7tv editors of a channel.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Get the editors of a channel, if no channel is provided it will default to the current channel. Using the 'in' flag will have the same effect.",
+                "usage": "{channel}",
+                "example": "7tvapp"
+            },
+            {
+                "usage": "in:{channel}",
+                "example": "in:7tvapp"
+            }
+        ],
+        "category": "7tv",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "7tveditors",
+            "emoteeditors",
+            "channeleditors",
+            "editors"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "in",
+                    "channel"
+                ],
+                "type": "parameter",
+                "description": "The channel to get the editors of.",
+                "usage": "in:{channel}"
+            }
+        ]
+    },
     "stvsa": {
         "description": "Shows how long a user has been a 7tv sub, or when they were last subbed.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get a user's 7tv subage.",
@@ -2374,6 +2618,7 @@
     },
     "stvset": {
         "description": "Gets the the active set in a channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the active set in the provided channel. Using the 'in' flag will have the same effect.",
@@ -2414,6 +2659,7 @@
     },
     "stvuser": {
         "description": "Gets a 7tv user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get a 7tv user by twitch username, twitch id or 7tv id.",
@@ -2489,6 +2735,7 @@
     },
     "subage": {
         "description": "Shows how long a user has been subbed to a channel, or when they were last subbed.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get a user's subage for the current channel.",
@@ -2527,17 +2774,13 @@
         ]
     },
     "suggest": {
-        "description": "Makes a suggestion or bug report. Or checks a suggestion's status by it's id.",
+        "description": "Makes a suggestion or bug report.",
+        "extra": null,
         "usage": [
             {
                 "description": "Make a suggestion or bug report.",
                 "usage": "{suggestion}",
-                "example": "this and that is not working"
-            },
-            {
-                "description": "Check a suggestion's status.",
-                "usage": "{suggestion id}",
-                "example": "wi5qjmo"
+                "example": "this and that"
             }
         ],
         "category": "bot",
@@ -2557,6 +2800,7 @@
     },
     "time": {
         "description": "Gets the date and time for a timezone.",
+        "extra": "A country or country code can also be provided.",
         "usage": [
             {
                 "description": "Get the date for a timezone, country or country code.",
@@ -2590,6 +2834,7 @@
     },
     "title": {
         "description": "Gets the title of a channel. Defaults to the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get the title for the current channel.",
@@ -2603,6 +2848,15 @@
             {
                 "usage": "in:{channel}",
                 "example": "in:justinfan6789"
+            },
+            {
+                "description": "Using the 'kick' flag will get the title of a kick channel instead of a twitch channel.",
+                "usage": "{slug} -kick",
+                "exmaple": "justinfan6789 -kick"
+            },
+            {
+                "usage": "in:{slug} -kick",
+                "exmaple": "in:justinfan6789 -kick"
             }
         ],
         "category": "twitch",
@@ -2619,6 +2873,14 @@
         "flags": [
             {
                 "flags": [
+                    "kick"
+                ],
+                "type": "flag",
+                "description": "Get the title of a kick channel.",
+                "usage": "-kick"
+            },
+            {
+                "flags": [
                     "in",
                     "channel"
                 ],
@@ -2630,6 +2892,7 @@
     },
     "trigger": {
         "description": "Sets a custom bot trigger for the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Set the bot trigger.",
@@ -2641,7 +2904,7 @@
         "cooldown": 5,
         "role": {
             "role": 5,
-            "name": "broadcaster"
+            "name": "lead-moderator"
         },
         "level": {
             "level": 1,
@@ -2654,6 +2917,7 @@
     },
     "trivia": {
         "description": "Starts a trivia with a random trivia question which has to be answered in chat.",
+        "extra": null,
         "usage": [
             {
                 "description": "Start a trivia.",
@@ -2735,6 +2999,7 @@
     },
     "uid": {
         "description": "Gets the stored ids for a user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own stored ids.",
@@ -2764,6 +3029,7 @@
     },
     "unban": {
         "description": "Unban a user from the bot in the current channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Unban a user.",
@@ -2786,6 +3052,7 @@
     },
     "unscramble": {
         "description": "Unscrambles letters into possible words.",
+        "extra": null,
         "usage": [
             {
                 "description": "Unscramble letters.",
@@ -2811,15 +3078,30 @@
     },
     "user": {
         "description": "Gets a twitch user.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your own twitch user.",
                 "usage": ""
             },
             {
-                "description": "Get a twitch user.",
+                "description": "Get a twitch user by their username.",
                 "usage": "{username}",
                 "example": "justinfan1234"
+            },
+            {
+                "description": "Get a twitch user by their user id.",
+                "usage": "{user id}",
+                "example": "123456"
+            },
+            {
+                "description": "Using the 'kick' flag will get a user by their kick slug or kick user id instead of twitch's.",
+                "usage": "{slug} -kick",
+                "example": "justinfan1234"
+            },
+            {
+                "usage": "{user id} -kick",
+                "example": "1234567890"
             }
         ],
         "category": "twitch",
@@ -2835,10 +3117,20 @@
         "aliases": [
             "u"
         ],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "kick"
+                ],
+                "type": "flag",
+                "description": "Get a user by kick slug or user id.",
+                "usage": "-kick"
+            }
+        ]
     },
     "usercard": {
         "description": "Get the usercard link for a user in a channel",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your usercard for the current channel.",
@@ -2882,6 +3174,7 @@
     },
     "usertime": {
         "description": "Gets the current time for the provided user. Also sets your timezone so others can get your time.",
+        "extra": null,
         "usage": [
             {
                 "description": "Get your current time.",
@@ -2924,6 +3217,7 @@
     },
     "vanish": {
         "description": "Vanish from the chat. This will time you out for 1 second.",
+        "extra": null,
         "usage": [
             {
                 "description": "Vanish.",
@@ -2945,6 +3239,7 @@
     },
     "yoink": {
         "description": "Adds the provided emote that is added in the current channel to your own channel.",
+        "extra": null,
         "usage": [
             {
                 "description": "Yoink an emote.",

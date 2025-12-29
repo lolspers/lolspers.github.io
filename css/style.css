@@ -15,3 +15,7 @@ body {
     padding: 2.5%;
     padding-bottom: 2%;
 }
+
+.bold {
+    font-weight: 600 !important;
+}

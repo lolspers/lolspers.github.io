@@ -7,7 +7,7 @@ let commandAliasesArray = [];
 
 
 async function getCommandData() {
-    let response = await fetch("/js/commands.json");
+    let response = await fetch("js/commands.json");
 
     commandData = await response.json();
     let aliases = {};
@@ -137,7 +137,7 @@ function showCommand(command, data) {
 
     $(".command-name").text(command);
 
-    $("#command-info-description").text(data["description"]);
+    $("#command-info-description").text(`${data.description} ${data.extra ? data.extra : ""}`);
 
 
     let guideElement = $("#command-usage-guide");
@@ -152,6 +152,7 @@ function showCommand(command, data) {
         let hasExample = usage.example !== null && usage.example !== undefined;
         let isAlias = usage.alias;
         let noMargin = usage["no-margin"];
+        let bold = usage.bold
 
         let lastChild = guideElement.children().slice(-1)[0];
 
@@ -161,7 +162,7 @@ function showCommand(command, data) {
 
             description = description.replace(/'(\S+)'/g, "<span class='command-text-quote'>$1</span>");
 
-            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"}">${description}</p>`);
+            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"} ${bold ? "bold" : ""}">${description}</p>`);
         }
 
 
@@ -224,8 +225,6 @@ function showCommand(command, data) {
         $("#command-attribute-flags > h4").text("Flags");
         $("#command-attribute-flags > p").text("This command has no flags.");
     }
-
-    $("#command-info-description").text(data["description"]);
 
 
     $(".command-example-available").click(toggleExample);
