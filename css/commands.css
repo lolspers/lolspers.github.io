@@ -74,15 +74,12 @@
 
 .command-commands-container {
     height: 100%;
-    width: 10.7rem;
+    width: 9.3rem;
+    padding-left: 0.7rem;
+    padding-right : 0.7rem;
     border-radius: 0.3rem;
     background-color: #3A2F45;
     overflow-y: scroll;
-}
-
-.command-commands-buttons-container {
-    padding-left: 0.7rem;
-    padding-right : 0.7rem;
 }
 
 
@@ -270,12 +267,12 @@
     overflow-y: scroll; 
 }
 
-
-.scroll-shadow-top {
+.scrollbox::before {
     z-index: 10;
     position: sticky;
+    display: block;
     top: 0;
-    width: calc(100% - 0.7rem);
+    width: 100%;
     height: 1.2rem;
     margin-bottom: -0.5rem;
     background:
@@ -284,13 +281,14 @@
     
     background-size: 100% 0.7rem, 100% 1.2rem;
 	background-repeat: no-repeat;
+    content: "";
 }
-
-.scroll-shadow-bottom {
+.scrollbox::after {
     z-index: 10;
     position: sticky;
+    display: block;
     bottom: 0;
-    width: calc(100% - 0.7rem);
+    width: 100%;
     height: 1.2rem;
     margin-top: -0.5rem;
     background:
@@ -299,4 +297,5 @@
     
     background-size: 100% 0.7rem, 100% 1.2rem;
 	background-repeat: no-repeat;
+    content: "";
 }

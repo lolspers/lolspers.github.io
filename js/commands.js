@@ -12,7 +12,7 @@ async function getCommandData() {
     commandData = await response.json();
     let aliases = {};
 
-    let commandScroll = $(".command-commands-buttons-container");
+    let commandScroll = $(".command-commands-container");
 
     for (let command of Object.entries(commandData)) {
         let name = command[0];

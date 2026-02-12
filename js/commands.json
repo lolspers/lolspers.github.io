@@ -62,6 +62,11 @@
                 "description": "Using the 'in' flag will add 7TV emotes from the current channel in the specified channel. This searches for emotes if they were not found in the current channel.",
                 "usage": "{emotes} in:{channel}",
                 "example": "catAsk catAnswer in:7tvapp"
+            },
+            {
+                "description": "Using the 'case' flag will add 7TV emotes that match the exact case of the provided emote name. Note: This only checks for the first 50 results!",
+                "usage": "{emotes} -case",
+                "example": "Hub -case"
             }
         ],
         "category": "7tv",
@@ -82,7 +87,7 @@
                     "alias"
                 ],
                 "type": "parameter",
-                "description": "Add an emote as an alias.",
+                "description": "Adds an emote as an alias.",
                 "usage": "as:{alias}"
             },
             {
@@ -90,7 +95,7 @@
                     "from"
                 ],
                 "type": "parameter",
-                "description": "Add emotes from a channel, this is case sensitive.",
+                "description": "Adds emotes from the channel specified, this is case sensitive.",
                 "usage": "from:{channel}"
             },
             {
@@ -99,8 +104,18 @@
                     "channel"
                 ],
                 "type": "parameter",
-                "description": "Add emotes in a different channel.",
+                "description": "Adds emotes in the specified channel.",
                 "usage": "in:{channel}"
+            },
+            {
+                "flags": [
+                    "case",
+                    "casesensitive",
+                    "case-sensitive"
+                ],
+                "type": "flag",
+                "description": "Only adds emotes that match the exact case.",
+                "usage": "-case"
             }
         ]
     },
@@ -318,13 +333,17 @@
         "extra": "Banphrases are not case sensitive. The bot requires mod for the banphrases to work.",
         "usage": [
             {
-                "description": "Show all banphrases.",
-                "usage": "show"
+                "description": "Get all banphrases.",
+                "usage": "list"
             },
             {
-                "description": "Add a banphrase.",
+                "description": "Add a banphrase. Enclosing the banphrase with slashes '/' will add the banphrase as a regex pattern. This is also not case sensitive.",
                 "usage": "add {banphrase}",
                 "example": "add Cheap viewers on example.com !!!"
+            },
+            {
+                "usage": "add /{banphrase}/",
+                "example": "add /Cheap viewers on example.(com|org|tv)\\/cheap-viewers [!?]+/"
             },
             {
                 "description": "Remove a banphrase.",
@@ -332,21 +351,26 @@
                 "example": "remove Cheap viewers on example.com !!!"
             },
             {
-                "description": "Enclosing the banphrase with slashes '/' will add the banphrase as a regex pattern. This is still not case sensitive.",
-                "usage": "add /{banphrase}/",
-                "example": "add /Cheap viewers on example\\.(com|org|tv) ?!*/"
+                "usage": "remove id:{banphrase id}",
+                "example": "remove id:43"
             },
             {
-                "usage": "remove /{banphrase}/",
-                "example": "remove /Cheap viewers on example\\.(com|org|tv) ?!*/"
+                "description": "Enable a banphrase.",
+                "usage": "enable {banphrase}",
+                "example": "enable Cheap viewers on example.com !!!"
             },
             {
-                "description": "Enable all banphrases.",
-                "usage": "enable"
+                "usage": "enable id:{banphrase id}",
+                "example": "enable id:43"
             },
             {
-                "description": "Disable all banphrases.",
-                "usage": "disable"
+                "description": "Disable a banphrase.",
+                "usage": "disable {banphrase}",
+                "example": "disable Cheap viewers on example.com !!!"
+            },
+            {
+                "usage": "disable id:{banphrase id}",
+                "example": "disable id:43"
             }
         ],
         "category": "bot",
@@ -360,7 +384,54 @@
             "name": "regular"
         },
         "aliases": [],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "id"
+                ],
+                "type": "parameter",
+                "description": "Gets the banphrase based on the provided id.",
+                "usage": "id:{banphrase id}"
+            }
+        ]
+    },
+    "binary": {
+        "description": "Encodes/decodes text from/to binary. Spacing does not matter, all spaces are stripped.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Encode text to binary.",
+                "usage": "encode {text}",
+                "example": "encode This gets really long really fast"
+            },
+            {
+                "description": "Decode binary to text.",
+                "usage": "decode {text}",
+                "example": "decode 01001001001000000110110001101111011101100110010100100000011001010110000101110100011010010110111001100111001000000011000100100111011100110010000001100001011011100110010000100000001100000010011101110011001000000111100101110101011011010110110101111001"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 15,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "spaces",
+                    "include-spaces"
+                ],
+                "type": "flag",
+                "description": "Includes spaces to separate each 8-byte chunk. Only works when encoding text.",
+                "usage": "-spaces"
+            }
+        ]
     },
     "bio": {
         "description": "Gets a user's about me.",
@@ -426,7 +497,8 @@
             "name": "regular"
         },
         "aliases": [
-            "cats"
+            "cats",
+            "catfish"
         ],
         "flags": []
     },
@@ -528,7 +600,17 @@
             {
                 "description": "Pick a random option. Options must be seperated by a space.",
                 "usage": "{options}",
-                "example": "work code eat"
+                "example": "work game eat sleep"
+            },
+            {
+                "description": "Using the 'separator' flag will use the provided character(s) as an item separator, instead of a space.",
+                "usage": "{options} separator:{separator}",
+                "example": "2 hours - 1 hour - 30 minutes separator:-"
+            },
+            {
+                "description": "Using the 'amount' flag will cap the amount of items it can choose at the provided amount.",
+                "usage": "{options} amount:{amount}",
+                "example": "Sobble Talonflame Scraggy Yanmega Greavard Beautifly amount:3"
             }
         ],
         "category": "utility",
@@ -545,7 +627,28 @@
             "pick",
             "choose"
         ],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "separator",
+                    "sep",
+                    "s"
+                ],
+                "type": "parameter",
+                "description": "Uses the provided character(s) as an item separator instead of a space.",
+                "usage": "separator:{separator}"
+            },
+            {
+                "flags": [
+                    "amount",
+                    "count",
+                    "n"
+                ],
+                "type": "parameter",
+                "description": "Chooses the provided amount of items.",
+                "usage": "amount:{amount}"
+            }
+        ]
     },
     "coinflip": {
         "description": "Flips a coin.",
@@ -717,6 +820,92 @@
         ],
         "flags": []
     },
+    "configure": {
+        "description": "Configures or shows a personal setting.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Get the value of one of your settings. This can also be done by using the 'check' flag or by not providing a value when using one of the aliases.",
+                "usage": "check {setting}",
+                "example": "check location"
+            },
+            {
+                "description": "Configure a setting.",
+                "usage": "{setting} {value}",
+                "example": "location buenos aires"
+            },
+            {
+                "description": "Reset or delete a setting. Using the 'reset' flag will have the same effect.",
+                "usage": "reset {setting}",
+                "example": "reset timezone"
+            },
+            {
+                "description": "Using the 'location' alias will configure your location. This will automatically override or set your timezone as well. Using the 'hide' flag will hide your location in commands like 'weather'.",
+                "usage": "location {location}",
+                "example": "location germany",
+                "alias": true
+            },
+            {
+                "usage": "location {location} -hide",
+                "example": "location kosovo -hide",
+                "alias": true
+            },
+            {
+                "description": "Using the 'timezone' alias will configure your timezone. You can not change your timezone after setting your location. A country (code) can be provided instead of a timezone.",
+                "usage": "timezone {timezone}",
+                "example": "timezone AEDT",
+                "alias": true
+            }
+        ],
+        "category": "bot",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "configuration",
+            "config",
+            "location",
+            "timezone"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "reset",
+                    "delete",
+                    "remove"
+                ],
+                "type": "flag",
+                "description": "Resets or deletes the provided setting.",
+                "usage": "-reset"
+            },
+            {
+                "flags": [
+                    "check",
+                    "show",
+                    "value"
+                ],
+                "type": "flag",
+                "description": "Shows the value of the provided setting.",
+                "usage": "-check"
+            },
+            {
+                "flags": [
+                    "hide",
+                    "hidden",
+                    "private"
+                ],
+                "type": "flag",
+                "description": "Hides you location in commands like 'weather'.",
+                "usage": "-hide"
+            }
+        ]
+    },
     "disable": {
         "description": "Disables a command in the current channel.",
         "extra": "Aliases can be used and will disable every other alias aswell.",
@@ -772,8 +961,8 @@
         "flags": []
     },
     "emote": {
-        "description": "Gets basic information about a 7tv emote.",
-        "extra": null,
+        "description": "Gets basic information about a 7tv or twitch emote.",
+        "extra": "Prioritizes 7tv over twitch. Twitch emote lookup can be quite bad.",
         "usage": [
             {
                 "description": "Get information about an added emote.",
@@ -1382,6 +1571,45 @@
         ],
         "flags": []
     },
+    "maintenance": {
+        "description": "Set one or more commands on maintenance mode.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Set one or more command on maintenance mode.",
+                "usage": "{commands}",
+                "example": "ping u"
+            },
+            {
+                "description": "Remove maintenance mode from one or mode commands.",
+                "usage": "unmaintenance {commands}",
+                "example": "unmaintenance morse presence",
+                "alias": true
+            },
+            {
+                "description": "Set or remove maintenance for all commands.",
+                "usage": "maintenance all"
+            },
+            {
+                "usage": "unmaintenance all",
+                "alias": true
+            }
+        ],
+        "category": "bot",
+        "cooldown": 0,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 2,
+            "name": "admin"
+        },
+        "aliases": [
+            "unmaintenance"
+        ],
+        "flags": []
+    },
     "morse": {
         "description": "Encodes/decodes morse code, decode needs to be the same format as encode returns.",
         "extra": "Unknown characters will encode/decode as a '?'.",
@@ -1456,7 +1684,7 @@
     },
     "notify": {
         "description": "Adds or removes a notification to the current channel. This will send a message when the set condition is met. Changes the notification message if an already added notification is provided.",
-        "extra": null,
+        "extra": "Warning: If the bot is neither vip or mod in the channel, the message might not get sent due to rate limits.",
         "usage": [
             {
                 "description": "Add a notificaton. Some types of notifications also require a condition to be specified. An optional message can be added to be sent with the notification.",
@@ -1465,7 +1693,7 @@
             },
             {
                 "usage": "{type} {message}",
-                "example": "twitch-emotes PagMan new emote added!!!"
+                "example": "twitch-emotes PogChamp New Twitch emote!"
             },
             {
                 "description": "Update the message for an existing notification. Providing no new message will remove the previous notification message.",
@@ -1488,15 +1716,21 @@
                 "bold": true
             },
             {
-                "description": "live: send a message when the provided channel goes live.",
+                "description": "live: Sends a message when the provided channel goes live.",
                 "usage": "live {channel} {message}",
                 "example": "live justinfan6789",
                 "no-margin": true
             },
             {
-                "description": "offline: send a message when the provided channel goes offline.",
+                "description": "offline: Sends a message when the provided channel goes offline.",
                 "usage": "offline {channel} {message}",
                 "example": "offline justinfan6789",
+                "no-margin": true
+            },
+            {
+                "description": "twitch-badges, twitch-emotes, 7tv-emotes, bttv-emotes, ffz-emotes: Sends a notification when a new badge/emote gets added to a platform.",
+                "usage": "{platform}-{type} {message}",
+                "example": "twitch-badges Time to waste 6$ for colored pixels next to my name!!",
                 "no-margin": true
             }
         ],
@@ -2394,7 +2628,7 @@
         "flags": []
     },
     "shop": {
-        "description": "Shows all shop items.",
+        "description": "Work in progress. Shows all shop items.",
         "extra": null,
         "usage": [
             {
@@ -2799,21 +3033,35 @@
         "flags": []
     },
     "time": {
-        "description": "Gets the date and time for a timezone.",
-        "extra": "A country or country code can also be provided.",
+        "description": "Gets the date and time for the provided location or for the provided user.",
+        "extra": null,
         "usage": [
             {
-                "description": "Get the date for a timezone, country or country code.",
-                "usage": "{timezone}",
+                "description": "Get the current time for your configured location.",
+                "usage": ""
+            },
+            {
+                "description": "Get the date for a timezone or location.",
+                "usage": "{timezone/location}",
                 "example": "AEDT"
             },
             {
-                "usage": "{country}",
-                "example": "australia"
+                "usage": "{location}",
+                "example": "Tokyo"
             },
             {
-                "usage": "{country code}",
-                "example": "AU"
+                "description": "Using the 'utime' alias or 'user' flag will get the current time for the provided user.",
+                "usage": "utime {username}",
+                "example": "utime justinfan1234",
+                "alias": true
+            },
+            {
+                "usage": "{username} -user",
+                "example": "justinfan1234 -user"
+            },
+            {
+                "usage": "user:{username}",
+                "example": "user:justinfan1234"
             }
         ],
         "category": "time",
@@ -2827,10 +3075,36 @@
             "name": "regular"
         },
         "aliases": [
+            "utime",
+            "usertime",
             "timezone",
             "tz"
         ],
-        "flags": []
+        "flags": [
+            {
+                "flags": [
+                    "user",
+                    "u",
+                    "check",
+                    "target"
+                ],
+                "type": "flag",
+                "description": "Checks the weather of the provided user.",
+                "usage": "-user"
+            },
+            {
+                "flags": [
+                    "for",
+                    "u",
+                    "user",
+                    "check",
+                    "target"
+                ],
+                "type": "parameter",
+                "description": "Checks the weather of the provided user.",
+                "usage": "user:{username}"
+            }
+        ]
     },
     "title": {
         "description": "Gets the title of a channel. Defaults to the current channel.",
@@ -3076,6 +3350,58 @@
         ],
         "flags": []
     },
+    "urban": {
+        "description": "Gets the definition of a term from the urban dictionary.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Get the definition of a term.",
+                "usage": "{term}",
+                "example": "yapping"
+            },
+            {
+                "description": "Using the 'random' flag will get the definition of a random term.",
+                "usage": "-random"
+            },
+            {
+                "description": "Using the 'index' param will get the nth definition for the provided term.",
+                "usage": "{term} index:5",
+                "example": "ragebait index:2"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 10,
+        "role": {
+            "role": 4,
+            "name": "moderator"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [],
+        "flags": [
+            {
+                "flags": [
+                    "random"
+                ],
+                "type": "flag",
+                "description": "Get the definition of a random term.",
+                "usage": "-random"
+            },
+            {
+                "flags": [
+                    "index",
+                    "number",
+                    "n",
+                    "i"
+                ],
+                "type": "parameter",
+                "description": "Get the nth definition found when searching the provided term.",
+                "usage": "index:{number}"
+            }
+        ]
+    },
     "user": {
         "description": "Gets a twitch user.",
         "extra": null,
@@ -3172,49 +3498,6 @@
             }
         ]
     },
-    "usertime": {
-        "description": "Gets the current time for the provided user. Also sets your timezone so others can get your time.",
-        "extra": null,
-        "usage": [
-            {
-                "description": "Get your current time.",
-                "usage": ""
-            },
-            {
-                "description": "Get a user's current time.",
-                "usage": "{username}",
-                "example": "justinfan1234"
-            },
-            {
-                "description": "Set your own timezone. This can be a timezone, country or country code",
-                "usage": "set {timezone}",
-                "example": "set AEDT"
-            },
-            {
-                "usage": "set {country}",
-                "example": "set australia"
-            },
-            {
-                "usage": "set {country code}",
-                "example": "set AU"
-            }
-        ],
-        "category": "time",
-        "cooldown": 5,
-        "role": {
-            "role": 1,
-            "name": "regular"
-        },
-        "level": {
-            "level": 1,
-            "name": "regular"
-        },
-        "aliases": [
-            "utime",
-            "ut"
-        ],
-        "flags": []
-    },
     "vanish": {
         "description": "Vanish from the chat. This will time you out for 1 second.",
         "extra": null,
@@ -3236,6 +3519,216 @@
         },
         "aliases": [],
         "flags": []
+    },
+    "weather": {
+        "description": "Shows the weather for a location or a user. A user's location can be set by using the 'configure' command.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Get your own weather.",
+                "usage": ""
+            },
+            {
+                "description": "Get the weather for a location.",
+                "usage": "{location}",
+                "example": "Rovaniemi"
+            },
+            {
+                "description": "Using the 'user' parameter will get the weather for the provided user.",
+                "usage": "user:{username}",
+                "example": "user:justinfan1234"
+            },
+            {
+                "description": "Using the 'hours' or 'days' parameters will get the weather in the provided amount of days or hours. Negative amounts can be provided and these flags can be stacked ('days:-2 hours:5' would get the weather from 43 hours ago).",
+                "usage": "days:{day count} hours:{hour count}",
+                "example": "days:5 hours:-12"
+            },
+            {
+                "usage": "days:{day count}",
+                "example": "days:-3"
+            },
+            {
+                "usage": "hours:{hour count}",
+                "example": "hours:7"
+            },
+            {
+                "description": "Using the 'heat-index', 'windchill', 'dewpoint', 'gust', 'aqi', 'astronomy' and 'full-condition' flag will include more in the response. Read a flag's description for more details about what it includes. The 'full-temp' alias can be used to have the effect of using all 3. The 'full' flag can be used to have the effect of all of these flags. Each flag adds 2-5 seconds to the cooldown.",
+                "usage": "-heat-index"
+            },
+            {
+                "usage": "-windchill"
+            },
+            {
+                "usage": "-dewpoint"
+            },
+            {
+                "usage": "-gust"
+            },
+            {
+                "usage": "-aqi"
+            },
+            {
+                "usage": "-astronomy"
+            },
+            {
+                "usage": "-full-condition"
+            },
+            {
+                "usage": "-full-temp"
+            },
+            {
+                "usage": "-full"
+            },
+            {
+                "description": "Using the 'weekweather' or 'ww' alias will get the condition and temperature for the current day and the coming 7 days. Every flag that would include extra data has no effect when using this alias.",
+                "usage": "weekweather",
+                "alias": true
+            },
+            {
+                "usage": "ww",
+                "alias": true
+            }
+        ],
+        "category": "utility",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "weekweather",
+            "ww"
+        ],
+        "flags": [
+            {
+                "flags": [
+                    "user",
+                    "target",
+                    "check",
+                    "for",
+                    "u"
+                ],
+                "type": "parameter",
+                "description": "Checks someone else's weather.",
+                "usage": "user:{username}"
+            },
+            {
+                "flags": [
+                    "hours",
+                    "hour"
+                ],
+                "type": "parameter",
+                "description": "Shows the weather in the provided amount of hours.",
+                "usage": "hour:{hour}"
+            },
+            {
+                "flags": [
+                    "days",
+                    "day"
+                ],
+                "type": "parameter",
+                "description": "",
+                "usage": "day:{day}"
+            },
+            {
+                "flags": [
+                    "full",
+                    "verbose",
+                    "all"
+                ],
+                "type": "flag",
+                "description": "Has the effect of using all of the following flags.",
+                "usage": "-full"
+            },
+            {
+                "flags": [
+                    "full-temp",
+                    "full-temperature",
+                    "fulltemp",
+                    "f-t",
+                    "ft"
+                ],
+                "type": "flag",
+                "description": "Has the effect of using the 'heat-index', 'windchill' and 'dewpoint' flags.",
+                "usage": "-full-temp"
+            },
+            {
+                "flags": [
+                    "heat-index",
+                    "heatindex",
+                    "h-i",
+                    "hi"
+                ],
+                "type": "flag",
+                "description": "Includes the heat index in the response.",
+                "usage": "-heat-index"
+            },
+            {
+                "flags": [
+                    "windchill",
+                    "w-c",
+                    "wc"
+                ],
+                "type": "flag",
+                "description": "Includes the windchill in the response.",
+                "usage": "-windchill"
+            },
+            {
+                "flags": [
+                    "dewpoint",
+                    "dew"
+                ],
+                "type": "flag",
+                "description": "Includes the dewpoint in the response.",
+                "usage": "-dewpoint"
+            },
+            {
+                "flags": [
+                    "gust"
+                ],
+                "type": "flag",
+                "description": "Includes the gust in the response.",
+                "usage": "-gust"
+            },
+            {
+                "flags": [
+                    "aqi",
+                    "air-quality-index",
+                    "airqualityindex",
+                    "air-quality",
+                    "airquality",
+                    "aqi-details"
+                ],
+                "type": "flag",
+                "description": "Includes the full air quality details in the response. This only works for the current weather.",
+                "usage": "-aqi"
+            },
+            {
+                "flags": [
+                    "astronomy",
+                    "astro"
+                ],
+                "type": "flag",
+                "description": "Inclues astronomy data in the response. This only works for day weather when using the 'days' param without the 'hours' param.",
+                "usage": "-astronomy"
+            },
+            {
+                "flags": [
+                    "full-condition",
+                    "fullcondition",
+                    "condition",
+                    "f-c",
+                    "fc"
+                ],
+                "type": "flag",
+                "description": "Includes the condition name instead of just the emoji(s) in the response.",
+                "usage": "-full-condition"
+            }
+        ]
     },
     "yoink": {
         "description": "Adds the provided emote that is added in the current channel to your own channel.",
