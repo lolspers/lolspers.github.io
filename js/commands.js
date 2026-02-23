@@ -151,8 +151,9 @@ function showCommand(command, data) {
         let hasUsage = usage.usage !== null && usage.usage !== undefined;
         let hasExample = usage.example !== null && usage.example !== undefined;
         let isAlias = usage.alias;
+        let isTable = usage.table !== null && usage.table !== undefined;
         let noMargin = usage["no-margin"];
-        let bold = usage.bold
+        let bold = usage.bold;
 
         let lastChild = guideElement.children().slice(-1)[0];
 
@@ -181,6 +182,39 @@ function showCommand(command, data) {
                         <span class="command-example-text">${isAlias ? "" : command} ${usage.usage}</span>
                     </p>`);
             }
+        }
+
+        if (isTable) {
+            let tableEl = $("<table><tbody></tbody></table>");
+            tableEl.addClass("command-table");
+
+            for (let i = 0; i < usage.table.length; i++) {
+                let row = usage.table[i];
+                let rowEl = $("<tr></tr>");
+
+                for (let i = 0; i < row.length; i++) {
+                    let cellContent = row[i];
+                    let rawCellData, cellData = {};
+
+                    if (cellContent.startsWith("<") && cellContent.split(" ")[0].endsWith(">")) {
+                        [rawCellData, cellContent] = cellContent.split("> ");
+                        cellData = Object.fromEntries(Array.from(rawCellData.slice(1).split(";"), (e) => {
+                            return e.split("=");
+                        }));
+                    }
+
+                    let cellEl = cellData.header ? $("<th></th>") : $("<td></td>");
+                    cellEl.html(cellContent);
+
+                    if (cellData.colspan) {
+                        cellEl.attr("colspan", cellData.colspan);
+                    }
+                    
+                    rowEl.append(cellEl);
+                }
+                tableEl.append(rowEl);
+            }
+            guideElement.append(tableEl);
         }
     }
 
@@ -226,8 +260,7 @@ function showCommand(command, data) {
         $("#command-attribute-flags > p").text("This command has no flags.");
     }
 
-
-    $(".command-example-available").click(toggleExample);
+    $(".command-example-available").click(toggleExample)
 }
 
 
