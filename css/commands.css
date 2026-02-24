@@ -163,14 +163,14 @@
     flex-flow: column;
 }
 
-.command-example, .command-text, .command-text-quote, .command-table {
+.command-usage, .command-text, .command-text-quote, .command-table {
     margin-top: 0.1rem;
     font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: 0.95rem;
 }
 
-.command-example {
+.command-usage {
     margin-bottom: 1rem;
 }
 
@@ -178,7 +178,7 @@
     margin-bottom: 0.7rem;
 }
 
-.command-example {
+.command-usage {
     position: relative;
     bottom: 0.3rem;
     margin-top: 0.05rem;
@@ -199,20 +199,22 @@
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
     color: rgba(255, 255, 255, 0.85);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     transition-duration: 0.1s;
 }
 
-.command-example-available:hover {
+:is(.command-usage, p):has(> .command-example-text) > span:hover {
     background-color: rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
-.command-example-available:last-child {
+:is(.command-usage, p):has(> .command-example-text) > span:last-child {
     background-color: rgba(0, 0, 0, 0.15);
     color: rgba(255, 255, 255, 0.80);
 }
 
-.command-example-available:hover:last-child {
+:is(.command-usage, p):has(> .command-example-text) > span:last-child:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 

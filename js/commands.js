@@ -6,6 +6,11 @@ let commandAliases = {};
 let commandAliasesArray = [];
 
 
+function exists(e) {
+    return e !== null && e !== undefined;
+}
+
+
 async function getCommandData() {
     let response = await fetch("js/commands.json");
 
@@ -147,44 +152,41 @@ function showCommand(command, data) {
     for (let i = 0; i < data["usage"].length; i++) {
         let usage = data["usage"][i];
 
-        let hasDescription = usage.description !== null && usage.description !== undefined;
-        let hasUsage = usage.usage !== null && usage.usage !== undefined;
-        let hasExample = usage.example !== null && usage.example !== undefined;
-        let isAlias = usage.alias;
-        let isTable = usage.table !== null && usage.table !== undefined;
+        let hasDescription = exists(usage.description);
+        let hasUsage = exists(usage.usage);
         let noMargin = usage["no-margin"];
-        let bold = usage.bold;
 
         let lastChild = guideElement.children().slice(-1)[0];
 
         
         if (hasDescription) {
             let description = usage.description;
+            description = formatHelpString(description);
 
-            description = description.replace(/'(\S+)'/g, "<span class='command-text-quote'>$1</span>");
-
-            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"} ${bold ? "bold" : ""}">${description}</p>`);
+            guideElement.append(`<p class="command-text ${hasUsage ? "" : "command-less-margin-bottom"} ${usage.bold ? "bold" : ""}">${description}</p>`);
         }
 
 
         if (hasUsage) {
-            if (!hasDescription && lastChild.classList.contains("command-example")) {
+            if (!hasDescription && lastChild.classList.contains("command-usage")) {
                 $(lastChild).addClass("command-less-margin-bottom");
             }
 
-            if (hasExample) {
-                guideElement.append(`<p class="command-example ${noMargin ? "command-less-margin-bottom" : ""}">
-                        <span class="command-example-text command-example-available">${isAlias ? "" : command} ${usage.usage}</span>
-                        <span class="command-example-text command-example-available" style="display: none;">${isAlias ? "" : command} ${usage.example}</span>
-                    </p>`);
-            } else {
-                guideElement.append(`<p class="command-example ${noMargin ? "command-less-margin-bottom" : ""}">
-                        <span class="command-example-text">${isAlias ? "" : command} ${usage.usage}</span>
-                    </p>`);
+            let usageCommand = usage.alias == true ? "" : command;
+            let usageText = `${usageCommand} ${usage.usage}`;
+            let exampleText = exists(usage.example) ? `${usageCommand} ${usage.example}` : undefined;
+
+            let usageEl = generateUsageEl(usageText, exampleText);
+            usageEl.addClass("command-usage")
+            
+            if (noMargin) {
+                usageEl.addClass("command-less-margin-bottom");
             }
+
+            guideElement.append(usageEl);
         }
 
-        if (isTable) {
+        if (exists(usage.table)) {
             let tableEl = $("<table><tbody></tbody></table>");
             tableEl.addClass("command-table");
 
@@ -204,6 +206,7 @@ function showCommand(command, data) {
                     }
 
                     let cellEl = cellData.header ? $("<th></th>") : $("<td></td>");
+                    cellContent = formatHelpString(cellContent);
                     cellEl.html(cellContent);
 
                     if (cellData.colspan) {
@@ -218,7 +221,16 @@ function showCommand(command, data) {
         }
     }
 
-
+    $("p:has(> .command-example-text)").children().click((e) => {
+        $(e.currentTarget).parent().children().toggle();
+    });
+    // only select <span> on triple click (instead of whole <p>)
+    $(".command-text-quote, command-example-text").click((e) => {
+        console.log(e.detail);
+        if (e.detail == 3) {
+            window.getSelection().selectAllChildren(e.currentTarget);
+        }
+    });
 
     
     $("#command-attribute-category > p").text(data["category"] ? data["category"] : "No category");
@@ -259,18 +271,46 @@ function showCommand(command, data) {
         $("#command-attribute-flags > h4").text("Flags");
         $("#command-attribute-flags > p").text("This command has no flags.");
     }
-
-    $(".command-example-available").click(toggleExample)
 }
 
 
+function generateUsageEl(usage, example) {
+    let el = $(`<p></p>`);
 
-function toggleExample(e) {
-    let clickedExmaple = $(e.currentTarget);
-    let hiddenExample = clickedExmaple.siblings();
+    let usageEl = $(`<span class="command-text-quote"></span>`);
+    let innerSpanEl = $(`<span>${usage}</span>`);
+    usageEl.html(innerSpanEl);
+    el.append(usageEl);
 
-    clickedExmaple.hide();
-    hiddenExample.show();
+    if (typeof example !== "undefined") {
+        let exampleEl = $(`<span class="command-example-text"></span>`);
+        exampleEl.text(example);
+        exampleEl.hide()
+        el.append(exampleEl);
+    }
+
+    return el;
+}
+
+
+function formatHelpString(string) {
+    function handleEscapes(replacement) {
+        return (match, p1) => {
+            return p1 ? replacement.replaceAll("$1", p1) : match;
+        }
+    }
+    
+    string = string.replace(/\\`|`([\S ]+?)`<`([\S ]+?)`/g, (match, p1, p2) => {
+        return p1 ? generateUsageEl(p1, p2)[0].outerHTML : match;
+    });
+    string = string.replace(/\\`|`([\S ]+?)`/g, handleEscapes("<span class='command-text-quote'>$1</span>"));
+    string = string.replace(/\\\*|\*\*([\S ]+?)\*\*/g, handleEscapes("<span class='bold'>$1</span>"));
+    string = string.replace(/\\\*|\*([\S ]+?)\*/g, handleEscapes("<span style='font-style: italic;'>$1</span>"));
+
+    string = string.replaceAll("\\`", "`");
+    string = string.replaceAll("\\*", "*");
+
+    return string;
 }
 
 
