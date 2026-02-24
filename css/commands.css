@@ -204,6 +204,14 @@
     transition-duration: 0.1s;
 }
 
+.command-text-quote {
+    font-size: 1em;
+}
+
+:is(.command-usage, p):has(> .command-example-text) {
+    display: inline;
+}
+
 :is(.command-usage, p):has(> .command-example-text) > span:hover {
     background-color: rgba(0, 0, 0, 0.15);
     cursor: pointer;

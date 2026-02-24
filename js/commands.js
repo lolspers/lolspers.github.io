@@ -258,9 +258,9 @@ function showCommand(command, data) {
                     <div class="command-attribute-flag">
                         <p>${element["flags"].join(", ")}</p>
                         <ul>
-                            <li>Description: ${element["description"]}</li>
+                            <li>Description: ${formatHelpString(element["description"])}</li>
                             <li>Type: ${element["type"]}</li>
-                            <li>Usage: ${element["usage"]}</li>
+                            <li>Usage: ${formatHelpString(element["usage"])}</li>
                         </ul>
                     </div>
                 `);
