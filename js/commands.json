@@ -49,22 +49,22 @@
                 "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
             },
             {
-                "description": "Using the 'as' flag will add an emote as an alias.",
+                "description": "Using the `as` flag will add an emote as an alias.",
                 "usage": "{emote} as:{alias}",
                 "example": "wait as:wade"
             },
             {
-                "description": "Using the 'from' flag will add 7TV emotes that are added in the specified channel. This is case sensitive.",
+                "description": "Using the `from` flag will add 7TV emotes that are added in the specified channel. This is case sensitive.",
                 "usage": "{emotes} from:{channel}",
                 "example": "mhm OOOO from:7tvapp"
             },
             {
-                "description": "Using the 'in' flag will add 7TV emotes from the current channel in the specified channel. This searches for emotes if they were not found in the current channel.",
+                "description": "Using the `in` flag will add 7TV emotes from the current channel in the specified channel. This searches for emotes if they were not found in the current channel.",
                 "usage": "{emotes} in:{channel}",
                 "example": "catAsk catAnswer in:7tvapp"
             },
             {
-                "description": "Using the 'case' flag will add 7TV emotes that match the exact case of the provided emote name. Note: This only checks for the first 50 results!",
+                "description": "Using the `case` flag will add 7TV emotes that match the exact case of the provided emote name. Note: This only checks for the first 50 results!",
                 "usage": "{emotes} -case",
                 "example": "Hub -case"
             }
@@ -133,7 +133,7 @@
                 "example": "Driving to work"
             },
             {
-                "description": "Using the 'brb' or 'gn' alias will send a more fitting message.",
+                "description": "Using the `brb` or `gn` alias will send a more fitting message.",
                 "usage": "brb {message}",
                 "example": "brb Refilling water bottle",
                 "alias": true
@@ -144,7 +144,7 @@
                 "alias": true
             },
             {
-                "description": "Using the 'rafk' alias will continue your afk status without resetting the afk time.",
+                "description": "Using the `rafk` alias will continue your afk status without resetting the afk time.",
                 "usage": "rafk",
                 "alias": true
             }
@@ -206,7 +206,7 @@
                 "example": "iolspers hi"
             },
             {
-                "description": "Using the 'in' flag will send the message in the specified channel.",
+                "description": "Using the `in` flag will send the message in the specified channel.",
                 "usage": "{username} {message} in:{channel}",
                 "example": "iolspers hi in:forsen"
             }
@@ -244,7 +244,7 @@
                 "example": "FeelsDankMan"
             },
             {
-                "description": "Using the 'in' alias will use emotes from the specified channel.",
+                "description": "Using the `in` alias will use emotes from the specified channel.",
                 "usage": "{emote} in:{channel}",
                 "example": "Aware in:7tvapp"
             }
@@ -447,7 +447,7 @@
                 "example": "justinfan1234"
             },
             {
-                "description": "Using the 'kick' flag will get a kick user's about me instead of twitch.",
+                "description": "Using the `kick` flag will get a kick user's about me instead of twitch.",
                 "usage": "{slug} -kick",
                 "example": "justinfan6789 -kick"
             }
@@ -603,12 +603,12 @@
                 "example": "work game eat sleep"
             },
             {
-                "description": "Using the 'separator' flag will use the provided character(s) as an item separator, instead of a space.",
+                "description": "Using the `separator` flag will use the provided character(s) as an item separator, instead of a space.",
                 "usage": "{options} separator:{separator}",
                 "example": "2 hours - 1 hour - 30 minutes separator:-"
             },
             {
-                "description": "Using the 'amount' flag will cap the amount of items it can choose at the provided amount.",
+                "description": "Using the `amount` flag will cap the amount of items it can choose at the provided amount.",
                 "usage": "{options} amount:{amount}",
                 "example": "Sobble Talonflame Scraggy Yanmega Greavard Beautifly amount:3"
             }
@@ -693,7 +693,7 @@
                 "description": "Add a custom command. Commands using a regex pattern as trigger are not case sensitive by default."
             },
             {
-                "description": "There are a few variables that can be added to the response. See the full variable list at the bottom.",
+                "description": "There are a few variables that can be added to the response. A full variable list can be found at the bottom.",
                 "usage": "add {trigger} {response}",
                 "example": "add hi Hello ${touser}!"
             },
@@ -735,52 +735,137 @@
                 "example": "keyword id:1234 remove hello hi hey"
             },
             {
-                "description": "Change the settings for a command. Multiple options can be changed in a single message. The available settings are:",
-                "bold": true
-            },
-            {
-                "description": "Enable a command.",
-                "usage": "options {command} -enable",
-                "example": "options id:1234 -enable",
-                "no-margin": true
-            },
-            {
-                "description": "Disable a command.",
-                "usage": "options {command} -disable",
-                "example": "options id:1234 -disable",
-                "no-margin": true
-            },
-            {
-                "description": "Toggle case case sensitivity for a command trigger.",
-                "usage": "options {command} case:true",
-                "no-margin": true
-            },
-            {
-                "usage": "options {command} case:false",
-                "no-margin": true
-            },
-            {
-                "description": "Set a channel cooldown for a command in seconds.",
-                "usage": "options {command} globalcooldown:{cooldown}",
-                "example": "options id:1234 globalcooldown:15",
-                "no-margin": true
-            },
-            {
-                "description": "Set a user cooldown for a command in seconds.",
-                "usage": "options {command} usercooldown:{cooldown}",
-                "example": "options id:1234 usercooldown:15",
-                "no-margin": true
-            },
-            {
-                "description": "Set a role requirement for a command. A user requires at least this role or higher to execute the command. Valid roles are: blacklisted, regular, subscriber, vip, moderator, lead-moderator, broadcaster.",
-                "usage": "options {command} role:{role}",
-                "example": "options id:1234 role:vip",
-                "no-margin": true
+                "description": "Change the settings for a command. Multiple options can be changed in a single message. A table of all settings can be found at the bottom.",
+                "usage": "options {command} {options}",
+                "example": "options id:1234 -enable case:true usercooldown:15"
             },
             {
                 "description": "Delete a command.",
                 "usage": "delete {command}",
                 "example": "delete id:1234"
+            },
+            {
+                "table": [
+                    [
+                        "<header=true;colspan=4> command variable list"
+                    ],
+                    [
+                        "<header=true> variable",
+                        "<header=true> description",
+                        "<header=true> usage",
+                        "<header=true> example result"
+                    ],
+                    [
+                        "touser",
+                        "The second word in a users message, or the username of the user if there is no second word.",
+                        "`${touser}`",
+                        "`justinfan1234`"
+                    ],
+                    [
+                        "sender",
+                        "The username of the user.",
+                        "`${sender}`",
+                        "`justinfan1234`"
+                    ],
+                    [
+                        "channel",
+                        "The name of the channel.",
+                        "`${channel}`",
+                        "`justinfan6789`"
+                    ],
+                    [
+                        "userid",
+                        "The user id of the user.",
+                        "`${userid}`",
+                        "`123456`"
+                    ],
+                    [
+                        "channelid",
+                        "The user id of the channel.",
+                        "`${channelid}`",
+                        "`456789`"
+                    ],
+                    [
+                        "messageid",
+                        "The id of the message that triggered the custom command.",
+                        "`${messageid}`",
+                        "`93c8cba5-1535-452b-a898-3adebe00cbfd`"
+                    ],
+                    [
+                        "random",
+                        "A random number between the first and second numbers (inclusive).",
+                        "`${random {min}-{max}}`<`${random 1-1000}`",
+                        "`583`"
+                    ],
+                    [
+                        "command",
+                        "Executes the command provided inside of the variable.",
+                        "`${{command}}`<`${b64 encode ${1}}`",
+                        "`aGk=`"
+                    ],
+                    [
+                        "index",
+                        "The index of a word in the users message, the words before (exclusive) or after (inclusive) the index, or the words in an index range. (Starts at 0)",
+                        "`${{n}}`<`${2}` / `${:{n}}`<`${:2}` / `${{n}:}`<`${2:}` / `${{n1}:{n2}}`<`${2:4}`",
+                        "`word-3` / `word-1 word-2` / `word-2 word-3 \u2026 word-n` / `word-2 word-3`"
+                    ]
+                ]
+            },
+            {
+                "table": [
+                    [
+                        "<header=true;colspan=5> `**command option**` settings"
+                    ],
+                    [
+                        "<header=true> setting",
+                        "<header=true> description",
+                        "<header=true> usage",
+                        "<header=true> type",
+                        "<header=true> aliases"
+                    ],
+                    [
+                        "enable",
+                        "Enables a custom command.",
+                        "`-enable`",
+                        "flag",
+                        ""
+                    ],
+                    [
+                        "disable",
+                        "Disables a custom command.",
+                        "`-disable`",
+                        "flag",
+                        ""
+                    ],
+                    [
+                        "case",
+                        "Enables/Disables case sensitivity for a custom command trigger.",
+                        "`case:{true/false}`<`case:true`",
+                        "parameter",
+                        "casesensitive"
+                    ],
+                    [
+                        "globalcooldown",
+                        "Sets a channel cooldown in seconds for a custom command.",
+                        "`globalcooldown:{n}`<`globalcooldown:15`",
+                        "parameter",
+                        "channelcooldown, globalcd, channelcd, gcd"
+                    ],
+                    [
+                        "usercooldown",
+                        "Sets a user cooldown in seconds for a custom command.",
+                        "`usercooldown:{n}`<`usercooldown:15`",
+                        "parameter",
+                        "usercd, ucd"
+                    ],
+                    [
+                        "role",
+                        "Sets a minimum role requirement for a command. Valid roles: `regular`, `subscriber`, `vip`, `moderator`, `lead-moderator`, `broadcaster`",
+                        "`role:{role}`<`role:vip`",
+                        "parameter",
+                        "badge"
+                    ]
+                ]
             }
         ],
         "category": "settings",
@@ -825,7 +910,7 @@
         "extra": null,
         "usage": [
             {
-                "description": "Get the value of one of your settings. This can also be done by using the 'check' flag or by not providing a value when using one of the aliases.",
+                "description": "Get the value of one of your settings. This can also be done by using the `check` flag or by not providing a value when using one of the aliases.",
                 "usage": "check {setting}",
                 "example": "check location"
             },
@@ -835,12 +920,12 @@
                 "example": "location buenos aires"
             },
             {
-                "description": "Reset or delete a setting. Using the 'reset' flag will have the same effect.",
+                "description": "Reset or delete a setting. Using the `reset` flag will have the same effect.",
                 "usage": "reset {setting}",
                 "example": "reset timezone"
             },
             {
-                "description": "Using the 'location' alias will configure your location. This will automatically override or set your timezone as well. Using the 'hide' flag will hide your location in commands like 'weather'.",
+                "description": "Using the `location` alias will configure your location. This will automatically override or set your timezone as well. Using the `hide` flag will hide your location in commands like `weather`.",
                 "usage": "location {location}",
                 "example": "location germany",
                 "alias": true
@@ -851,7 +936,7 @@
                 "alias": true
             },
             {
-                "description": "Using the 'timezone' alias will configure your timezone. You can not change your timezone after setting your location. A country (code) can be provided instead of a timezone.",
+                "description": "Using the `timezone` alias will configure your timezone. You can not change your timezone after setting your location. A country (code) can be provided instead of a timezone.",
                 "usage": "timezone {timezone}",
                 "example": "timezone AEDT",
                 "alias": true
@@ -901,7 +986,7 @@
                     "private"
                 ],
                 "type": "flag",
-                "description": "Hides you location in commands like 'weather'.",
+                "description": "Hides you location in commands like `weather`.",
                 "usage": "-hide"
             }
         ]
@@ -979,7 +1064,7 @@
                 "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
             },
             {
-                "description": "Using the 'in' alias will look for the emote name in a different channel. This does not work when a url or id is provided.",
+                "description": "Using the `in` alias will look for the emote name in a different channel. This does not work when a url or id is provided.",
                 "usage": "{emote} in:{channel}",
                 "example": "Alright in:7tvapp"
             }
@@ -1028,7 +1113,7 @@
                 "example": "Alright 3x.gif"
             },
             {
-                "description": "Using the 'in' flag will look for the emote in a different channel.",
+                "description": "Using the `in` flag will look for the emote in a different channel.",
                 "usage": "{emote} in:{channel}",
                 "example": "Alright in:7tvapp"
             }
@@ -1225,7 +1310,7 @@
                 "example": "justinfan1234 justinfan6789"
             },
             {
-                "description": "Using the 'in' flag will get your followage in the specified channel.",
+                "description": "Using the `in` flag will get your followage in the specified channel.",
                 "usage": "in:{channel}",
                 "example": "in:justinfan6789"
             }
@@ -1265,7 +1350,7 @@
                 "example": "abcde"
             },
             {
-                "description": "Using the 'min' or 'max' flag will cap the length of words.",
+                "description": "Using the `min` or `max` flag will cap the length of words.",
                 "usage": "{letters} min:{minimun} max:{maximum}",
                 "example": "abcde min:4 max:12"
             }
@@ -1315,7 +1400,7 @@
                 "usage": ""
             },
             {
-                "description": "Get data for a different channel. Using the 'in' flag has the same effect.",
+                "description": "Get data for a different channel. Using the `in` flag has the same effect.",
                 "usage": "{channel}",
                 "example": "justinfan6789"
             },
@@ -1509,13 +1594,13 @@
         "extra": null,
         "usage": [
             {
-                "description": "Using the 'mainlist' alias will use your list called 'main'. You will have this list by default.",
+                "description": "Using the `mainlist` alias will use your list called `main`. You will have this list by default.",
                 "usage": "mainlist {action} {arguments}",
                 "example": "mainlist item 3",
                 "alias": true
             },
             {
-                "description": "Using the 'lists' alias will show all your lists.",
+                "description": "Using the `lists` alias will show all your lists.",
                 "usage": "lists",
                 "alias": true
             },
@@ -1644,8 +1729,7 @@
         "usage": [
             {
                 "description": "Get your own name changes.",
-                "usage": "",
-                "example": null
+                "usage": ""
             },
             {
                 "description": "Get a different user's name changes.",
@@ -1653,7 +1737,7 @@
                 "example": "justinfan1234"
             },
             {
-                "description": "Using the 'dates' flag will provide the date each name change was detected.",
+                "description": "Using the `dates` flag will provide the date each name change was detected.",
                 "usage": "{username} -dates",
                 "example": "justinfan1234 -dates"
             }
@@ -1683,7 +1767,7 @@
         ]
     },
     "notify": {
-        "description": "Adds or removes a notification to the current channel. This will send a message when the set condition is met. Changes the notification message if an already added notification is provided.",
+        "description": "Adds or removes a notification from the current channel. This will send a message when the set condition is met. Changes the notification message if an already added notification is provided.",
         "extra": "Warning: If the bot is neither vip or mod in the channel, the message might not get sent due to rate limits.",
         "usage": [
             {
@@ -1701,7 +1785,7 @@
                 "example": "live justinfan6789 yearly stream"
             },
             {
-                "description": "Using the 'unnotify' or 'unannounce' alias will remove an existing notification.",
+                "description": "Using the `unnotify` or `unannounce` alias will remove an existing notification.",
                 "usage": "unnotify {type} {condition}",
                 "example": "unnotify offline justinfan6789",
                 "alias": true
@@ -1834,7 +1918,7 @@
                 "usage": ""
             },
             {
-                "description": "Get a channel's player. Using the 'in' flag has the same effect.",
+                "description": "Get a channel's player. Using the `in` flag has the same effect.",
                 "usage": "{channel}",
                 "example": "justinfan6789"
             },
@@ -1843,17 +1927,17 @@
                 "example": "in:justinfan6789"
             },
             {
-                "description": "Using the 'muted' flag will mute the player.",
+                "description": "Using the `muted` flag will mute the player.",
                 "usage": "{channel} -muted",
                 "example": "justinfan6789 -muted"
             },
             {
-                "description": "Using the 'extensions' flag will enable extensions (such as blerp) on the stream.",
+                "description": "Using the `extensions` flag will enable extensions (such as blerp) on the stream.",
                 "usage": "{channel} -extensions",
                 "example": "justinfan6789 -extensions"
             },
             {
-                "description": "Using the 'pause' flag will stop the player from auto-playing.",
+                "description": "Using the `pause` flag will stop the player from auto-playing.",
                 "usage": "{channel} -pause",
                 "example": "justinfan6789 -pause"
             }
@@ -2011,7 +2095,7 @@
                 "example": "justinfan1234"
             },
             {
-                "description": "Using the 'in' flag will update cosmetics for users in the specified channel.",
+                "description": "Using the `in` flag will update cosmetics for users in the specified channel.",
                 "usage": "{username} in:{channel}",
                 "example": "justinfan1234 in:7tvapp"
             }
@@ -2070,12 +2154,12 @@
                 "usage": ""
             },
             {
-                "description": "Using the 'restart' alias will restart the bot.",
+                "description": "Using the `restart` alias will restart the bot.",
                 "usage": "restart",
                 "alias": true
             },
             {
-                "description": "Using the 'pip' flag will install all packages before restarting.",
+                "description": "Using the `pip` flag will install all packages before restarting.",
                 "usage": "-pip"
             }
         ],
@@ -2191,19 +2275,19 @@
                 "description": "Variables can be added to the message for more information."
             },
             {
-                "description": "'username': The channel that raided the current channel. This is all lowercase.",
+                "description": "`username`: The channel that raided the current channel. This is all lowercase.",
                 "usage": "set ${username}",
                 "example": "set ${username} just raided the channel, check them out at twitch.tv/${username}!",
                 "no-margin": true
             },
             {
-                "description": "'display': The display name for the channel that raided the current channel. This will also work for localized display names.",
+                "description": "`display`: The display name for the channel that raided the current channel. This will also work for localized display names.",
                 "usage": "set ${display}",
                 "example": "set ${display} just raided the channel!",
                 "no-margin": true
             },
             {
-                "description": "'viewers': The amount of raiders.",
+                "description": "`viewers`: The amount of raiders.",
                 "usage": "set ${viewers}",
                 "example": "set BatChest ${viewers} gazillion viewer raid!!!",
                 "no-margin": true
@@ -2318,7 +2402,7 @@
                 "example": "https://7tv.app/emotes/01GWBD2YR00002CCPRV6KPX758"
             },
             {
-                "description": "Using the 'in' flag will remove emotes in the specified channel.",
+                "description": "Using the `in` flag will remove emotes in the specified channel.",
                 "usage": "{emotes} in:{channel}",
                 "example": "omE jah dansi in:7tvapp"
             }
@@ -2351,7 +2435,7 @@
         "extra": null,
         "usage": [
             {
-                "description": "Rename a 7tv emote. Using the 'as' flag as the same effect as providing a new alias.",
+                "description": "Rename a 7tv emote. Using the `as` flag as the same effect as providing a new alias.",
                 "usage": "{emote} {alias}",
                 "example": "wait wade"
             },
@@ -2360,7 +2444,7 @@
                 "example": "wait as:wade"
             },
             {
-                "description": "Using the 'in' alias will rename the emote in the specified channel.",
+                "description": "Using the `in` alias will rename the emote in the specified channel.",
                 "usage": "{emote} {alias} in:{channel}",
                 "example": "wait wade in:7tvapp"
             }
@@ -2398,7 +2482,7 @@
         ]
     },
     "reply": {
-        "description": "Sets the way the bot will reply to your messages. This is set to 'reply' by default",
+        "description": "Sets the way the bot will reply to your messages. This is set to `reply` by default",
         "extra": null,
         "usage": [
             {
@@ -2466,12 +2550,12 @@
                 "example": "hi"
             },
             {
-                "description": "Using the 'in' flag will send the message in the provided channel.",
+                "description": "Using the `in` flag will send the message in the provided channel.",
                 "usage": "{message} in:{channel}",
                 "example": "hi in:justinfan6789"
             },
             {
-                "description": "Using the 'api' flag will send the message through helix instead of tmi.",
+                "description": "Using the `api` flag will send the message through helix instead of tmi.",
                 "usage": "{message} -api",
                 "example": "hi -api"
             }
@@ -2555,7 +2639,7 @@
         "extra": null,
         "usage": [
             {
-                "description": "Sell your fish. A percentage or 'all' can be provided.",
+                "description": "Sell your fish. A percentage or `all` can be provided.",
                 "usage": "{amount}",
                 "example": "84"
             },
@@ -2727,7 +2811,7 @@
                 "usage": ""
             },
             {
-                "description": "Get stream information for a channel. Using the 'in' flag will have the same effect.",
+                "description": "Get stream information for a channel. Using the `in` flag will have the same effect.",
                 "usage": "{channel}",
                 "example": "justinfan6789"
             },
@@ -2736,7 +2820,7 @@
                 "example": "in:justinfan6789"
             },
             {
-                "description": "Using the 'kick' flag will get stream information for a kick channel instead of a twitch channel.",
+                "description": "Using the `kick` flag will get stream information for a kick channel instead of a twitch channel.",
                 "usage": "{slug} -kick",
                 "example": "justinfan6789"
             },
@@ -2787,7 +2871,7 @@
         "extra": null,
         "usage": [
             {
-                "description": "Get the editors of a channel, if no channel is provided it will default to the current channel. Using the 'in' flag will have the same effect.",
+                "description": "Get the editors of a channel, if no channel is provided it will default to the current channel. Using the `in` flag will have the same effect.",
                 "usage": "{channel}",
                 "example": "7tvapp"
             },
@@ -2855,7 +2939,7 @@
         "extra": null,
         "usage": [
             {
-                "description": "Get the active set in the provided channel. Using the 'in' flag will have the same effect.",
+                "description": "Get the active set in the provided channel. Using the `in` flag will have the same effect.",
                 "usage": "{channel}",
                 "example": "7tvapp"
             },
@@ -2909,17 +2993,17 @@
                 "example": "01FRG0ZGSR00084PQ73P1BYDX8"
             },
             {
-                "description": "Using the 'query' flag will get the first user for the provided query.",
+                "description": "Using the `query` flag will get the first user for the provided query.",
                 "usage": "{query} -query",
                 "example": "7tvapp -query"
             },
             {
-                "description": "Using the 'discord' flag will get the user with the provided discord id.",
+                "description": "Using the `discord` flag will get the user with the provided discord id.",
                 "usage": "{discord id} -discord",
                 "example": "123456789012345678 -discord"
             },
             {
-                "description": "Using the 'kick' flag will get the user with the provided kick username.",
+                "description": "Using the `kick` flag will get the user with the provided kick username.",
                 "usage": "{kick username} -kick",
                 "example": "justinfan1234 -kick"
             }
@@ -3050,7 +3134,7 @@
                 "example": "Tokyo"
             },
             {
-                "description": "Using the 'utime' alias or 'user' flag will get the current time for the provided user.",
+                "description": "Using the `utime` alias or `user` flag will get the current time for the provided user.",
                 "usage": "utime {username}",
                 "example": "utime justinfan1234",
                 "alias": true
@@ -3115,7 +3199,7 @@
                 "usage": ""
             },
             {
-                "description": "Get the title for a channel. Using the 'in' alias has the same effect.",
+                "description": "Get the title for a channel. Using the `in` alias has the same effect.",
                 "usage": "{channel}",
                 "example": "justinfan6789"
             },
@@ -3124,7 +3208,7 @@
                 "example": "in:justinfan6789"
             },
             {
-                "description": "Using the 'kick' flag will get the title of a kick channel instead of a twitch channel.",
+                "description": "Using the `kick` flag will get the title of a kick channel instead of a twitch channel.",
                 "usage": "{slug} -kick",
                 "exmaple": "justinfan6789 -kick"
             },
@@ -3198,12 +3282,12 @@
                 "usage": ""
             },
             {
-                "description": "Using the 'category' flag will only start trivias with the specified category.",
+                "description": "Using the `category` flag will only start trivias with the specified category.",
                 "usage": "category:{category}",
                 "example": "category:science"
             },
             {
-                "description": "Using the 'difficulty' flag will only start trivias with the specified difficulty. This can also be achieved by using the 'easy', 'medium' or 'hard' flags.",
+                "description": "Using the `difficulty` flag will only start trivias with the specified difficulty. This can also be achieved by using the `easy`, `medium` or `hard` flags.",
                 "usage": "difficulty:{difficulty}",
                 "example": "difficulty:medium"
             },
@@ -3360,11 +3444,11 @@
                 "example": "yapping"
             },
             {
-                "description": "Using the 'random' flag will get the definition of a random term.",
+                "description": "Using the `random` flag will get the definition of a random term.",
                 "usage": "-random"
             },
             {
-                "description": "Using the 'index' param will get the nth definition for the provided term.",
+                "description": "Using the `index` param will get the nth definition for the provided term.",
                 "usage": "{term} index:5",
                 "example": "ragebait index:2"
             }
@@ -3421,7 +3505,7 @@
                 "example": "123456"
             },
             {
-                "description": "Using the 'kick' flag will get a user by their kick slug or kick user id instead of twitch's.",
+                "description": "Using the `kick` flag will get a user by their kick slug or kick user id instead of twitch's.",
                 "usage": "{slug} -kick",
                 "example": "justinfan1234"
             },
@@ -3521,7 +3605,7 @@
         "flags": []
     },
     "weather": {
-        "description": "Shows the weather for a location or a user. A user's location can be set by using the 'configure' command.",
+        "description": "Shows the weather for a location or a user. A user's location can be set by using the `configure` command.",
         "extra": null,
         "usage": [
             {
@@ -3534,12 +3618,12 @@
                 "example": "Rovaniemi"
             },
             {
-                "description": "Using the 'user' parameter will get the weather for the provided user.",
+                "description": "Using the `user` parameter will get the weather for the provided user.",
                 "usage": "user:{username}",
                 "example": "user:justinfan1234"
             },
             {
-                "description": "Using the 'hours' or 'days' parameters will get the weather in the provided amount of days or hours. Negative amounts can be provided and these flags can be stacked ('days:-2 hours:5' would get the weather from 43 hours ago).",
+                "description": "Using the `hours` or `days` parameters will get the weather in the provided amount of days or hours. Negative amounts can be provided and these flags can be stacked (`days:-2 hours:5` would get the weather from 43 hours ago).",
                 "usage": "days:{day count} hours:{hour count}",
                 "example": "days:5 hours:-12"
             },
@@ -3552,7 +3636,7 @@
                 "example": "hours:7"
             },
             {
-                "description": "Using the 'heat-index', 'windchill', 'dewpoint', 'gust', 'aqi', 'astronomy' and 'full-condition' flag will include more in the response. Read a flag's description for more details about what it includes. The 'full-temp' alias can be used to have the effect of using all 3. The 'full' flag can be used to have the effect of all of these flags. Each flag adds 2-5 seconds to the cooldown.",
+                "description": "Using the `heat-index`, `windchill`, `dewpoint`, `gust`, `aqi`, `astronomy` and `full-condition` flag will include more in the response. Read a flag's description for more details about what it includes. The `full-temp` alias can be used to have the effect of using all 3. The `full` flag can be used to have the effect of all of these flags. Each flag adds 2-5 seconds to the cooldown.",
                 "usage": "-heat-index"
             },
             {
@@ -3580,7 +3664,7 @@
                 "usage": "-full"
             },
             {
-                "description": "Using the 'weekweather' or 'ww' alias will get the condition and temperature for the current day and the coming 7 days. Every flag that would include extra data has no effect when using this alias.",
+                "description": "Using the `weekweather` or `ww` alias will get the condition and temperature for the current day and the coming 7 days. Every flag that would include extra data has no effect when using this alias.",
                 "usage": "weekweather",
                 "alias": true
             },
@@ -3653,7 +3737,7 @@
                     "ft"
                 ],
                 "type": "flag",
-                "description": "Has the effect of using the 'heat-index', 'windchill' and 'dewpoint' flags.",
+                "description": "Has the effect of using the `heat-index`, `windchill` and `dewpoint` flags.",
                 "usage": "-full-temp"
             },
             {
@@ -3713,7 +3797,7 @@
                     "astro"
                 ],
                 "type": "flag",
-                "description": "Inclues astronomy data in the response. This only works for day weather when using the 'days' param without the 'hours' param.",
+                "description": "Inclues astronomy data in the response. This only works for day weather when using the `days` param without the `hours` param.",
                 "usage": "-astronomy"
             },
             {
@@ -3740,7 +3824,7 @@
                 "example": "Alright"
             },
             {
-                "description": "Using the 'as' flag will add the emote as the specififed alias.",
+                "description": "Using the `as` flag will add the emote as the specififed alias.",
                 "usage": "{emote} as:{alias}",
                 "example": "miniAlright as:alr"
             }
