@@ -54,7 +54,7 @@
                 "example": "wait as:wade"
             },
             {
-                "description": "Using the `from` flag will add 7TV emotes that are added in the specified channel. This is case sensitive.",
+                "description": "Using the `from` flag will add 7TV emotes that are added in the specified channel. This is case insensitive, but prioritizes the same case.",
                 "usage": "{emotes} from:{channel}",
                 "example": "mhm OOOO from:7tvapp"
             },
@@ -67,6 +67,11 @@
                 "description": "Using the `case` flag will add 7TV emotes that match the exact case of the provided emote name. Note: This only checks for the first 50 results!",
                 "usage": "{emotes} -case",
                 "example": "Hub -case"
+            },
+            {
+                "description": "Using the `force` flag will remove emotes with a conflicting name before adding the specified emote(s).",
+                "usage": "{emotes} -force",
+                "example": "true -force"
             }
         ],
         "category": "7tv",
@@ -88,7 +93,7 @@
                 ],
                 "type": "parameter",
                 "description": "Adds an emote as an alias.",
-                "usage": "as:{alias}"
+                "usage": "`as:{alias}`<`as:thanku`"
             },
             {
                 "flags": [
@@ -96,7 +101,7 @@
                 ],
                 "type": "parameter",
                 "description": "Adds emotes from the channel specified, this is case sensitive.",
-                "usage": "from:{channel}"
+                "usage": "`from:{channel}`<`from:7tvapp`"
             },
             {
                 "flags": [
@@ -105,7 +110,7 @@
                 ],
                 "type": "parameter",
                 "description": "Adds emotes in the specified channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             },
             {
                 "flags": [
@@ -116,6 +121,15 @@
                 "type": "flag",
                 "description": "Only adds emotes that match the exact case.",
                 "usage": "-case"
+            },
+            {
+                "flags": [
+                    "force",
+                    "f"
+                ],
+                "type": "flag",
+                "description": "If they exist, removes emotes with conflicting names.",
+                "usage": "-force"
             }
         ]
     },
@@ -230,7 +244,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to send the message to.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -268,7 +282,7 @@
                 ],
                 "type": "parameter",
                 "description": "Looks for emotes in the provided channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -391,7 +405,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets the banphrase based on the provided id.",
-                "usage": "id:{banphrase id}"
+                "usage": "`id:{banphrase id}`<`id:43`"
             }
         ]
     },
@@ -563,7 +577,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets the chatsettings in the provided channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -636,7 +650,7 @@
                 ],
                 "type": "parameter",
                 "description": "Uses the provided character(s) as an item separator instead of a space.",
-                "usage": "separator:{separator}"
+                "usage": "`separator:{separator}`<`separator:-`"
             },
             {
                 "flags": [
@@ -646,7 +660,7 @@
                 ],
                 "type": "parameter",
                 "description": "Chooses the provided amount of items.",
-                "usage": "amount:{amount}"
+                "usage": "`amount:{amount}`<`amount:2`"
             }
         ]
     },
@@ -912,7 +926,7 @@
             {
                 "description": "Get the value of one of your settings. This can also be done by using the `check` flag or by not providing a value when using one of the aliases.",
                 "usage": "check {setting}",
-                "example": "check location"
+                "example": "check timezone"
             },
             {
                 "description": "Configure a setting.",
@@ -922,13 +936,17 @@
             {
                 "description": "Reset or delete a setting. Using the `reset` flag will have the same effect.",
                 "usage": "reset {setting}",
-                "example": "reset timezone"
+                "example": "reset date-locale"
             },
             {
                 "description": "Using the `location` alias will configure your location. This will automatically override or set your timezone as well. Using the `hide` flag will hide your location in commands like `weather`.",
                 "usage": "location {location}",
                 "example": "location germany",
                 "alias": true
+            },
+            {
+                "usage": "location {location}",
+                "example": "location paris"
             },
             {
                 "usage": "location {location} -hide",
@@ -940,6 +958,25 @@
                 "usage": "timezone {timezone}",
                 "example": "timezone AEDT",
                 "alias": true
+            },
+            {
+                "usage": "timezone {timezone}",
+                "example": "timezone CT"
+            },
+            {
+                "description": "Set your prefered measurement system.",
+                "usage": "measurements {metric/imperial/uscustomary}",
+                "example": "measurements imperial"
+            },
+            {
+                "description": "Set your prefered temperature unit.",
+                "usage": "temperature {celcius/fahrenheit/kelvin}",
+                "example": "temperature fahrenheit"
+            },
+            {
+                "description": "Set your prefered date notation from a locale code. The full list of locale codes can be found (here)[https://github.com/unicode-org/cldr/tree/main/common/main] \\(or a more user-friendly language list (here)[https://en.wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags])",
+                "usage": "date-locale {locale}",
+                "example": "date-locale en_US"
             }
         ],
         "category": "bot",
@@ -1090,7 +1127,7 @@
                 ],
                 "type": "parameter",
                 "description": "Looks for emotes in the provided channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -1139,7 +1176,7 @@
                 ],
                 "type": "parameter",
                 "description": "Looks for emotes in the provided channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -1168,7 +1205,7 @@
             },
             {
                 "usage": "id:{url}",
-                "example": "https://7tv.app/emotes/01GRKPZCJ80004NWC6YE8DQMV2"
+                "example": "https://7tv.app/emotes/01JEB26JCY13R8BPZP6YMGAB1A"
             }
         ],
         "category": "7tv",
@@ -1190,7 +1227,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets the emotes from the provided channel channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             },
             {
                 "flags": [
@@ -1199,7 +1236,7 @@
                 ],
                 "type": "parameter",
                 "description": "Filters emotes to only show emotes by the provided uploader based on their twitch username.",
-                "usage": "by:{username}"
+                "usage": "`by:{username}`<`by:esperdg`"
             },
             {
                 "flags": [
@@ -1207,7 +1244,7 @@
                 ],
                 "type": "parameter",
                 "description": "Filters emotes to only show emotes with the provided id.",
-                "usage": "id:{id}"
+                "usage": "`id:{id}`<`id:01H0405680000AJFXTYVX2PNJ7`"
             }
         ]
     },
@@ -1336,7 +1373,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets a user's followage in the provided channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -1378,7 +1415,7 @@
                 ],
                 "type": "parameter",
                 "description": "Sets the minimun word length to the provided length.",
-                "usage": "min:{minimun}"
+                "usage": "`min:{minimun}`<`min:4`"
             },
             {
                 "flags": [
@@ -1387,7 +1424,7 @@
                 ],
                 "type": "parameter",
                 "description": "Sets the maximum word length at the provided length.",
-                "usage": "max:{maximum}"
+                "usage": "`max:{maximum}`<`max:12`"
             }
         ]
     },
@@ -1431,7 +1468,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets the data from the specified channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -1528,6 +1565,33 @@
             "name": "regular"
         },
         "aliases": [],
+        "flags": []
+    },
+    "lastseen": {
+        "description": "Gets the last message a user has sent on Twitch.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Get a user's last message.",
+                "usage": "{username}",
+                "example": "justinfan1234"
+            }
+        ],
+        "category": "twitch",
+        "cooldown": 5,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 2,
+            "name": "admin"
+        },
+        "aliases": [
+            "lastmessage",
+            "ls",
+            "stalk"
+        ],
         "flags": []
     },
     "leaderboard": {
@@ -1961,7 +2025,7 @@
                 ],
                 "type": "parameter",
                 "description": "Gets the player for the specified channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             },
             {
                 "flags": [
@@ -2019,7 +2083,7 @@
     },
     "potatocooldowns": {
         "description": "Gets the cooldowns for the potato farming commands on PotatBotat for a user.",
-        "extra": "This does the same as the #status command: https://potat.app/help/status",
+        "extra": "This does the same as the (#status command)[https://potat.app/help/status]",
         "usage": [
             {
                 "description": "Get your own cooldowns.",
@@ -2119,7 +2183,7 @@
                 ],
                 "type": "parameter",
                 "description": "Updates a user's presence in the specified channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -2245,6 +2309,32 @@
                 "description": "Get the answer.",
                 "usage": "{quiz}",
                 "example": "If 3 potatoes cost $1.50, how much do 8 potatoes cost?"
+            },
+            {
+                "description": "Using the `lastquiz`, `latestquiz` or `lq` aliases will get the answer to your latest quiz. This only works if PotatBotat is replying to you. Quizes are only stored for 5 minutes.",
+                "usage": "lastquiz",
+                "alias": true
+            },
+            {
+                "usage": "latestquiz",
+                "alias": true
+            },
+            {
+                "usage": "lq",
+                "alias": true
+            },
+            {
+                "description": "Using the `lastchannelquiz`, `latestchannelquiz` or `lcq` aliases will get the answer to the latest quiz sent in chat. This is not guaranteed to be your quiz. Quizes are only stored for 5 minutes.",
+                "usage": "lastchannelquiz",
+                "alias": true
+            },
+            {
+                "usage": "latestchannelquiz",
+                "alias": true
+            },
+            {
+                "usage": "lcq",
+                "alias": true
             }
         ],
         "category": "potatbotat",
@@ -2258,7 +2348,13 @@
             "name": "regular"
         },
         "aliases": [
-            "answer"
+            "answer",
+            "lastquiz",
+            "latestquiz",
+            "lq",
+            "lastchannelquiz",
+            "latestchannelquiz",
+            "lcq"
         ],
         "flags": []
     },
@@ -2383,6 +2479,46 @@
         "aliases": [],
         "flags": []
     },
+    "remind": {
+        "description": "Sets a reminder for you or someone else. Sends the provided message when the targetted user types in chat.",
+        "extra": null,
+        "usage": [
+            {
+                "description": "Set a reminder for someone.",
+                "usage": "{username} {message}",
+                "example": "justinfan1234 hi"
+            },
+            {
+                "description": "Set a timed reminder for someone. Possible units are: years, months, weeks, days, hours, seconds",
+                "usage": "{username} in {duration} {message}",
+                "example": "justinfan1234 in 5 days 3 hours 46 minutes hi"
+            },
+            {
+                "description": "Using the `remindme` alias, or providing `me` as username will set a reminder for yourself.",
+                "usage": "remindme {message}",
+                "example": "remindme hi",
+                "alias": true
+            },
+            {
+                "usage": "me {message}",
+                "example": "me hi"
+            }
+        ],
+        "category": "utility",
+        "cooldown": 10,
+        "role": {
+            "role": 1,
+            "name": "regular"
+        },
+        "level": {
+            "level": 1,
+            "name": "regular"
+        },
+        "aliases": [
+            "remindme"
+        ],
+        "flags": []
+    },
     "remove": {
         "description": "Removes one or more 7tv emotes.",
         "extra": null,
@@ -2422,11 +2558,12 @@
             {
                 "flags": [
                     "in",
+                    "from",
                     "channel"
                 ],
                 "type": "parameter",
                 "description": "Remove emotes in a different channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -2447,6 +2584,11 @@
                 "description": "Using the `in` alias will rename the emote in the specified channel.",
                 "usage": "{emote} {alias} in:{channel}",
                 "example": "wait wade in:7tvapp"
+            },
+            {
+                "description": "Using the `force` flag will remove the emote (if exists) with a conflicting name before renaming the specified emote.",
+                "usage": "{emotes} -force",
+                "example": "true -force"
             }
         ],
         "category": "7tv",
@@ -2468,7 +2610,7 @@
                 ],
                 "type": "parameter",
                 "description": "Rename emotes in a different channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             },
             {
                 "flags": [
@@ -2477,7 +2619,16 @@
                 ],
                 "type": "parameter",
                 "description": "The alias to rename the emote to.",
-                "usage": "as:{alias}"
+                "usage": "`as:{alias}`<`as:sadg`"
+            },
+            {
+                "flags": [
+                    "force",
+                    "f"
+                ],
+                "type": "flag",
+                "description": "If they exist, removes emotes with conflicting names.",
+                "usage": "-force"
             }
         ]
     },
@@ -2581,7 +2732,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to send the message to.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             },
             {
                 "flags": [
@@ -2862,7 +3013,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to get the stream information from.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -2904,7 +3055,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to get the editors of.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
             }
         ]
     },
@@ -2946,6 +3097,32 @@
             {
                 "usage": "in:{channel}",
                 "example": "in:7tvapp"
+            },
+            {
+                "description": "Using the `setset`, `activateset` or `changeset` aliases will set the active emote set. Using the `set` flag will have the same effect.",
+                "usage": "setset {set name}",
+                "example": "setset 7tvApp's emotes",
+                "alias": true
+            },
+            {
+                "usage": "{set id} -set",
+                "example": "01FRG0ZGSR00084PQ73P1BYDX8 -set"
+            },
+            {
+                "description": "Using the `editset` or `updateset` aliases will edit the provided settings of the active emote set. At least one of the `capacity`, `name` or `tags` aliases has to be used.",
+                "usage": "editset capacity:{capacity}",
+                "example": "editset capacity:500",
+                "alias": true
+            },
+            {
+                "usage": "editset name:\"{name}\"",
+                "example": "editset name:\"Winter Emotes\"",
+                "alias": true
+            },
+            {
+                "usage": "tags:{tags}",
+                "example": "tags:what,are,these,even,for",
+                "alias": true
             }
         ],
         "category": "7tv",
@@ -2961,7 +3138,12 @@
         "aliases": [
             "set",
             "7tvset",
-            "emoteset"
+            "emoteset",
+            "setset",
+            "activateset",
+            "changeset",
+            "editset",
+            "updateset"
         ],
         "flags": [
             {
@@ -2971,7 +3153,44 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to get the set of.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:7tvapp`"
+            },
+            {
+                "flags": [
+                    "capacity"
+                ],
+                "type": "parameter",
+                "description": "Set the active emote set's capacity. This only works with the `editset` alias.",
+                "usage": "`capacity:{capacity}`<`capacity:326`"
+            },
+            {
+                "flags": [
+                    "name",
+                    "rename"
+                ],
+                "type": "string-parameter",
+                "description": "Set the active emote set's name. Can be enclosed in quotation marks (`\"`) to have spaces. This only works with the `editset` alias.",
+                "usage": "`name:\"{name}\"`<`name:\"Winter Emotes\"`"
+            },
+            {
+                "flags": [
+                    "tags",
+                    "tag"
+                ],
+                "type": "parameter",
+                "description": "Comma separated. Set the active emote set's tags. This only works with the `editset` alias.",
+                "usage": "`tags:{tags}`<`tags:some,emote,set,tags`"
+            },
+            {
+                "flags": [
+                    "set",
+                    "activate",
+                    "update",
+                    "change"
+                ],
+                "type": "flag",
+                "description": "Set the active emote set to the provided emote set.",
+                "usage": "-set"
             }
         ]
     },
@@ -2993,9 +3212,9 @@
                 "example": "01FRG0ZGSR00084PQ73P1BYDX8"
             },
             {
-                "description": "Using the `query` flag will get the first user for the provided query.",
-                "usage": "{query} -query",
-                "example": "7tvapp -query"
+                "description": "Using the `query` parameter will get the first user for the provided query.",
+                "usage": "query:{query}",
+                "example": "query:7tv"
             },
             {
                 "description": "Using the `discord` flag will get the user with the provided discord id.",
@@ -3031,7 +3250,7 @@
                 ],
                 "type": "parameter",
                 "description": "Get the first user from user search.",
-                "usage": "query:{query}"
+                "usage": "`query:{query}`<`query:7tv`"
             },
             {
                 "flags": [
@@ -3087,7 +3306,7 @@
                 ],
                 "type": "parameter",
                 "description": "Get a user's sub age in a different channel.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -3186,7 +3405,7 @@
                 ],
                 "type": "parameter",
                 "description": "Checks the weather of the provided user.",
-                "usage": "user:{username}"
+                "usage": "`user:{username}`<`user:justinfan1234`"
             }
         ]
     },
@@ -3244,7 +3463,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to get the title of.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -3319,7 +3538,7 @@
                 ],
                 "type": "parameter",
                 "description": "The trivia category to get the trivia of.",
-                "usage": "category:{category}"
+                "usage": "`category:{category}`<`category:math`"
             },
             {
                 "flags": [
@@ -3327,7 +3546,7 @@
                 ],
                 "type": "parameter",
                 "description": "The trivia difficulty to get the trivia of.",
-                "usage": "difficulty:{difficulty}"
+                "usage": "`difficulty:{difficulty}`<`difficulty:easy`"
             },
             {
                 "flags": [
@@ -3449,7 +3668,7 @@
             },
             {
                 "description": "Using the `index` param will get the nth definition for the provided term.",
-                "usage": "{term} index:5",
+                "usage": "{term} index:{index}",
                 "example": "ragebait index:2"
             }
         ],
@@ -3482,7 +3701,7 @@
                 ],
                 "type": "parameter",
                 "description": "Get the nth definition found when searching the provided term.",
-                "usage": "index:{number}"
+                "usage": "`index:{index}`<`index:5`"
             }
         ]
     },
@@ -3578,7 +3797,7 @@
                 ],
                 "type": "parameter",
                 "description": "The channel to get the usercard in.",
-                "usage": "in:{channel}"
+                "usage": "`in:{channel}`<`in:justinfan6789`"
             }
         ]
     },
@@ -3698,7 +3917,7 @@
                 ],
                 "type": "parameter",
                 "description": "Checks someone else's weather.",
-                "usage": "user:{username}"
+                "usage": "`user:{username}`<`user:justinfan6789`"
             },
             {
                 "flags": [
@@ -3707,7 +3926,7 @@
                 ],
                 "type": "parameter",
                 "description": "Shows the weather in the provided amount of hours.",
-                "usage": "hour:{hour}"
+                "usage": "`hour:{hour}`<`hour:3`"
             },
             {
                 "flags": [
@@ -3716,7 +3935,7 @@
                 ],
                 "type": "parameter",
                 "description": "",
-                "usage": "day:{day}"
+                "usage": "`day:{day}`<`day:-4`"
             },
             {
                 "flags": [
@@ -3827,6 +4046,11 @@
                 "description": "Using the `as` flag will add the emote as the specififed alias.",
                 "usage": "{emote} as:{alias}",
                 "example": "miniAlright as:alr"
+            },
+            {
+                "description": "Using the `force` flag will remove emotes with a conflicting name before adding the specified emote(s).",
+                "usage": "{emotes} -force",
+                "example": "true -force"
             }
         ],
         "category": "7tv",
@@ -3848,7 +4072,16 @@
                 ],
                 "type": "parameter",
                 "description": "Yoink an emote as an alias.",
-                "usage": "as:{alias}"
+                "usage": "`as:{alias}`<`as:beAlright`"
+            },
+            {
+                "flags": [
+                    "force",
+                    "f"
+                ],
+                "type": "flag",
+                "description": "If they exist, removes emotes with conflicting names.",
+                "usage": "-force"
             }
         ]
     }

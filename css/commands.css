@@ -178,6 +178,14 @@
     margin-bottom: 0.7rem;
 }
 
+.command-text a {
+    color: #6495e3;
+    text-decoration: none;
+}
+.command-text a:visited {
+    color: #808eff;
+}
+
 .command-usage {
     position: relative;
     bottom: 0.3rem;

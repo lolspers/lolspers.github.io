@@ -132,7 +132,9 @@ function showCommand(command, data) {
 
     localStorage.setItem("commands-last", command);
 
-    window.history.pushState({}, command, `/commands/${command}`);
+    if (!localStorage.getItem("no-command-redirect")) {
+        window.history.pushState({}, command, `/commands/${command}`);
+    }
 
 
     $(".command-active").removeClass("command-active");
@@ -142,7 +144,7 @@ function showCommand(command, data) {
 
     $(".command-name").text(command);
 
-    $("#command-info-description").text(`${data.description} ${data.extra ? data.extra : ""}`);
+    $("#command-info-description").html(`${formatHelpString(data.description)} ${data.extra ? formatHelpString(data.extra) : ""}`);
 
 
     let guideElement = $("#command-usage-guide");
@@ -221,17 +223,6 @@ function showCommand(command, data) {
         }
     }
 
-    $("p:has(> .command-example-text)").children().click((e) => {
-        $(e.currentTarget).parent().children().toggle();
-    });
-    // only select <span> on triple click (instead of whole <p>)
-    $(".command-text-quote, command-example-text").click((e) => {
-        console.log(e.detail);
-        if (e.detail == 3) {
-            window.getSelection().selectAllChildren(e.currentTarget);
-        }
-    });
-
     
     $("#command-attribute-category > p").text(data["category"] ? data["category"] : "No category");
 
@@ -271,6 +262,17 @@ function showCommand(command, data) {
         $("#command-attribute-flags > h4").text("Flags");
         $("#command-attribute-flags > p").text("This command has no flags.");
     }
+
+
+    $("p:has(> .command-example-text)").children().click((e) => {
+        $(e.currentTarget).parent().children().toggle();
+    });
+    // only select <span> on triple click (instead of whole <p>)
+    $(".command-text-quote, command-example-text").click((e) => {
+        if (e.detail == 3) {
+            window.getSelection().selectAllChildren(e.currentTarget);
+        }
+    });
 }
 
 
@@ -295,20 +297,20 @@ function generateUsageEl(usage, example) {
 
 function formatHelpString(string) {
     function handleEscapes(replacement) {
-        return (match, p1) => {
-            return p1 ? replacement.replaceAll("$1", p1) : match;
+        return (match, p1, p2) => {
+            return p2 ? replacement.replaceAll("$2", p2) : p1;
         }
     }
     
-    string = string.replace(/\\`|`([\S ]+?)`<`([\S ]+?)`/g, (match, p1, p2) => {
-        return p1 ? generateUsageEl(p1, p2)[0].outerHTML : match;
+    string = string.replace(/\\(`)|`([\S ]+?)`<`([\S ]+?)`/g, (match, p1, p2, p3) => {
+        return p2 ? generateUsageEl(p2, p3)[0].outerHTML : p1;
     });
-    string = string.replace(/\\`|`([\S ]+?)`/g, handleEscapes("<span class='command-text-quote'>$1</span>"));
-    string = string.replace(/\\\*|\*\*([\S ]+?)\*\*/g, handleEscapes("<span class='bold'>$1</span>"));
-    string = string.replace(/\\\*|\*([\S ]+?)\*/g, handleEscapes("<span style='font-style: italic;'>$1</span>"));
-
-    string = string.replaceAll("\\`", "`");
-    string = string.replaceAll("\\*", "*");
+    string = string.replace(/\\([()\[\]])|\(([\S ]+?)\)\[([\S ]+?)\]/g, (match, p1, p2, p3) => {
+        return p2 ? `<a href="${p3}" target="_blank">${p2}</a>` : p1;
+    });
+    string = string.replace(/\\(`)|`([\S ]+?)`/g, handleEscapes("<span class='command-text-quote'>$2</span>"));
+    string = string.replace(/\\(\*)|\*\*([\S ]+?)\*\*/g, handleEscapes("<span class='bold'>$2</span>"));
+    string = string.replace(/\\(\*)|\*([\S ]+?)\*/g, handleEscapes("<span style='font-style: italic;'>$2</span>"));
 
     return string;
 }
